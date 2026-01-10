@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Tên Của Bạn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #000;
+        }
+
+        body.dark-mode nav a {
+            color: #aaa;
+        }
+
+        body.dark-mode nav a:hover {
+            color: #fff;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: #666;
+            padding: 5px;
+        }
+
+        body.dark-mode .icon-btn {
+            color: #aaa;
+        }
+
+        .lang-toggle {
+            background: none;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            border-color: #2196F3;
+            color: #2196F3;
+        }
+
+        body.dark-mode .lang-toggle {
+            border-color: #444;
+            color: #aaa;
+        }
+
+        body.dark-mode .lang-toggle:hover {
+            border-color: #2196F3;
+            color: #2196F3;
+        }
+
+        /* Main Content */
+        h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .intro {
+            margin-bottom: 50px;
+        }
+
+        .intro p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 16px;
+        }
+
+        body.dark-mode .intro p {
+            color: #bbb;
+        }
+
+        .highlight {
+            color: #2196F3;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        body.dark-mode .social-links a {
+            color: #aaa;
+        }
+
+        /* Work Section */
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .work-item {
+            margin-bottom: 25px;
+        }
+
+        .work-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .work-item h3 a {
+            color: #333;
+            text-decoration: underline;
+            text-decoration-color: #ddd;
+            text-underline-offset: 3px;
+        }
+
+        body.dark-mode .work-item h3 a {
+            color: #e0e0e0;
+            text-decoration-color: #444;
+        }
+
+        .work-item p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        body.dark-mode .work-item p {
+            color: #aaa;
+        }
+
+        /* Posts Section */
+        .post-list {
+            list-style: none;
+        }
+
+        .post-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            padding: 10px 0;
+        }
+
+        .post-date {
+            color: #999;
+            font-size: 14px;
+            min-width: 110px;
+            flex-shrink: 0;
+        }
+
+        .post-item a {
+            color: #333;
+            text-decoration: underline;
+            text-decoration-color: #ddd;
+            text-underline-offset: 3px;
+            transition: text-decoration-color 0.3s;
+        }
+
+        .post-item a:hover {
+            text-decoration-color: #333;
+        }
+
+        body.dark-mode .post-item a {
+            color: #e0e0e0;
+            text-decoration-color: #444;
+        }
+
+        body.dark-mode .post-item a:hover {
+            text-decoration-color: #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .post-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <div class="logo-img">👤</div>
+            <span class="logo-text" data-vi="Hà Văn Ri" data-en="Hà Văn Ri">Hà Văn Ri</span>
+        </div>
+        <nav>
+            <a href="#home" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
+            <a href="/about.html" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
+            <a href="#blog" data-vi="Blog" data-en="Blog">Blog</a>
+            <a href="#speaking" data-vi="Diễn thuyết" data-en="Speaking">Diễn thuyết</a>
+            <a href="#youtube" data-vi="Youtube" data-en="Youtube">Youtube</a>
+        </nav>
+        <div class="header-icons">
+            <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+            <button class="icon-btn" onclick="alert('Search feature')">🔍</button>
+            <button class="icon-btn" onclick="toggleDarkMode()">☀️</button>
+        </div>
+    </header>
+
+    <main>
+        <h1 data-vi="Xin chào!" data-en="Hi there!">Xin chào!</h1>
+
+        <section class="intro">
+            <p data-vi="Tôi là <span class='highlight'>Hà Văn Ri</span>, một lập trình viên full-stack Magento đam mê công nghệ. Hiện tại tôi đang làm việc tại <strong>Công Ty Magenest</strong>, tập trung vào phát triển ứng dụng web. Vai trò của tôi là tích hợp các module giúp việc quản trị cửa hàng trở nên thuận tiện và thông minh hơn, đồng thời tối ưu và xây dựng các gói tính năng nhằm cải thiện SEO, nâng cao tỷ lệ chuyển đổi và trải nghiệm khách hàng."
+               data-en="I'm <span class='highlight'>Hà Văn Ri</span>, a full-stack Magento developer passionate about technology. Currently working at <strong>Magenest</strong>, focus on developing e-commerce websites. My role involves integrating modules that make store management more efficient and intelligent, as well as optimizing and building feature packages to improve SEO, increase conversion rates, and enhance the overall customer experience.">
+                Tôi là <span class="highlight">Hà Văn Ri</span>, một lập trình viên full-stack Magento đam mê công nghệ. Hiện tại tôi đang làm việc tại <strong>Công Ty Magenest</strong>, tập trung vào phát triển ứng dụng web. Vai trò của tôi là tích hợp các module giúp việc quản trị cửa hàng trở nên thuận tiện và thông minh hơn, đồng thời tối ưu và xây dựng các gói tính năng nhằm cải thiện SEO, nâng cao tỷ lệ chuyển đổi và trải nghiệm khách hàng.
+            </p>
+
+            <p data-vi="Website này là không gian cá nhân nơi tôi chia sẻ những gì học được và ghi lại hành trình nghề nghiệp của mình."
+               data-en="This website is a space where I share what I've learned and document my professional journey.">
+                Website này là không gian cá nhân nơi tôi chia sẻ những gì học được và ghi lại hành trình nghề nghiệp của mình.
+            </p>
+
+            <p data-vi="<strong>Tìm tôi trên:</strong>" data-en="<strong>Find me on:</strong>"><strong>Tìm tôi trên:</strong></p>
+            <div class="social-links">
+                <a href="#" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M18.42,14.009L27.891,3h-2.244l-8.224,9.559L10.855,3H3.28l9.932,14.455L3.28,29h2.244l8.684-10.095,6.936,10.095h7.576l-10.301-14.991h0Zm-3.074,3.573l-1.006-1.439L6.333,4.69h3.447l6.462,9.243,1.006,1.439,8.4,12.015h-3.447l-6.854-9.804h0Z"></path></svg></a>
+                <a href="#" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16,2.345c7.735,0,14,6.265,14,14-.002,6.015-3.839,11.359-9.537,13.282-.7,.14-.963-.298-.963-.665,0-.473,.018-1.978,.018-3.85,0-1.312-.437-2.152-.945-2.59,3.115-.35,6.388-1.54,6.388-6.912,0-1.54-.543-2.783-1.435-3.762,.14-.35,.63-1.785-.14-3.71,0,0-1.173-.385-3.85,1.435-1.12-.315-2.31-.472-3.5-.472s-2.38,.157-3.5,.472c-2.677-1.802-3.85-1.435-3.85-1.435-.77,1.925-.28,3.36-.14,3.71-.892,.98-1.435,2.24-1.435,3.762,0,5.355,3.255,6.563,6.37,6.913-.403,.35-.77,.963-.893,1.872-.805,.368-2.818,.963-4.077-1.155-.263-.42-1.05-1.452-2.152-1.435-1.173,.018-.472,.665,.017,.927,.595,.332,1.277,1.575,1.435,1.978,.28,.787,1.19,2.293,4.707,1.645,0,1.173,.018,2.275,.018,2.607,0,.368-.263,.787-.963,.665-5.719-1.904-9.576-7.255-9.573-13.283,0-7.735,6.265-14,14-14Z"></path></svg></a>
+                <a href="#" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M10.202,2.098c-1.49,.07-2.507,.308-3.396,.657-.92,.359-1.7,.84-2.477,1.619-.776,.779-1.254,1.56-1.61,2.481-.345,.891-.578,1.909-.644,3.4-.066,1.49-.08,1.97-.073,5.771s.024,4.278,.096,5.772c.071,1.489,.308,2.506,.657,3.396,.359,.92,.84,1.7,1.619,2.477,.779,.776,1.559,1.253,2.483,1.61,.89,.344,1.909,.579,3.399,.644,1.49,.065,1.97,.08,5.771,.073,3.801-.007,4.279-.024,5.773-.095s2.505-.309,3.395-.657c.92-.36,1.701-.84,2.477-1.62s1.254-1.561,1.609-2.483c.345-.89,.579-1.909,.644-3.398,.065-1.494,.081-1.971,.073-5.773s-.024-4.278-.095-5.771-.308-2.507-.657-3.397c-.36-.92-.84-1.7-1.619-2.477s-1.561-1.254-2.483-1.609c-.891-.345-1.909-.58-3.399-.644s-1.97-.081-5.772-.074-4.278,.024-5.771,.096m.164,25.309c-1.365-.059-2.106-.286-2.6-.476-.654-.252-1.12-.557-1.612-1.044s-.795-.955-1.05-1.608c-.192-.494-.423-1.234-.487-2.599-.069-1.475-.084-1.918-.092-5.656s.006-4.18,.071-5.656c.058-1.364,.286-2.106,.476-2.6,.252-.655,.556-1.12,1.044-1.612s.955-.795,1.608-1.05c.493-.193,1.234-.422,2.598-.487,1.476-.07,1.919-.084,5.656-.092,3.737-.008,4.181,.006,5.658,.071,1.364,.059,2.106,.285,2.599,.476,.654,.252,1.12,.555,1.612,1.044s.795,.954,1.051,1.609c.193,.492,.422,1.232,.486,2.597,.07,1.476,.086,1.919,.093,5.656,.007,3.737-.006,4.181-.071,5.656-.06,1.365-.286,2.106-.476,2.601-.252,.654-.556,1.12-1.045,1.612s-.955,.795-1.608,1.05c-.493,.192-1.234,.422-2.597,.487-1.476,.069-1.919,.084-5.657,.092s-4.18-.007-5.656-.071M21.779,8.517c.002,.928,.755,1.679,1.683,1.677s1.679-.755,1.677-1.683c-.002-.928-.755-1.679-1.683-1.677,0,0,0,0,0,0-.928,.002-1.678,.755-1.677,1.683m-12.967,7.496c.008,3.97,3.232,7.182,7.202,7.174s7.183-3.232,7.176-7.202c-.008-3.97-3.233-7.183-7.203-7.175s-7.182,3.233-7.174,7.203m2.522-.005c-.005-2.577,2.08-4.671,4.658-4.676,2.577-.005,4.671,2.08,4.676,4.658,.005,2.577-2.08,4.671-4.658,4.676-2.577,.005-4.671-2.079-4.676-4.656h0"></path></svg></a>
+                <a href="#" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M26.111,3H5.889c-1.595,0-2.889,1.293-2.889,2.889V26.111c0,1.595,1.293,2.889,2.889,2.889H26.111c1.595,0,2.889-1.293,2.889-2.889V5.889c0-1.595-1.293-2.889-2.889-2.889ZM10.861,25.389h-3.877V12.87h3.877v12.519Zm-1.957-14.158c-1.267,0-2.293-1.034-2.293-2.31s1.026-2.31,2.293-2.31,2.292,1.034,2.292,2.31-1.026,2.31-2.292,2.31Zm16.485,14.158h-3.858v-6.571c0-1.802-.685-2.809-2.111-2.809-1.551,0-2.362,1.048-2.362,2.809v6.571h-3.718V12.87h3.718v1.686s1.118-2.069,3.775-2.069,4.556,1.621,4.556,4.975v7.926Z" fill-rule="evenodd"></path></svg></a>
+                <a href="mailto:you@example.com" title="Email" class="social-link">
+                    <img style="width: 32px; height: 32px" src="/images/icons8-gmail.svg" alt="Email">
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-vi="Kinh nghiệm làm việc" data-en="Work">Kinh nghiệm làm việc</h2>
+
+            <div class="work-item">
+                <h3><a href="#" data-vi="Công Ty Hiện Tại" data-en="Current Company">Công Ty Hiện Tại</a></h3>
+                <p data-vi="Mô tả công việc và trách nhiệm chính của bạn tại công ty này."
+                   data-en="Description of your main responsibilities and work at this company.">
+                    Mô tả công việc và trách nhiệm chính của bạn tại công ty này.
+                </p>
+            </div>
+
+            <div class="work-item">
+                <h3><a href="#" data-vi="Công Ty Trước Đó" data-en="Previous Company">Công Ty Trước Đó</a></h3>
+                <p data-vi="Frontend developer consultant, làm việc với các khách hàng lớn."
+                   data-en="Frontend developer consultant, worked with major clients.">
+                    Frontend developer consultant, làm việc với các khách hàng lớn.
+                </p>
+            </div>
+
+            <div class="work-item">
+                <h3><a href="#" data-vi="Dự Án Cá Nhân" data-en="Personal Project">Dự Án Cá Nhân</a></h3>
+                <p data-vi="Phát triển phần mềm nội bộ và hỗ trợ quản lý dự án."
+                   data-en="Developed internal software and supported project management.">
+                    Phát triển phần mềm nội bộ và hỗ trợ quản lý dự án.
+                </p>
+            </div>
+
+            <div class="work-item">
+                <h3><a href="#" data-vi="Xem thêm kinh nghiệm" data-en="More places I've worked">Xem thêm kinh nghiệm</a></h3>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-vi="Bài viết gần đây" data-en="Posts">Bài viết gần đây</h2>
+            <ul class="post-list">
+                <li class="post-item">
+                    <span class="post-date" data-vi="14 Tháng 4, 2025" data-en="14 Apr 2025">14 Tháng 4, 2025</span>
+                    <a href="#" data-vi="Hướng dẫn xây dựng Portfolio Website" data-en="Guide to Building a Portfolio Website">Hướng dẫn xây dựng Portfolio Website</a>
+                </li>
+                <li class="post-item">
+                    <span class="post-date" data-vi="5 Tháng 3, 2025" data-en="5 Mar 2025">5 Tháng 3, 2025</span>
+                    <a href="#" data-vi="Quản lý State trong React Application" data-en="State Management in React Applications">Quản lý State trong React Application</a>
+                </li>
+                <li class="post-item">
+                    <span class="post-date" data-vi="1 Tháng 1, 2025" data-en="1 Jan 2025">1 Tháng 1, 2025</span>
+                    <a href="#" data-vi="Tổng kết năm 2024" data-en="2024 Year in Review">Tổng kết năm 2024</a>
+                </li>
+                <li class="post-item">
+                    <span class="post-date" data-vi="20 Tháng 11, 2024" data-en="20 Nov 2024">20 Tháng 11, 2024</span>
+                    <a href="#" data-vi="Tránh Burnout trong ngành IT" data-en="Dealing with Burnout in Tech">Tránh Burnout trong ngành IT</a>
+                </li>
+                <li class="post-item">
+                    <span class="post-date" data-vi="13 Tháng 2, 2024" data-en="13 Feb 2024">13 Tháng 2, 2024</span>
+                    <a href="#" data-vi="Thời điểm tốt nhất để học lập trình" data-en="The Best Time to Learn to Code is Now">Thời điểm tốt nhất để học lập trình</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+</div>
+
+<script>
+    let currentLang = 'vi';
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'vi' ? 'en' : 'vi';
+        const btn = document.querySelector('.lang-toggle');
+        btn.textContent = currentLang === 'vi' ? 'EN' : 'VI';
+
+        // Update all elements with data-vi and data-en attributes
+        const elements = document.querySelectorAll('[data-vi][data-en]');
+        elements.forEach(el => {
+            const text = el.getAttribute(`data-${currentLang}`);
+            el.innerHTML = text;
+        });
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        const btn = document.querySelector('.header-icons .icon-btn:last-child');
+        btn.textContent = isDark ? '🌙' : '☀️';
+    }
+</script>
+</body>
+</html>

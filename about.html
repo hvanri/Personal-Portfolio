@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - About</title>
+    <style>
+        /* Page-specific styles for about page */
+        h1, h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-intro p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .about-intro p {
+            color: #bbb;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%);
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        section p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode section p {
+            color: #bbb;
+        }
+        /* Main Content */
+        h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-intro {
+            margin-bottom: 40px;
+        }
+
+        .about-intro p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .about-intro p {
+            color: #bbb;
+        }
+
+        /* Profile Image */
+        .profile-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%);
+        }
+
+        body.dark-mode .profile-image {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 50px;
+        }
+
+        section p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode section p {
+            color: #bbb;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        body.dark-mode .highlight {
+            background-color: #4a4420;
+        }
+
+        /* Skills/Interests Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        body.dark-mode .grid-item {
+            background-color: #2a2a2a;
+            border-color: #3a3a3a;
+        }
+
+        .grid-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .grid-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .grid-item li {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .grid-item li:before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: #2196F3;
+        }
+
+        body.dark-mode .grid-item li {
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header will be inserted here -->
+
+    <main>
+        <h1 data-vi="Giới thiệu" data-en="About">Giới thiệu</h1>
+
+        <h2 data-vi="Xin chào, Tôi là Hà Văn Ri! 👋" data-en="Hi, I'm Hà Văn Ri! 👋">
+            Xin chào, Tôi là Hà Văn Ri! 👋
+        </h2>
+
+        <div class="about-intro">
+            <p data-vi="Tôi là một người đam mê công nghệ, yêu thích việc xây dựng những giá trị có ý nghĩa. Tôi cũng có niềm yêu thích đặc biệt với việc học ngôn ngữ mới — hiện tại tôi có thể giao tiếp bằng ba ngôn ngữ: tiếng mẹ đẻ là tiếng Việt, tiếng Anh và tiếng Trung — để kết nối và làm bạn với mọi người trên khắp thế giới.
+                Tôi là người Việt Nam, hiện đang sinh sống và làm việc tại Hà Nội. Trang này là nơi tôi chia sẻ những kinh nghiệm, góc nhìn chuyên sâu và đam mê cá nhân của mình với cộng đồng rộng lớn hơn, với mong muốn đóng góp, dù nhỏ bé, cho một thế giới tốt đẹp hơn."
+               data-en="I am a technology enthusiast who enjoys building meaningful things and has a strong interest in learning new languages. Currently, I can communicate in three languages: my native language Vietnamese, English, and Chinese, which allows me to connect and build friendships with people around the world.
+I am Vietnamese and currently living and working in Hanoi. This page is where I share my experiences, in-depth insights, and personal passions with a broader community, with the hope of contributing, in my own way, to a better world.">
+                Tôi là một người đam mê công nghệ, yêu thích việc xây dựng những giá trị có ý nghĩa. Tôi cũng có niềm yêu thích đặc biệt với việc học ngôn ngữ mới — hiện tại tôi có thể giao tiếp bằng ba ngôn ngữ: tiếng mẹ đẻ là tiếng Việt, tiếng Anh và tiếng Trung — để kết nối và làm bạn với mọi người trên khắp thế giới.
+                Tôi là người Việt Nam, hiện đang sinh sống và làm việc tại Hà Nội. Trang này là nơi tôi chia sẻ những kinh nghiệm, góc nhìn chuyên sâu và đam mê cá nhân của mình với cộng đồng rộng lớn hơn, với mong muốn đóng góp, dù nhỏ bé, cho một thế giới tốt đẹp hơn.
+            </p>
+        </div>
+
+        <div class="profile-image">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=600&fit=crop" alt="Profile" />
+        </div>
+
+        <section>
+            <h2 data-vi="💼 Sự nghiệp" data-en="💼 Career">💼 Sự nghiệp</h2>
+            <p data-vi="Với hơn [X] năm kinh nghiệm trong lĩnh vực công nghệ, tôi đã làm việc với các công ty từ startup cho đến các tập đoàn lớn. Chuyên môn của tôi nằm ở việc xây dựng các ứng dụng web có khả năng mở rộng, cải thiện trải nghiệm người dùng, và dẫn dắt các đội phát triển. Hiện tại, tôi đang làm việc tại <span class='highlight'>[Tên Công Ty]</span> với vai trò [Vị trí], nơi tôi tập trung vào [mô tả công việc chính]."
+               data-en="With over [X] years of experience in tech, I've worked with companies ranging from startups to large corporations. My expertise lies in building scalable web applications, improving user experiences, and leading development teams. Currently, I'm working at <span class='highlight'>[Company Name]</span> as a [Position], where I focus on [main job description].">
+                Với hơn [X] năm kinh nghiệm trong lĩnh vực công nghệ, tôi đã làm việc với các công ty từ startup cho đến các tập đoàn lớn. Chuyên môn của tôi nằm ở việc xây dựng các ứng dụng web có khả năng mở rộng, cải thiện trải nghiệm người dùng, và dẫn dắt các đội phát triển. Hiện tại, tôi đang làm việc tại <span class="highlight">[Tên Công Ty]</span> với vai trò [Vị trí], nơi tôi tập trung vào [mô tả công việc chính].
+            </p>
+        </section>
+
+        <section>
+            <h2 data-vi="🎯 Đam mê & Sở thích" data-en="🎯 Passions & Interests">🎯 Đam mê & Sở thích</h2>
+            <p data-vi="Ngoài công nghệ, tôi đam mê về:"
+               data-en="Beyond technology, I'm passionate about:">
+                Ngoài công nghệ, tôi đam mê về:
+            </p>
+
+            <div class="grid">
+                <div class="grid-item">
+                    <h3 data-vi="🎨 Sáng tạo" data-en="🎨 Creative">🎨 Sáng tạo</h3>
+                    <ul>
+                        <li data-vi="Photography" data-en="Photography">Photography</li>
+                        <li data-vi="Video editing" data-en="Video editing">Video editing</li>
+                        <li data-vi="Graphic design" data-en="Graphic design">Graphic design</li>
+                    </ul>
+                </div>
+
+                <div class="grid-item">
+                    <h3 data-vi="📚 Học tập" data-en="📚 Learning">📚 Học tập</h3>
+                    <ul>
+                        <li data-vi="Đọc sách" data-en="Reading books">Đọc sách</li>
+                        <li data-vi="Online courses" data-en="Online courses">Online courses</li>
+                        <li data-vi="Podcasts" data-en="Podcasts">Podcasts</li>
+                    </ul>
+                </div>
+
+                <div class="grid-item">
+                    <h3 data-vi="🌍 Du lịch" data-en="🌍 Travel">🌍 Du lịch</h3>
+                    <ul>
+                        <li data-vi="Khám phá văn hóa mới" data-en="Exploring new cultures">Khám phá văn hóa mới</li>
+                        <li data-vi="Ẩm thực địa phương" data-en="Local cuisine">Ẩm thực địa phương</li>
+                        <li data-vi="Adventure sports" data-en="Adventure sports">Adventure sports</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-vi="🛠️ Kỹ năng & Công cụ" data-en="🛠️ Skills & Tools">🛠️ Kỹ năng & Công cụ</h2>
+
+            <div class="grid">
+                <div class="grid-item">
+                    <h3 data-vi="Frontend" data-en="Frontend">Frontend</h3>
+                    <ul>
+                        <li>React, Vue.js, Next.js</li>
+                        <li>TypeScript, JavaScript</li>
+                        <li>Tailwind CSS, SCSS</li>
+                    </ul>
+                </div>
+
+                <div class="grid-item">
+                    <h3 data-vi="Backend" data-en="Backend">Backend</h3>
+                    <ul>
+                        <li>Node.js, Express</li>
+                        <li>Python, Django</li>
+                        <li>PostgreSQL, MongoDB</li>
+                    </ul>
+                </div>
+
+                <div class="grid-item">
+                    <h3 data-vi="DevOps & Cloud" data-en="DevOps & Cloud">DevOps & Cloud</h3>
+                    <ul>
+                        <li>Docker, Kubernetes</li>
+                        <li>AWS, Cloudflare</li>
+                        <li>CI/CD, GitHub Actions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-vi="📫 Liên hệ" data-en="📫 Get in Touch">📫 Liên hệ</h2>
+            <p data-vi="Tôi luôn sẵn lòng kết nối với những người cùng chí hướng! Dù bạn muốn hợp tác trong một dự án, thảo luận về công nghệ, hay chỉ đơn giản là chào hỏi, đừng ngại liên hệ với tôi qua email hoặc mạng xã hội."
+               data-en="I'm always open to connecting with like-minded individuals! Whether you want to collaborate on a project, discuss technology, or just say hi, feel free to reach out via email or social media.">
+                Tôi luôn sẵn lòng kết nối với những người cùng chí hướng! Dù bạn muốn hợp tác trong một dự án, thảo luận về công nghệ, hay chỉ đơn giản là chào hỏi, đừng ngại liên hệ với tôi qua email hoặc mạng xã hội.
+            </p>
+        </section>
+    </main>
+</div>
+
+<script src="/js/shared-layout.js"></script>
+<script>
+    initLayout('about');
+</script>
+</body>
+</html>
