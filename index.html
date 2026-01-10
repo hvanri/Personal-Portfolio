@@ -1,135 +1,20 @@
-<!-- ====================== -->
-<!-- index.html - Trang chủ -->
-<!-- ====================== -->
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Portfolio - Home</title>
-    <style>
-        /* Page-specific styles */
-        h1 {
-            font-size: 32px;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
+    <meta name="description" content="Portfolio cá nhân của Van Ri – Fullstack Developer" />
 
-        h2 {
-            font-size: 24px;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-
-        .intro {
-            margin-bottom: 50px;
-        }
-
-        .intro p {
-            margin-bottom: 20px;
-            color: #555;
-            font-size: 16px;
-        }
-
-        body.dark-mode .intro p {
-            color: #bbb;
-        }
-
-        .highlight {
-            color: #2196F3;
-            font-weight: 500;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: #666;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        body.dark-mode .social-links a {
-            color: #aaa;
-        }
-
-        section {
-            margin-bottom: 50px;
-        }
-
-        .work-item {
-            margin-bottom: 25px;
-        }
-
-        .work-item h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .work-item h3 a {
-            color: #333;
-            text-decoration: underline;
-            text-decoration-color: #ddd;
-            text-underline-offset: 3px;
-        }
-
-        body.dark-mode .work-item h3 a {
-            color: #e0e0e0;
-            text-decoration-color: #444;
-        }
-
-        .work-item p {
-            color: #666;
-            font-size: 15px;
-        }
-
-        body.dark-mode .work-item p {
-            color: #aaa;
-        }
-
-        .post-list {
-            list-style: none;
-        }
-
-        .post-item {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-            padding: 10px 0;
-        }
-
-        .post-date {
-            color: #999;
-            font-size: 14px;
-            min-width: 110px;
-            flex-shrink: 0;
-        }
-
-        .post-item a {
-            color: #333;
-            text-decoration: underline;
-            text-decoration-color: #ddd;
-            text-underline-offset: 3px;
-            transition: text-decoration-color 0.3s;
-        }
-
-        .post-item a:hover {
-            text-decoration-color: #333;
-        }
-
-        body.dark-mode .post-item a {
-            color: #e0e0e0;
-            text-decoration-color: #444;
-        }
-
-        body.dark-mode .post-item a:hover {
-            text-decoration-color: #e0e0e0;
-        }
-    </style>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/layout/header.css">
+    <link rel="stylesheet" href="css/layout/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/pages/home.css">
 </head>
 <body>
 <div class="container">
@@ -156,7 +41,7 @@
                 <a href="#" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M10.202,2.098c-1.49,.07-2.507,.308-3.396,.657-.92,.359-1.7,.84-2.477,1.619-.776,.779-1.254,1.56-1.61,2.481-.345,.891-.578,1.909-.644,3.4-.066,1.49-.08,1.97-.073,5.771s.024,4.278,.096,5.772c.071,1.489,.308,2.506,.657,3.396,.359,.92,.84,1.7,1.619,2.477,.779,.776,1.559,1.253,2.483,1.61,.89,.344,1.909,.579,3.399,.644,1.49,.065,1.97,.08,5.771,.073,3.801-.007,4.279-.024,5.773-.095s2.505-.309,3.395-.657c.92-.36,1.701-.84,2.477-1.62s1.254-1.561,1.609-2.483c.345-.89,.579-1.909,.644-3.398,.065-1.494,.081-1.971,.073-5.773s-.024-4.278-.095-5.771-.308-2.507-.657-3.397c-.36-.92-.84-1.7-1.619-2.477s-1.561-1.254-2.483-1.609c-.891-.345-1.909-.58-3.399-.644s-1.97-.081-5.772-.074-4.278,.024-5.771,.096m.164,25.309c-1.365-.059-2.106-.286-2.6-.476-.654-.252-1.12-.557-1.612-1.044s-.795-.955-1.05-1.608c-.192-.494-.423-1.234-.487-2.599-.069-1.475-.084-1.918-.092-5.656s.006-4.18,.071-5.656c.058-1.364,.286-2.106,.476-2.6,.252-.655,.556-1.12,1.044-1.612s.955-.795,1.608-1.05c.493-.193,1.234-.422,2.598-.487,1.476-.07,1.919-.084,5.656-.092,3.737-.008,4.181,.006,5.658,.071,1.364,.059,2.106,.285,2.599,.476,.654,.252,1.12,.555,1.612,1.044s.795,.954,1.051,1.609c.193,.492,.422,1.232,.486,2.597,.07,1.476,.086,1.919,.093,5.656,.007,3.737-.006,4.181-.071,5.656-.06,1.365-.286,2.106-.476,2.601-.252,.654-.556,1.12-1.045,1.612s-.955,.795-1.608,1.05c-.493,.192-1.234,.422-2.597,.487-1.476,.069-1.919,.084-5.657,.092s-4.18-.007-5.656-.071M21.779,8.517c.002,.928,.755,1.679,1.683,1.677s1.679-.755,1.677-1.683c-.002-.928-.755-1.679-1.683-1.677,0,0,0,0,0,0-.928,.002-1.678,.755-1.677,1.683m-12.967,7.496c.008,3.97,3.232,7.182,7.202,7.174s7.183-3.232,7.176-7.202c-.008-3.97-3.233-7.183-7.203-7.175s-7.182,3.233-7.174,7.203m2.522-.005c-.005-2.577,2.08-4.671,4.658-4.676,2.577-.005,4.671,2.08,4.676,4.658,.005,2.577-2.08,4.671-4.658,4.676-2.577,.005-4.671-2.079-4.676-4.656h0"></path></svg></a>
                 <a href="#" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M26.111,3H5.889c-1.595,0-2.889,1.293-2.889,2.889V26.111c0,1.595,1.293,2.889,2.889,2.889H26.111c1.595,0,2.889-1.293,2.889-2.889V5.889c0-1.595-1.293-2.889-2.889-2.889ZM10.861,25.389h-3.877V12.87h3.877v12.519Zm-1.957-14.158c-1.267,0-2.293-1.034-2.293-2.31s1.026-2.31,2.293-2.31,2.292,1.034,2.292,2.31-1.026,2.31-2.292,2.31Zm16.485,14.158h-3.858v-6.571c0-1.802-.685-2.809-2.111-2.809-1.551,0-2.362,1.048-2.362,2.809v6.571h-3.718V12.87h3.718v1.686s1.118-2.069,3.775-2.069,4.556,1.621,4.556,4.975v7.926Z" fill-rule="evenodd"></path></svg></a>
                 <a href="mailto:you@example.com" title="Email" class="social-link">
-                    <img style="width: 32px; height: 32px" src="/images/icons8-gmail.svg" alt="Email">
+                    <img style="width: 32px; height: 32px" src="/assets/images/icons8-gmail.svg" alt="Email">
                 </a>
             </div>
         </section>
@@ -223,10 +108,6 @@
     </main>
 </div>
 
-<script src="/js/shared-layout.js"></script>
-<script>
-    // Initialize layout for home page
-    initLayout('home');
-</script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

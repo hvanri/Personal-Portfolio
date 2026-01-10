@@ -1,0 +1,35 @@
+body {
+    color: #333;
+    background: linear-gradient(
+            135deg,
+            #667eea 0%,
+            #764ba2 25%,
+            #f093fb 50%,
+            #4facfe 75%,
+            #00f2fe 100%
+    );
+    background-size: 400% 400%;
+}
+
+.container {
+    background-color: rgba(255,255,255,0.95);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+/* Dark mode */
+body.dark-mode {
+    color: #e0e0e0;
+    background: linear-gradient(
+            135deg,
+            #2c3e50,
+            #34495e,
+            #2c5282,
+            #1a365d,
+            #1e3a8a
+    );
+}
+
+body.dark-mode .container {
+    background-color: rgba(26,26,26,0.85);
+}
+
