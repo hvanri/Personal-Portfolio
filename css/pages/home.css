@@ -37,6 +37,12 @@ body.dark-mode .intro p {
     margin-top: 20px;
 }
 
+.social-links svg,
+.social-links img {
+    width: 20px;
+    height: 20px;
+}
+
 .social-links a {
     color: #666;
     text-decoration: none;

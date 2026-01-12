@@ -177,6 +177,21 @@ body.dark-mode .grid-item li {
     color: #aaa;
 }
 
+.about-section,
+.contact-section {
+    margin-bottom: 60px;
+}
+
+/* Section title */
+.section-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #aaa;
+    display: inline-block;
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
