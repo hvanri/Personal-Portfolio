@@ -2,7 +2,7 @@ export const headerHTML = `
     <header>
         <div class="logo">
             <div class="logo-img">
-                <img src="/assets/images/avatar_2.jpeg" alt="Hà Văn Ri">
+                <img src="/assets/images/FullLogo.png" alt="Hà Văn Ri">
             </div>
             <span class="logo-text" data-vi="Hà Văn Ri" data-en="Hà Văn Ri">Hà Văn Ri</span>
         </div>
