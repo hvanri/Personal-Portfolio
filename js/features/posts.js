@@ -1,5 +1,4 @@
-const notionEndpoint = 'https://api.notion.com/v1/databases/3a90b2bb0186804d98e0ce4123d534fe/query';
-const notionToken = 'ntn_i29986000703jbipCLypqMTCf3S8Xt1oiqBHIctxBie4iJ';
+const notionProxyEndpoint = '/api/recent-posts';
 
 function formatDate(isoString) {
     try {
@@ -31,18 +30,17 @@ export async function initRecentPosts() {
     listElement.innerHTML = '<li class="post-item">Loading recent posts…</li>';
 
     try {
-        const response = await fetch(notionEndpoint, {
+        const response = await fetch(notionProxyEndpoint, {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${notionToken}`,
-                'Notion-Version': '2022-06-28',
                 'Content-Type': 'application/json',
+                Accept: 'application/json',
             },
             body: JSON.stringify({ page_size: 5 }),
         });
 
         if (!response.ok) {
-            throw new Error(`Notion API error: ${response.status} ${response.statusText}`);
+            throw new Error(`Proxy fetch error: ${response.status} ${response.statusText}`);
         }
 
         const data = await response.json();

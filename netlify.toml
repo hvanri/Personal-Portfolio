@@ -1,0 +1,9 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/recent-posts"
+  to = "/.netlify/functions/recent-posts"
+  status = 200
+  force = true
