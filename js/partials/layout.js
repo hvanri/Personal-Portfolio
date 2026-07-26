@@ -4,13 +4,13 @@ export const headerHTML = `
             <div class="logo-img">
                 <img src="/assets/images/FullLogo.png" alt="Hà Văn Ri">
             </div>
-            <span class="logo-text" data-vi="Hà Văn Ri" data-en="Hà Văn Ri">Hà Văn Ri</span>
+            <span class="logo-text" data-i18n="header.logo">Hà Văn Ri</span>
         </div>
         <nav>
-            <a href="index.html" data-page="home" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
-            <a href="about.html" data-page="about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
-            <a href="blog.html" data-page="blog" data-vi="Blog" data-en="Blog">Blog</a>
-            <a target="_blank" href="https://www.youtube.com/" data-page="youtube" data-vi="Youtube" data-en="Youtube">Youtube</a>
+            <a href="index.html" data-page="home" data-i18n="header.home">Trang chủ</a>
+            <a href="about.html" data-page="about" data-i18n="header.about">Giới thiệu</a>
+            <a href="blog.html" data-page="blog" data-i18n="header.blog">Blog</a>
+            <a target="_blank" href="https://www.youtube.com/" data-page="youtube" data-i18n="header.youtube">Youtube</a>
         </nav>
         <div class="header-icons">
             <button class="lang-toggle" onclick="toggleLanguage()">EN</button>

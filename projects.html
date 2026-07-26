@@ -32,16 +32,16 @@
 
         <!-- Optional: Filter buttons -->
         <div class="project-filters">
-            <button class="filter-btn active">Tất cả</button>
-            <button class="filter-btn">Ecommerce</button>
-            <button class="filter-btn">Web App</button>
-            <button class="filter-btn">Backend</button>
+            <button class="filter-btn active" data-category="all">Tất cả</button>
+            <button class="filter-btn" data-category="ecommerce">Ecommerce</button>
+            <button class="filter-btn" data-category="website">Website</button>
+            <button class="filter-btn" data-category="backend">Backend</button>
         </div>
 
         <!-- Projects Grid -->
         <div class="projects-grid">
             <!-- Project Card 1 -->
-            <article class="project-card">
+            <article class="project-card" data-category="ecommerce website">
                 <div class="project-image">
                     <span class="status-badge ongoing">Ongoing</span>
                     <div class="project-icon">🛒</div>
@@ -76,8 +76,85 @@
                 </div>
             </article>
 
+            <article class="project-card" data-category="ecommerce website">
+                <div class="project-image">
+                    <span class="status-badge completed">Completed</span>
+                    <div class="project-icon">🦷</div>
+                </div>
+                <div class="project-content">
+                    <h3>Oroca</h3>
+                    <span class="project-role"
+                          data-vi="Vai trò: Backend Developer"
+                          data-en="Role: Backend Developer">
+                        Backend Developer
+                    </span>
+                    <p class="project-desc"
+                       data-vi="Nền tảng mua sắm thiết bị và vật liệu nha khoa; tôi xử lý tích hợp đăng nhập Zalo, cấu hình email template toàn hệ thống và tối ưu gửi email theo hàng đợi."
+                       data-en="A dental supplies and equipment marketplace; I handled Zalo login integration, managed system-wide email templates, and optimized queued email delivery.">
+                        Nền tảng mua sắm thiết bị và vật liệu nha khoa; tôi xử lý tích hợp đăng nhập Zalo, cấu hình email template toàn hệ thống và tối ưu gửi email theo hàng đợi.
+                    </p>
+                    <ul class="project-tech">
+                        <li>PHP</li>
+                        <li>MySQL</li>
+                        <li>REST API</li>
+                        <li>Zalo Login</li>
+                        <li>Email Queueing</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="#" class="project-link primary"
+                           data-vi="Xem chi tiết"
+                           data-en="View details">
+                            Xem chi tiết
+                        </a>
+                        <a target="_blank" href="https://oroca.vn/" class="project-link secondary">
+                            Live site
+                        </a>
+                    </div>
+                </div>
+            </article>
+
             <!-- Project Card 2 - Example -->
-            <article class="project-card">
+            <article class="project-card" data-category="website">
+                <div class="project-image">
+                    <span class="status-badge completed">Completed</span>
+                    <div class="project-icon">🧾</div>
+                </div>
+
+                <div class="project-content">
+                    <h3>Order Management Dashboard</h3>
+                    <span class="project-role">React Developer</span>
+
+                    <p class="project-desc"
+                       data-vi="Triển khai ứng dụng quản lý đơn hàng bằng React với giao diện dashboard, lọc trạng thái, tìm kiếm, modal chi tiết và xuất CSV."
+                       data-en="Implemented an order management dashboard in React with status filtering, search, detail modal, and CSV export.">
+                        Triển khai ứng dụng quản lý đơn hàng bằng React với giao diện dashboard, lọc trạng thái, tìm kiếm, modal chi tiết và xuất CSV.
+                    </p>
+
+                    <ul class="project-tech">
+                        <li>React</li>
+                        <li>Vite</li>
+                        <li>CSS</li>
+                        <li>REST API</li>
+                        <li>Magento-style UI</li>
+                    </ul>
+
+                    <div class="project-links">
+                        <a href="#" class="project-link primary"
+                           data-vi="Xem chi tiết"
+                           data-en="View details">
+                            Xem chi tiết
+                        </a>
+
+                        <a target="_blank"
+                           href="https://ordermanagementwithreact-hvanri.netlify.app/"
+                           class="project-link secondary">
+                            Live Site
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-category="website">
                 <div class="project-image">
                     <span class="status-badge ongoing">Ongoing</span>
                     <div class="project-icon">⚙️</div>
@@ -107,7 +184,7 @@
                         </a>
 
                         <a target="_blank"
-                           href="https://github.com/hvanri/Personal-Portfolio"
+                           href="https://github.com/hvanri/KickOffReactjs"
                            class="project-link secondary">
                             GitHub
                         </a>
@@ -165,8 +242,14 @@
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
-            // Add your filter logic here
-            console.log('Filter selected:', this.textContent);
+            const category = this.dataset.category;
+            const cards = document.querySelectorAll('.project-card');
+
+            cards.forEach(card => {
+                const cardCategories = card.dataset.category?.split(' ') || [];
+                const shouldShow = category === 'all' || cardCategories.includes(category);
+                card.style.display = shouldShow ? '' : 'none';
+            });
         });
     });
 
