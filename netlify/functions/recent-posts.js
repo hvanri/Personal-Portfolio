@@ -1,5 +1,5 @@
 const NOTION_ENDPOINT = 'https://api.notion.com/v1/databases/3a90b2bb0186804d98e0ce4123d534fe/query';
-const NOTION_TOKEN = process.env.NOTION_API_TOKEN;
+const NOTION_TOKEN = process.env.NOTION_API_TOKEN || process.env.NOTION_TOKEN;
 const NOTION_VERSION = '2022-06-28';
 
 exports.handler = async function (event) {
