@@ -34,7 +34,7 @@ No frameworks are used at the moment to ensure a deep understanding of core web 
 ## Contact
 
 **Hà Văn Ri**  
-📧 Email: riha192121@gmail.com  
+📧 Email: ri.havan@hotmail.com 
 
 Thanks for stopping by my little corner of the web.  
 I’m excited to share more of my journey with you!
