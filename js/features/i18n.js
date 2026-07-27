@@ -1,6 +1,8 @@
 import translations from '../translations.js';
 
-let currentLang = localStorage.getItem('lang') || 'vi';
+const hasExplicitLang = localStorage.getItem('langSetByUser') === 'true';
+const savedLang = localStorage.getItem('lang');
+let currentLang = hasExplicitLang && (savedLang === 'vi' || savedLang === 'en') ? savedLang : 'en';
 
 export function initI18n() {
     applyLang(currentLang);
@@ -9,6 +11,7 @@ export function initI18n() {
 export function toggleLanguage() {
     currentLang = currentLang === 'vi' ? 'en' : 'vi';
     localStorage.setItem('lang', currentLang);
+    localStorage.setItem('langSetByUser', 'true');
     applyLang(currentLang);
 }
 
