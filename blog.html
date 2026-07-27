@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Blog | Hà Văn Ri</title>
+    <meta name="description" content="A personal blog space for unforgettable moments, hobbies, and life stories." />
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/layout/header.css">
+    <link rel="stylesheet" href="css/layout/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/pages/blog.css">
+</head>
+<body>
+<div class="container">
+    <main class="page-shell">
+        <section class="hero-card">
+            <p class="eyebrow">Personal stories & memories</p>
+            <h1>My blog</h1>
+            <p class="hero-copy">
+                This space is for the moments that matter most: company trips, stage performances,
+                musical hobbies, and the quiet memories that shape a life.
+            </p>
+            <div class="hero-actions">
+                <a href="#blog-posts" class="btn btn-primary">Explore stories</a>
+                <a href="index.html" class="btn btn-secondary">Back home</a>
+            </div>
+        </section>
+
+        <section class="toolbar-card">
+            <label class="search-box" for="blog-search">
+                <span aria-hidden="true">🔎</span>
+                <input id="blog-search" type="search" placeholder="Search stories, hobbies, trips..." />
+            </label>
+            <div id="blog-categories" class="filter-group" aria-label="Blog categories"></div>
+        </section>
+
+        <section class="info-grid">
+            <article class="info-card">
+                <h2>Why this page exists</h2>
+                <p>
+                    I built this as a growing journal so future stories can be added easily without rewriting the layout.
+                    New posts are pulled from a simple content file and displayed automatically.
+                </p>
+            </article>
+            <article class="info-card stats-card">
+                <div class="stat-item">
+                    <strong id="blog-count">0</strong>
+                    <span>Stories</span>
+                </div>
+                <div class="stat-item">
+                    <strong id="blog-categories-count">0</strong>
+                    <span>Categories</span>
+                </div>
+            </article>
+        </section>
+
+        <section class="posts-section" aria-labelledby="latest-stories">
+            <div class="section-heading">
+                <h2 id="latest-stories">Latest stories</h2>
+                <p>Share memorable experiences, creative hobbies, and the moments worth keeping.</p>
+            </div>
+            <div id="blog-posts" class="post-grid"></div>
+            <div id="blog-empty-state" class="empty-state" hidden>No posts match your current search yet.</div>
+        </section>
+    </main>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
