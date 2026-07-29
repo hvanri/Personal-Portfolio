@@ -3,7 +3,8 @@ const postsUrl = './blog/posts.json';
 const state = {
     posts: [],
     activeCategory: 'All',
-    query: ''
+    query: '',
+    view: localStorage.getItem('blogView') || 'grid'
 };
 
 function formatDate(value) {
@@ -71,17 +72,19 @@ function renderPosts() {
     grid.innerHTML = filteredPosts.map((post) => `
         <article class="post-card">
             ${post.image ? `<img class="post-image" src="${post.image}" alt="${post.title}" />` : ''}
-            <div class="post-card__top">
-                <span class="post-badge">${post.category}</span>
-                <span class="post-date">${formatDate(post.date)}</span>
-            </div>
-            <h3>${post.title}</h3>
-            <p>${post.excerpt}</p>
-            <div class="post-tags">
-                ${post.tags.map((tag) => `<span class="tag-pill">${tag}</span>`).join('')}
-            </div>
-            <div class="post-card__footer">
-                <span class="post-note">Story added to your personal journal</span>
+            <div class="post-card__body">
+                <div class="post-card__top">
+                    <span class="post-badge">${post.category}</span>
+                    <span class="post-date">${formatDate(post.date)}</span>
+                </div>
+                <h3>${post.title}</h3>
+                <p>${post.excerpt}</p>
+                <div class="post-tags">
+                    ${post.tags.map((tag) => `<span class="tag-pill">${tag}</span>`).join('')}
+                </div>
+                <div class="post-card__footer">
+                    <span class="post-note">Story added to your personal journal</span>
+                </div>
             </div>
         </article>
     `).join('');
@@ -91,10 +94,14 @@ export function initBlogPage() {
     const grid = document.querySelector('#blog-posts');
     const searchInput = document.querySelector('#blog-search');
     const categoryFilter = document.querySelector('#blog-categories');
+    const btnGrid = document.querySelector('#view-grid');
+    const btnList = document.querySelector('#view-list');
 
     if (!grid || !categoryFilter) {
         return;
     }
+
+    applyView(state.view);
 
     fetch(postsUrl)
         .then((response) => {
@@ -128,4 +135,25 @@ export function initBlogPage() {
         renderCategories(state.posts);
         renderPosts();
     });
+
+    if (btnGrid) {
+        btnGrid.addEventListener('click', () => applyView('grid'));
+    }
+
+    if (btnList) {
+        btnList.addEventListener('click', () => applyView('list'));
+    }
+}
+
+function applyView(view) {
+    const grid = document.querySelector('#blog-posts');
+    const btnGrid = document.querySelector('#view-grid');
+    const btnList = document.querySelector('#view-list');
+    if (!grid) return;
+
+    state.view = view;
+    grid.classList.toggle('layout-list', view === 'list');
+    if (btnGrid) btnGrid.classList.toggle('is-active', view === 'grid');
+    if (btnList) btnList.classList.toggle('is-active', view === 'list');
+    localStorage.setItem('blogView', view);
 }

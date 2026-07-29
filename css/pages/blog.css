@@ -206,7 +206,7 @@ body.dark-mode {
 
 .post-image {
     width: 100%;
-    height: 220px;
+    height: 250px;
     object-fit: cover;
     border-radius: 14px;
 }
@@ -283,5 +283,72 @@ body.dark-mode {
 
     .toolbar-card {
         align-items: flex-start;
+    }
+}
+
+/* --- View toggle button --- */
+.view-toggle {
+    display: flex;
+    gap: 4px;
+    border: 1px solid var(--blog-border);
+    border-radius: 999px;
+    padding: 4px;
+    background: var(--blog-surface-alt);
+}
+
+.view-toggle button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--blog-muted);
+    cursor: pointer;
+    transition: 150ms ease;
+}
+
+.view-toggle button.is-active {
+    background: var(--blog-accent);
+    color: #fff;
+}
+
+/* --- Horizontal (list) layout --- */
+.post-grid.layout-list {
+    grid-template-columns: 1fr;
+}
+
+.post-grid.layout-list .post-card {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.post-grid.layout-list .post-image {
+    width: 370px;
+    height: auto;
+    min-height: 160px;
+    flex-shrink: 0;
+    border-radius: 14px;
+}
+
+.post-grid.layout-list .post-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .post-grid.layout-list .post-card {
+        flex-direction: column;
+    }
+
+    .post-grid.layout-list .post-image {
+        width: 100%;
+        height: 200px;
     }
 }
