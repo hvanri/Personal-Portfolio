@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/layout/header.css">
     <link rel="stylesheet" href="css/layout/footer.css">
     <link rel="stylesheet" href="css/pages/projects.css">
+    <link rel="stylesheet" href="css/pages/project-modal.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -54,9 +55,9 @@
                         Fullstack Magento Developer
                     </span>
                     <p class="project-desc"
-                       data-vi="Tham gia phát triển, bảo trì và tối ưu hệ thống siêu thị thương mại điện tử cho khách hàng, tập trung vào hiệu năng, bảo mật và trải nghiệm mua hàng."
-                       data-en="Worked on developing, maintaining, and optimizing e-commerce supermarket platforms for clients, with a strong focus on performance, security, and shopping experience.">
-                        Tham gia phát triển, bảo trì và tối ưu hệ thống siêu thị thương mại điện tử cho khách hàng, tập trung vào hiệu năng, bảo mật và trải nghiệm mua hàng.
+                       data-vi="SM Markets là nhánh bán lẻ thực phẩm nổi bật thuộc Tập đoàn SM tại Philippines, hợp nhất hơn 300 cửa hàng trên ba mô hình kinh doanh khác nhau."
+                       data-en="SM Markets is the prominent food retailing umbrella of the SM Group in the Philippines, unifying over 300 stores across three distinct formats.">
+                        SM Markets là nhánh bán lẻ thực phẩm nổi bật thuộc Tập đoàn SM tại Philippines, hợp nhất hơn 300 cửa hàng trên ba mô hình kinh doanh khác nhau.
                     </p>
                     <ul class="project-tech">
                         <li>Magento 2</li>
@@ -66,11 +67,11 @@
                         <li>React</li>
                     </ul>
                     <div class="project-links">
-                        <a href="#" class="project-link primary"
+                        <button type="button" class="project-link primary" data-modal-target="modal-sm-markets"
                            data-vi="Xem chi tiết"
                            data-en="View details">
                             Xem chi tiết
-                        </a>
+                        </button>
                         <a target="_blank" href="https://smmarkets.ph/" class="project-link secondary">Live Site</a>
                     </div>
                 </div>
@@ -89,9 +90,9 @@
                         Backend Developer
                     </span>
                     <p class="project-desc"
-                       data-vi="Nền tảng mua sắm thiết bị và vật liệu nha khoa; tôi xử lý tích hợp đăng nhập Zalo, cấu hình email template toàn hệ thống và tối ưu gửi email theo hàng đợi."
-                       data-en="A dental supplies and equipment marketplace; I handled Zalo login integration, managed system-wide email templates, and optimized queued email delivery.">
-                        Nền tảng mua sắm thiết bị và vật liệu nha khoa; tôi xử lý tích hợp đăng nhập Zalo, cấu hình email template toàn hệ thống và tối ưu gửi email theo hàng đợi.
+                       data-vi="Oroca là nền tảng thương mại điện tử B2B tiên phong tại Việt Nam, chuyên về thiết bị và vật tư nha khoa, kết nối trực tiếp các phòng khám và nha sĩ với các nhà phân phối được uỷ quyền."
+                       data-en="Oroca is Vietnam's pioneering B2B e-commerce platform specializing in dental equipment and supplies. It directly connects dental clinics and dentists with authorized distributors.">
+                        Oroca là nền tảng thương mại điện tử B2B tiên phong tại Việt Nam, chuyên về thiết bị và vật tư nha khoa, kết nối trực tiếp các phòng khám và nha sĩ với các nhà phân phối được uỷ quyền.
                     </p>
                     <ul class="project-tech">
                         <li>PHP</li>
@@ -101,11 +102,11 @@
                         <li>Email Queueing</li>
                     </ul>
                     <div class="project-links">
-                        <a href="#" class="project-link primary"
+                        <button type="button" class="project-link primary" data-modal-target="modal-oroca"
                            data-vi="Xem chi tiết"
                            data-en="View details">
                             Xem chi tiết
-                        </a>
+                        </button>
                         <a target="_blank" href="https://oroca.vn/" class="project-link secondary">
                             Live site
                         </a>
@@ -139,11 +140,11 @@
                     </ul>
 
                     <div class="project-links">
-                        <a href="#" class="project-link primary"
+                        <button type="button" class="project-link primary" data-modal-target="modal-order-management"
                            data-vi="Xem chi tiết"
                            data-en="View details">
                             Xem chi tiết
-                        </a>
+                        </button>
 
                         <a target="_blank"
                            href="https://ordermanagementwithreact-hvanri.netlify.app/"
@@ -177,11 +178,11 @@
                     </ul>
 
                     <div class="project-links">
-                        <a href="#" class="project-link primary"
+                        <button type="button" class="project-link primary" data-modal-target="modal-portfolio"
                            data-vi="Xem chi tiết"
                            data-en="View details">
                             Xem chi tiết
-                        </a>
+                        </button>
 
                         <a target="_blank"
                            href="https://github.com/hvanri/KickOffReactjs"
@@ -191,32 +192,6 @@
                     </div>
                 </div>
             </article>
-
-            <!-- Project Card 3 - Example -->
-<!--            <article class="project-card">-->
-<!--                <div class="project-image">-->
-<!--                    <span class="status-badge completed">Completed</span>-->
-<!--                    <div class="project-icon">📱</div>-->
-<!--                </div>-->
-<!--                <div class="project-content">-->
-<!--                    <h3>Mobile-First Shopping Experience</h3>-->
-<!--                    <span class="project-role">Frontend Developer</span>-->
-<!--                    <p class="project-desc">-->
-<!--                        Thiết kế và triển khai giao diện mua sắm tối ưu cho mobile với PWA, tăng tốc độ tải trang 60% và cải thiện conversion rate 25%.-->
-<!--                    </p>-->
-<!--                    <ul class="project-tech">-->
-<!--                        <li>React</li>-->
-<!--                        <li>TypeScript</li>-->
-<!--                        <li>Tailwind CSS</li>-->
-<!--                        <li>PWA</li>-->
-<!--                        <li>REST API</li>-->
-<!--                    </ul>-->
-<!--                    <div class="project-links">-->
-<!--                        <a href="#" class="project-link primary">Xem chi tiết</a>-->
-<!--                        <a href="#" class="project-link secondary">Live Site</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </article>-->
 
             <!-- Upcoming Projects Card -->
             <article class="project-card upcoming">
@@ -231,6 +206,126 @@
             </article>
         </div>
     </main>
+</div>
+
+<!-- ============ VIEW DETAILS MODALS ============ -->
+<!-- Hidden by default via CSS; toggled by data-modal-target / .project-modal-close. -->
+
+<div class="project-modal-overlay" id="modal-sm-markets" data-modal>
+    <div class="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-sm-markets-title">
+        <button type="button" class="project-modal-close" data-modal-close aria-label="Close">&times;</button>
+        <h3 id="modal-sm-markets-title">SM Markets</h3>
+        <span class="project-modal-role" data-vi="Vai trò: Fullstack Magento Developer" data-en="Role: Fullstack Magento Developer">Vai trò: Fullstack Magento Developer</span>
+
+        <span class="project-modal-label" data-vi="Những đóng góp nổi bật" data-en="Key Contributions">Những đóng góp nổi bật</span>
+        <div class="project-modal-contribution">
+            <ul>
+                <li data-vi="Tham gia phát triển, bảo trì và tối ưu hệ thống siêu thị thương mại điện tử cho khách hàng, tập trung vào hiệu năng, bảo mật và trải nghiệm mua hàng."
+                    data-en="Worked on developing, maintaining, and optimizing the e-commerce supermarket platform, with a strong focus on performance, security, and shopping experience.">
+                    Tham gia phát triển, bảo trì và tối ưu hệ thống siêu thị thương mại điện tử cho khách hàng, tập trung vào hiệu năng, bảo mật và trải nghiệm mua hàng.
+                </li>
+                <li data-vi="Cộng tác chặt chẽ cùng đội QA tại Philippines trong suốt vòng đời phát triển để lên kịch bản kiểm thử, xác nhận yêu cầu và hoàn thiện các tính năng hệ thống trước khi triển khai."
+                    data-en="Collaborated closely with the Philippines-based QA team throughout the development lifecycle to plan test scenarios, validate requirements, and refine system features before release.">
+                    Cộng tác chặt chẽ cùng đội QA tại Philippines trong suốt vòng đời phát triển để lên kịch bản kiểm thử, xác nhận yêu cầu và hoàn thiện các tính năng hệ thống trước khi triển khai.
+                </li>
+                <li data-vi="Trực tiếp trao đổi, xử lý bug report từ đội QA để rút ngắn thời gian phản hồi và đảm bảo chất lượng trước mỗi lần release."
+                    data-en="Worked directly with QA on bug reports to shorten turnaround time and ensure quality ahead of each release.">
+                    Trực tiếp trao đổi, xử lý bug report từ đội QA để rút ngắn thời gian phản hồi và đảm bảo chất lượng trước mỗi lần release.
+                </li>
+            </ul>
+        </div>
+
+        <ul class="project-tech">
+            <li>Magento 2</li>
+            <li>PHP</li>
+            <li>MySQL</li>
+            <li>PWA</li>
+            <li>React</li>
+        </ul>
+
+        <div class="project-links">
+            <a target="_blank" href="https://smmarkets.ph/" class="project-link secondary">Live Site</a>
+        </div>
+    </div>
+</div>
+
+<div class="project-modal-overlay" id="modal-oroca" data-modal>
+    <div class="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-oroca-title">
+        <button type="button" class="project-modal-close" data-modal-close aria-label="Close">&times;</button>
+        <h3 id="modal-oroca-title">Oroca</h3>
+        <span class="project-modal-role" data-vi="Vai trò: Backend Developer" data-en="Role: Backend Developer">Vai trò: Backend Developer</span>
+
+        <span class="project-modal-label" data-vi="Những đóng góp nổi bật" data-en="Key Contributions">Những đóng góp nổi bật</span>
+        <p class="project-modal-contribution"
+           data-vi="Nền tảng mua sắm thiết bị và vật liệu nha khoa; tôi xử lý tích hợp đăng nhập Zalo, cấu hình email template toàn hệ thống và tối ưu gửi email theo hàng đợi."
+           data-en="A dental supplies and equipment marketplace; I handled Zalo login integration, managed system-wide email templates, and optimized queued email delivery.">
+            Nền tảng mua sắm thiết bị và vật liệu nha khoa; tôi xử lý tích hợp đăng nhập Zalo, cấu hình email template toàn hệ thống và tối ưu gửi email theo hàng đợi.
+        </p>
+
+        <ul class="project-tech">
+            <li>PHP</li>
+            <li>MySQL</li>
+            <li>REST API</li>
+            <li>Zalo Login</li>
+            <li>Email Queueing</li>
+        </ul>
+
+        <div class="project-links">
+            <a target="_blank" href="https://oroca.vn/" class="project-link secondary">Live site</a>
+        </div>
+    </div>
+</div>
+
+<div class="project-modal-overlay" id="modal-order-management" data-modal>
+    <div class="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-order-management-title">
+        <button type="button" class="project-modal-close" data-modal-close aria-label="Close">&times;</button>
+        <h3 id="modal-order-management-title">Order Management Dashboard</h3>
+        <span class="project-modal-role" data-vi="Vai trò: React Developer" data-en="Role: React Developer">Vai trò: React Developer</span>
+
+        <span class="project-modal-label" data-vi="Những đóng góp nổi bật" data-en="Key Contributions">Những đóng góp nổi bật</span>
+        <p class="project-modal-contribution"
+           data-vi="Triển khai ứng dụng quản lý đơn hàng bằng React với giao diện dashboard, lọc trạng thái, tìm kiếm, modal chi tiết và xuất CSV."
+           data-en="Implemented an order management dashboard in React with status filtering, search, detail modal, and CSV export.">
+            Triển khai ứng dụng quản lý đơn hàng bằng React với giao diện dashboard, lọc trạng thái, tìm kiếm, modal chi tiết và xuất CSV.
+        </p>
+
+        <ul class="project-tech">
+            <li>React</li>
+            <li>Vite</li>
+            <li>CSS</li>
+            <li>REST API</li>
+            <li>Magento-style UI</li>
+        </ul>
+
+        <div class="project-links">
+            <a target="_blank" href="https://ordermanagementwithreact-hvanri.netlify.app/" class="project-link secondary">Live Site</a>
+        </div>
+    </div>
+</div>
+
+<div class="project-modal-overlay" id="modal-portfolio" data-modal>
+    <div class="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-portfolio-title">
+        <button type="button" class="project-modal-close" data-modal-close aria-label="Close">&times;</button>
+        <h3 id="modal-portfolio-title">Open-source Personal Portfolio</h3>
+        <span class="project-modal-role" data-vi="Vai trò: Owner" data-en="Role: Owner">Vai trò: Owner</span>
+
+        <span class="project-modal-label" data-vi="Những đóng góp nổi bật" data-en="Key Contributions">Những đóng góp nổi bật</span>
+        <p class="project-modal-contribution"
+           data-vi="Xây dựng portfolio cá nhân theo hướng mã nguồn mở, nơi các lập trình viên có thể tham khảo, tái sử dụng và đóng góp ý tưởng để phát triển lâu dài."
+           data-en="Building an open-source personal portfolio designed for developers to explore, reuse, and contribute ideas, serving as a long-term space to document growth and experimentation.">
+            Xây dựng portfolio cá nhân theo hướng mã nguồn mở, nơi các lập trình viên có thể tham khảo, tái sử dụng và đóng góp ý tưởng để phát triển lâu dài.
+        </p>
+
+        <ul class="project-tech">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript (Vanilla)</li>
+        </ul>
+
+        <div class="project-links">
+            <a target="_blank" href="https://github.com/hvanri/KickOffReactjs" class="project-link secondary">GitHub</a>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -263,6 +358,47 @@
             }
         });
     });
+
+    // ---------- View Details modal ----------
+    (function () {
+        let activeModal = null;
+
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            modal.classList.add('is-open');
+            document.body.classList.add('modal-open');
+            activeModal = modal;
+            const closeBtn = modal.querySelector('.project-modal-close');
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function closeModal() {
+            if (!activeModal) return;
+            activeModal.classList.remove('is-open');
+            document.body.classList.remove('modal-open');
+            activeModal = null;
+        }
+
+        document.querySelectorAll('[data-modal-target]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                openModal(btn.dataset.modalTarget);
+            });
+        });
+
+        document.querySelectorAll('[data-modal]').forEach(function (overlay) {
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) closeModal();
+            });
+            overlay.querySelectorAll('[data-modal-close]').forEach(function (btn) {
+                btn.addEventListener('click', closeModal);
+            });
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    })();
 </script>
 
 <script type="module" src="js/main.js"></script>
