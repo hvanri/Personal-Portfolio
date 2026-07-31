@@ -8,7 +8,8 @@
       "excerpt": "A wonderful evening of meeting international friends, speaking in English, and sharing joyful stories through Spotlight at Lê's Path Coffee.",
       "tags": ["english", "friends", "performance"],
       "content": "I had an amazing time joining Spotlight at Lê's Path Coffee on 20-3. It was such a wonderful experience to meet international friends, talk in English, and share joyful stories together. The atmosphere was warm, welcoming, and full of energy. It felt like a perfect moment of connection, confidence, and memorable conversation.",
-      "image": "/assets/images/blog/Spotlight2.jpg"
+      "image": "/assets/images/blog/Spotlight2.jpg",
+      "blog_link": "https://app.notion.com/p/Spotlight-at-L-s-Path-Coffee-fd70b2bb018682df807481255cb8d8f1"
     },
     {
       "id": "spotlight-big-day-out-camping",
@@ -18,25 +19,8 @@
       "excerpt": "A wonderful memory of a rare camping trip with everyone, playing fun games together, and enjoying a little adventure and laughter.",
       "tags": ["camping", "friends", "adventure"],
       "content": "This was one of those rare and unforgettable outdoor moments. We went camping at SIXDOONG Camping, spent the day together, played fun games, and shared lots of laughter. There were also a few adventurous moments that made the experience even more exciting. It truly became a memory I will never forget.",
-      "image": "/assets/images/blog/DayoutwithSpotLight.jpg"
-    },
-    {
-      "id": "guitar-hobby",
-      "title": "Learning to play guitar in the evenings",
-      "date": "2024-09-20",
-      "category": "Hobbies",
-      "excerpt": "A quiet hobby that calmed my mind and gave me a meaningful way to recharge after busy days.",
-      "tags": ["music", "learning", "hobby"],
-      "content": "Practicing guitar in the evenings became a ritual. It helped me slow down, focus on one small improvement at a time, and enjoy progress that felt personal and steady."
-    },
-    {
-      "id": "weekend-hike",
-      "title": "Weekend hikes and the beauty of slowing down",
-      "date": "2024-04-08",
-      "category": "Lifestyle",
-      "excerpt": "Small weekend adventures have a way of resetting the mind and opening space for reflection.",
-      "tags": ["nature", "weekend", "reflection"],
-      "content": "A simple hike reminded me that rest does not need to be dramatic to be meaningful. Sometimes it is a quiet trail, fresh air, and the chance to breathe a little deeper."
+      "image": "/assets/images/blog/DayoutwithSpotLight.jpg",
+      "blog_link": "https://bubble-offer-386.notion.site/Spotlight-Big-Day-Out-Camping-at-SIXDOONG-Camping-3ae0b2bb01868086bc16ca78ef058a48?pvs=73"
     }
   ]
 }

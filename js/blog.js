@@ -83,7 +83,17 @@ function renderPosts() {
                     ${post.tags.map((tag) => `<span class="tag-pill">${tag}</span>`).join('')}
                 </div>
                 <div class="post-card__footer">
-                    <span class="post-note">Story added to your personal journal</span>
+                    ${
+                        post.blog_link
+                            ? `<a class="post-read-link"
+                                href="${post.blog_link}"
+                                target="_blank"
+                                rel="noopener">
+                                    Read Story
+                                    <span aria-hidden="true">→</span>
+                            </a>`
+                            : ""
+                    }
                 </div>
             </div>
         </article>

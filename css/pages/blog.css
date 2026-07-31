@@ -352,3 +352,35 @@ body.dark-mode {
         height: 200px;
     }
 }
+.post-card__footer{
+    margin-top:auto;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.post-read-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:var(--primary-color);
+    text-decoration:none;
+    font-weight:600;
+    transition:.25s;
+}
+
+.post-read-link:hover{
+    gap:20px;
+    color:var(--primary-hover);
+}
+.post-read-link{
+    padding:10px 18px;
+    border-radius:999px;
+    background:var(--primary-color);
+    /* color:#fff; */
+    text-decoration:none;
+    font-weight:600;
+}
+
+.post-read-link:hover{
+    opacity:.9;
+}
