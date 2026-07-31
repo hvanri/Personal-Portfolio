@@ -207,3 +207,446 @@ body.dark-mode .grid-item li {
         grid-template-columns: 1fr;
     }
 }
+.about-hero {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 80px;
+
+    margin: 80px 0 120px;
+
+}
+
+.profile-image {
+
+    flex-shrink: 0;
+
+    width: 280px;
+
+    height: 280px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    border: 8px solid white;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.12);
+
+}
+
+.profile-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+
+}
+
+.profile-image:hover img{
+
+    transform:scale(1.05);
+
+}
+.hero-content{
+
+    flex:1;
+
+}
+
+.eyebrow{
+
+    display:inline-block;
+
+    color:var(--primary-color);
+
+    font-weight:600;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+    margin-bottom:18px;
+
+}
+
+.hero-content h1{
+
+    font-size:clamp(44px,5vw,72px);
+
+    line-height:1.1;
+
+    margin-bottom:28px;
+
+}
+
+.hero-description{
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    max-width:700px;
+
+    color:#666;
+
+}
+.quick-info{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin-top:40px;
+
+}
+
+.quick-info span{
+
+    background:#f5f5f5;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    font-size:14px;
+
+}
+body.dark-mode .quick-info span{
+
+    background:#2d2d2d;
+
+}
+.journey-intro{
+
+    text-align:center;
+
+    max-width:700px;
+
+    margin:0 auto 120px;
+
+}
+
+.journey-intro h2{
+
+    justify-content:center;
+
+    border:none;
+
+    margin-bottom:18px;
+
+}
+
+.journey-intro p{
+
+    color:#777;
+
+    line-height:1.9;
+
+}
+.journey{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding-bottom:120px;
+
+}
+.journey-road{
+
+    position:absolute;
+
+    inset:0;
+
+    width:220px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    height:100%;
+
+    overflow:visible;
+
+}
+
+.journey-road path{
+
+    fill:none;
+
+    stroke:#7AA89E;
+
+    stroke-width:6;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:2200;
+
+    stroke-dashoffset:2200;
+
+}
+.milestone{
+
+    position:relative;
+
+    display:flex;
+
+    margin:140px 0;
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+    transition:.8s;
+
+}
+
+.milestone.show{
+
+    opacity:1;
+
+    transform:none;
+
+}
+
+.milestone.left{
+
+    justify-content:flex-start;
+
+}
+
+.milestone.right{
+
+    justify-content:flex-end;
+
+}
+.dot{
+
+    position:absolute;
+
+    left:50%;
+
+    top:40px;
+
+    width:18px;
+
+    height:18px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:#7AA89E;
+
+    transition:.4s;
+
+}
+
+.dot.active{
+
+    transform:translateX(-50%) scale(1.4);
+
+    box-shadow:
+
+        0 0 20px #7AA89E,
+
+        0 0 50px rgba(122,168,158,.5);
+
+}
+.card{
+
+    width:380px;
+
+    background:white;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        0 25px 70px rgba(0,0,0,.08);
+
+    transition:.45s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-12px);
+
+}
+
+.card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+.card h3{
+
+    padding:28px 28px 0;
+
+}
+
+.card p{
+
+    padding:12px 28px 28px;
+
+    line-height:1.8;
+
+}
+.focus-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:28px;
+
+}
+
+.focus-item{
+
+    text-align:center;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    background:#fafafa;
+
+    transition:.4s;
+
+}
+
+.focus-item:hover{
+
+    transform:translateY(-8px);
+
+}
+.about-cta{
+
+    text-align:center;
+
+    margin:180px auto;
+
+}
+
+.about-cta h2{
+
+    justify-content:center;
+
+    border:none;
+
+}
+
+.about-cta a{
+
+    display:inline-flex;
+
+    margin-top:28px;
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    background:#567B76;
+
+    color:white;
+
+    text-decoration:none;
+
+}
+@media(max-width:900px){
+
+.about-hero{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.quick-info{
+
+    justify-content:center;
+
+}
+
+.milestone{
+
+    justify-content:center !important;
+
+}
+
+.journey-road{
+
+    display:none;
+
+}
+
+.dot{
+
+    display:none;
+
+}
+
+.card{
+
+    width:100%;
+
+}
+
+}
+
+.year {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 14px;
+
+    margin: 24px 24px 0;
+
+    background: #567B76;
+    color: #fff;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    border-radius: 999px;
+
+    letter-spacing: 0.05em;
+}
+.card{
+
+    transition:
+        transform .6s,
+        box-shadow .6s;
+
+}
+.card img { 
+    height: auto
+}
