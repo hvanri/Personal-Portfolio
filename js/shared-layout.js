@@ -311,10 +311,11 @@ const headerHTML = `
             <span class="logo-text" data-vi="Hà Văn Ri" data-en="Hà Văn Ri">Hà Văn Ri</span>
         </div>
         <nav>
-            <a href="index.html" data-page="home" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
-            <a href="about.html" data-page="about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
-            <a href="blog.html" data-page="blog" data-vi="Blog" data-en="Blog">Blog</a>
-            <a href="youtube.html" data-page="youtube" data-vi="Youtube" data-en="Youtube">Youtube</a>
+            <a href="/" data-page="home" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
+            <a href="/about" data-page="about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
+            <a href="/blog" data-page="blog" data-vi="Blog" data-en="Blog">Blog</a>
+            <a href="/projects" data-page="projects" data-vi="Dự án" data-en="Projects">Dự án</a>
+            <a href="https://www.youtube.com/" data-page="youtube" data-vi="Youtube" data-en="Youtube">Youtube</a>
         </nav>
         <div class="header-icons">
             <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
@@ -329,10 +330,11 @@ const footerHTML = `
     <footer>
 <!--        <div class="footer-content">-->
 <!--            <div class="footer-links">-->
-<!--                <a href="index.html" data-vi="Trang chủ" data-en="Home">Trang chủ</a>-->
-<!--                <a href="about.html" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>-->
-<!--                <a href="blog.html" data-vi="Blog" data-en="Blog">Blog</a>-->
-<!--                <a href="youtube.html" data-vi="Youtube" data-en="Youtube">Youtube</a>-->
+<!--                <a href="/" data-vi="Trang chủ" data-en="Home">Trang chủ</a>-->
+<!--                <a href="/about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>-->
+<!--                <a href="/blog" data-vi="Blog" data-en="Blog">Blog</a>-->
+<!--                <a href="/projects" data-vi="Dự án" data-en="Projects">Dự án</a>-->
+<!--                <a href="https://www.youtube.com/" data-vi="Youtube" data-en="Youtube">Youtube</a>-->
 <!--            </div>-->
 <!--            <div class="footer-social">-->
 <!--                <a href="#" title="Twitter" aria-label="Twitter">🐦</a>-->
@@ -417,7 +419,7 @@ function initLayout(currentPage) {
 
 // Add smooth page transitions
 function addPageTransitions() {
-    const links = document.querySelectorAll('a[href^="index.html"], a[href^="about.html"], a[href^="blog.html"], a[href^="speaking.html"], a[href^="youtube.html"]');
+    const links = document.querySelectorAll('a[href^="/"], a[href^="#"]');
 
     links.forEach(link => {
         link.addEventListener('click', function(e) {

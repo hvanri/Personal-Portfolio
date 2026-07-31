@@ -6,13 +6,15 @@ export function injectLayout(headerHTML, footerHTML) {
 }
 
 function setActiveNav() {
-    const currentPath = window.location.pathname;
-    const currentFile = currentPath.split('/').pop() || 'index.html';
+    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
 
     document.querySelectorAll('nav a').forEach(link => {
-        const linkHref = link.getAttribute('href');
+        const linkUrl = new URL(link.getAttribute('href'), window.location.origin);
+        if (linkUrl.origin !== window.location.origin) return;
 
-        if (linkHref === currentFile) {
+        const linkHref = linkUrl.pathname.replace(/\/$/, '') || '/';
+
+        if (linkHref === currentPath) {
             link.classList.add('active');
         }
     });

@@ -4,6 +4,7 @@ const translations = {
         'header.home': 'Trang chủ',
         'header.about': 'Giới thiệu',
         'header.blog': 'Blog',
+        'header.projects': 'Dự án',
         'header.youtube': 'Youtube',
 
         'home.greeting': 'Xin chào!',
@@ -40,6 +41,7 @@ const translations = {
         'header.home': 'Home',
         'header.about': 'About',
         'header.blog': 'Blog',
+        'header.projects': 'Projects',
         'header.youtube': 'Youtube',
 
         'home.greeting': 'Hi there!',
