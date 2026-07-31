@@ -1,4 +1,5 @@
 import translations from '../translations.js';
+import { availabilityConfig } from '../config/availability.js';
 
 const hasExplicitLang = localStorage.getItem('langSetByUser') === 'true';
 const savedLang = localStorage.getItem('lang');
@@ -32,4 +33,52 @@ function applyLang(lang) {
     document.querySelectorAll('[data-vi][data-en]').forEach(el => {
         el.innerHTML = el.dataset[lang];
     });
+
+    renderAvailability(lang);
+}
+
+function renderAvailability(lang) {
+    const container = document.querySelector('#hero-availability');
+    if (!container) return;
+
+    const t = translations[lang] || translations.en;
+    const companyName = escapeHtml(availabilityConfig.companyName);
+    const companyUrl = escapeAttribute(availabilityConfig.companyUrl);
+    const company = companyUrl
+        ? `<a href="${companyUrl}" target="_blank" rel="noopener noreferrer">${companyName}</a>`
+        : companyName;
+    const items = [
+        {
+            icon: '🟢',
+            text: t['home.availability.fullTime'].replace('{company}', company)
+        },
+        {
+            icon: '📍',
+            text: t['home.availability.location']
+        }
+    ];
+
+    if (availabilityConfig.showInterestingOpportunities) {
+        items.push({
+            icon: '💬',
+            text: t['home.availability.opportunities']
+        });
+    }
+
+    container.innerHTML = items
+        .map((item) => `<p><span aria-hidden="true">${item.icon}</span>${item.text}</p>`)
+        .join('');
+}
+
+function escapeHtml(value = '') {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function escapeAttribute(value = '') {
+    return escapeHtml(value).replace(/`/g, '&#96;');
 }

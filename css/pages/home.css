@@ -26,6 +26,46 @@ body.dark-mode .intro p {
     color: #bbb;
 }
 
+.hero-availability {
+    display: grid;
+    gap: 6px;
+    margin: 8px 0 22px;
+}
+
+.hero-availability p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.hero-availability span {
+    width: 20px;
+    flex-shrink: 0;
+}
+
+body.dark-mode .hero-availability p {
+    color: #9f9f9f;
+}
+
+.hero-availability a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: #d6d6d6;
+    text-underline-offset: 3px;
+}
+
+.hero-availability a:hover {
+    text-decoration-color: currentColor;
+}
+
+body.dark-mode .hero-availability a {
+    text-decoration-color: #555;
+}
+
 .highlight {
     color: #2196F3;
     font-weight: 500;
