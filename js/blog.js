@@ -4,7 +4,7 @@ const state = {
     posts: [],
     activeCategory: 'All',
     query: '',
-    view: localStorage.getItem('blogView') || 'grid'
+    view: localStorage.getItem('blogView') || 'list'
 };
 
 function formatDate(value) {
