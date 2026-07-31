@@ -40,7 +40,7 @@ const translations = {
         'header.youtube': 'Youtube',
 
         'home.greeting': 'Hi there!',
-        'home.intro1': 'I\'m <span class="highlight" style="color: #567B76;">Hà Văn Ri</span>, a full-stack Magento developer passionate about technology. Currently working at <strong>Magenest</strong>, focus on developing e-commerce websites. My role involves integrating modules that make store management more efficient and intelligent, as well as optimizing and building feature packages to improve SEO, increase conversion rates, and enhance the overall customer experience.',
+        'home.intro1': 'I\'m <span class="highlight" style="color: #567B76;">Hà Văn Ri</span>, a <strong>Full Stack Developer</strong> with 2+ years of experience building eCommerce and B2C applications. I specialize in backend development with <strong>PHP</strong> and <strong>Python</strong>, and frontend development with <strong>React</strong> and <strong>Vue.js</strong>. Experienced in CI/CD, deployment, and delivering scalable web applications from development to production, I enjoy building high-performance solutions that improve business efficiency and user experience.',
         'home.intro2': 'This website is a space where I share what I\'ve learned and document my professional journey.',
         'home.contactLabel': '<strong>Find me on:</strong>',
 
