@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Project "View Details" modal — additive, scoped to .project-modal-*
+   Link this AFTER css/pages/projects.css. Does not touch existing rules.
+   ========================================================================== */
+
+.project-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 12, 0.6);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+.project-modal-overlay.is-open {
+  display: flex;
+}
+
+.project-modal {
+  background: var(--bg-color, #fff);
+  color: inherit;
+  width: 100%;
+  max-width: 560px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 14px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(127, 127, 127, 0.3);
+  background: transparent;
+  color: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.project-modal-close:hover {
+  background: rgba(127, 127, 127, 0.12);
+}
+
+.project-modal h3 {
+  margin: 0 0 4px;
+  font-size: 1.35rem;
+  padding-right: 30px;
+}
+.project-modal .project-modal-role {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 18px;
+}
+
+.project-modal .project-modal-label {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.project-modal .project-modal-contribution {
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(127, 127, 127, 0.08);
+  border: 1px solid rgba(127, 127, 127, 0.15);
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.project-modal .project-modal-contribution ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.project-modal .project-modal-contribution li + li {
+  margin-top: 8px;
+}
+
+.project-modal .project-tech {
+  margin: 0 0 20px;
+}
+
+.project-modal .project-links {
+  margin-top: 4px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
