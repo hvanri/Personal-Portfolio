@@ -27,24 +27,6 @@
   force = true
 
 [[redirects]]
-  from = "/about/"
-  to = "/about"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog/"
-  to = "/blog"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/projects/"
-  to = "/projects"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/api/recent-posts"
   to = "/.netlify/functions/recent-posts"
   status = 200
@@ -54,13 +36,16 @@
   from = "/about"
   to = "/about.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/blog"
   to = "/blog.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/projects"
   to = "/projects.html"
   status = 200
+  force = true
