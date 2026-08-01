@@ -1,4 +1,4 @@
-import { buildSearchSuggestions } from './blog-search-utils.mjs';
+import { buildHeroStats, buildSearchSuggestions } from './blog-search-utils.mjs';
 
 const postsUrl = './blog/posts.json';
 const initialView = typeof window !== 'undefined' && window.localStorage
@@ -52,6 +52,21 @@ function renderCategories(posts) {
     if (countEl) {
         countEl.textContent = String(categories.length - 1);
     }
+}
+
+function renderHeroStats(posts = state.posts) {
+    const container = document.querySelector('#hero-stats');
+    if (!container) return;
+
+    const stats = buildHeroStats(posts);
+    container.innerHTML = stats
+        .map((stat) => `
+            <div class="hero-stat">
+                <strong>${stat.value}</strong>
+                <span>${stat.label}</span>
+            </div>
+        `)
+        .join('');
 }
 
 function renderPosts() {
@@ -166,6 +181,7 @@ export function initBlogPage() {
         .then((data) => {
             state.posts = Array.isArray(data.posts) ? data.posts : [];
             renderCategories(state.posts);
+            renderHeroStats(state.posts);
             renderPosts();
             renderSearchSuggestions(state.posts);
         })
