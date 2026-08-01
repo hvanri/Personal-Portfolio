@@ -1,10 +1,15 @@
+import { buildSearchSuggestions } from './blog-search-utils.mjs';
+
 const postsUrl = './blog/posts.json';
+const initialView = typeof window !== 'undefined' && window.localStorage
+    ? window.localStorage.getItem('blogView') || 'list'
+    : 'list';
 
 const state = {
     posts: [],
     activeCategory: 'All',
     query: '',
-    view: localStorage.getItem('blogView') || 'list'
+    view: initialView
 };
 
 function formatDate(value) {
@@ -100,12 +105,50 @@ function renderPosts() {
     `).join('');
 }
 
+function updateSearchSuggestionsVisibility(searchInput, suggestionsContainer) {
+    if (!searchInput || !suggestionsContainer) return;
+
+    const shouldShow = !searchInput.value.trim();
+    suggestionsContainer.hidden = !shouldShow;
+}
+
+function renderSearchSuggestions(posts = state.posts) {
+    const searchInput = document.querySelector('#blog-search');
+    const suggestionsContainer = document.querySelector('#blog-search-suggestions');
+    const chipsContainer = suggestionsContainer?.querySelector('.search-suggestions__chips');
+
+    if (!searchInput || !suggestionsContainer || !chipsContainer) return;
+
+    const suggestions = buildSearchSuggestions(posts, 6);
+
+    if (!suggestions.length) {
+        suggestionsContainer.hidden = true;
+        return;
+    }
+
+    chipsContainer.innerHTML = suggestions
+        .map((suggestion) => `<button class="search-suggestion-chip" type="button" data-query="${suggestion}">${suggestion}</button>`)
+        .join('');
+
+    chipsContainer.querySelectorAll('button[data-query]').forEach((button) => {
+        button.addEventListener('click', () => {
+            searchInput.value = button.dataset.query;
+            state.query = button.dataset.query.trim();
+            renderPosts();
+            updateSearchSuggestionsVisibility(searchInput, suggestionsContainer);
+        });
+    });
+
+    updateSearchSuggestionsVisibility(searchInput, suggestionsContainer);
+}
+
 export function initBlogPage() {
     const grid = document.querySelector('#blog-posts');
     const searchInput = document.querySelector('#blog-search');
     const categoryFilter = document.querySelector('#blog-categories');
     const btnGrid = document.querySelector('#view-grid');
     const btnList = document.querySelector('#view-list');
+    const suggestionsContainer = document.querySelector('#blog-search-suggestions');
 
     if (!grid || !categoryFilter) {
         return;
@@ -124,6 +167,7 @@ export function initBlogPage() {
             state.posts = Array.isArray(data.posts) ? data.posts : [];
             renderCategories(state.posts);
             renderPosts();
+            renderSearchSuggestions(state.posts);
         })
         .catch((error) => {
             console.error(error);
@@ -134,6 +178,7 @@ export function initBlogPage() {
         searchInput.addEventListener('input', (event) => {
             state.query = event.target.value.trim();
             renderPosts();
+            updateSearchSuggestionsVisibility(searchInput, suggestionsContainer);
         });
     }
 
