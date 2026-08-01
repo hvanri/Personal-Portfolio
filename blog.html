@@ -33,10 +33,16 @@
         </section>
 
         <section class="toolbar-card">
-            <label class="search-box" for="blog-search">
-                <span aria-hidden="true">🔎</span>
-                <input id="blog-search" type="search" placeholder="Search stories, hobbies, trips..." />
-            </label>
+            <div class="search-field">
+                <label class="search-box" for="blog-search">
+                    <span aria-hidden="true">🔎</span>
+                    <input id="blog-search" type="search" placeholder="Search stories, hobbies, trips..." />
+                </label>
+                <div id="blog-search-suggestions" class="search-suggestions" aria-live="polite">
+                    <span class="search-suggestions__label">Popular Searches</span>
+                    <div class="search-suggestions__chips"></div>
+                </div>
+            </div>
             <div id="blog-categories" class="filter-group" aria-label="Blog categories"></div>
 
             <div class="view-toggle" role="group" aria-label="Chọn kiểu hiển thị">
