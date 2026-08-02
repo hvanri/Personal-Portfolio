@@ -33,3 +33,8 @@ body {
 body.page-transitioning {
     animation: fadeOut 0.3s ease forwards;
 }
+
+body.page-transitioning .container {
+    opacity: 1;
+    transform: none;
+}
