@@ -103,6 +103,7 @@ body {
     border: 1px solid #e2e8f0;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .project-card:hover {
@@ -112,13 +113,23 @@ body {
 
 .project-image {
     width: 100%;
+    aspect-ratio: 16 / 9;
     height: 220px;
+    min-height: 220px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .project-image::before {
@@ -264,6 +275,7 @@ body {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    z-index: 2;
     padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
@@ -271,6 +283,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .status-badge.completed {
