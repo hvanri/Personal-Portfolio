@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initJourneyRoad();
     initMilestones();
     initCurrentSection();
+    initFocusDashboard();
     initParallax();
 
 });
@@ -141,6 +142,31 @@ function initCurrentSection() {
 //     });
 
 // }
+function initFocusDashboard() {
+
+    const cards = document.querySelectorAll('.focus-card');
+
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+
+        });
+
+    }, {
+        threshold: 0.2
+    });
+
+    cards.forEach(card => observer.observe(card));
+
+}
+
 function initParallax() {
 
     const images = document.querySelectorAll(".milestone img");
