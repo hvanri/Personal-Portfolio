@@ -1,4 +1,10 @@
 export function initTransitions() {
+    const resetTransitionState = () => {
+        document.body.classList.remove('page-transitioning');
+        document.body.style.opacity = '1';
+        document.body.style.transform = 'none';
+    };
+
     document.querySelectorAll('a[href]').forEach(link => {
         if (link.origin !== location.origin) return;
 
@@ -8,6 +14,16 @@ export function initTransitions() {
             setTimeout(() => location.href = getNavigationHref(link), 300);
         });
     });
+
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            resetTransitionState();
+        } else {
+            resetTransitionState();
+        }
+    });
+
+    window.addEventListener('load', resetTransitionState);
 }
 
 function getNavigationHref(link) {
