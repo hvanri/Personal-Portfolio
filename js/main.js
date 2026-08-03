@@ -4,6 +4,7 @@ import { initI18n, toggleLanguage } from './features/i18n.js';
 import { initTransitions } from './core/router.js';
 import { initRecentPosts } from './features/posts.js';
 import { initBlogPage } from './blog.js';
+import { initGtm } from './core/gtm.js';
 import { headerHTML, footerHTML } from './partials/layout.js';
 
 window.toggleDarkMode = toggleDarkMode;
@@ -15,3 +16,4 @@ initI18n();
 initRecentPosts();
 initBlogPage();
 initTransitions();
+initGtm();
