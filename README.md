@@ -1,46 +1,97 @@
-## Table of Contents
-- [Overview](#overview)
-- [Built With](#built-with)
-- [Features](#features)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
+# Portfolio Website
+
+> A portfolio built to showcase not only what I have built, but also how I think, solve problems, and continuously grow as a software engineer.
+
+---
 
 ## Overview
 
-This project is my personal portfolio website, built as a long-term space to document my professional journey as a developer.
+This repository contains my personal portfolio website.
 
-Rather than focusing only on showcasing finished projects, this portfolio is designed as a living record of my growth — including milestones, experiments, learning progress, and future ideas.
+Unlike a traditional portfolio that simply lists projects, this website is designed as a long-term product that tells the story behind my work. It highlights my technical skills, engineering mindset, learning journey, and the way I approach building software.
 
-It also serves as a foundation that can later expand into other areas such as a personal blog, YouTube content, and creative side projects.
+Every section is intentionally crafted to help recruiters and developers quickly understand who I am beyond a résumé.
 
-At this stage, the focus is on solid fundamentals, clean structure, and maintainability instead of heavy frameworks.
+---
 
-## Built With
+## Goals
 
-- **HTML5** – Semantic structure  
-- **CSS3** – Custom styling and layout  
-- **JavaScript (Vanilla)** – Layout injection, navigation logic, and interactivity  
+This portfolio aims to:
 
-No frameworks are used at the moment to ensure a deep understanding of core web technologies.
+* Showcase real engineering skills through actual projects
+* Demonstrate problem-solving and technical thinking
+* Present projects as case studies rather than screenshots
+* Document continuous learning and professional growth
+* Create a memorable experience for recruiters and hiring managers
 
-## Features
+Rather than adding as many features as possible, the focus is on building meaningful experiences that communicate quality.
 
-- Responsive layout with reusable header and footer  
-- Dynamic navigation with active page highlighting  
-- Multi-page structure (Home, About, Blog, Youtube – planned)  
-- Language-ready content structure (Vietnamese / English)  
-- Scalable architecture for future expansion (React, Blog, Media, etc.)
+---
+
+## Tech Stack
+
+Current technologies:
+
+* HTML5
+* CSS3
+* Vanilla JavaScript
+
+The project intentionally avoids frameworks in its current stage to strengthen understanding of core web technologies before introducing larger ecosystems such as React.
+
+Future technologies may include:
+
+* React
+* TypeScript
+* Node.js
+* Headless CMS
+* Analytics
+* CI/CD
+
+---
+
+## Current Features
+
+* Responsive layout
+* Reusable components
+* Dynamic navigation
+* Multi-page architecture
+* English / Vietnamese content structure
+* SEO-friendly semantic HTML
+* Modular JavaScript organization
+* Scalable project structure
+
+---
+
+## Roadmap
+
+Planned improvements include:
+
+* Rich project case studies
+* Interactive project demos
+* Technical blog
+* YouTube integration
+* Learning journal
+* Better accessibility
+* Performance optimization
+* Analytics dashboard
+* Continuous UI/UX improvements
+
+---
+
+## Philosophy
+
+This project follows one simple principle:
+
+> Every feature should make the portfolio more valuable for recruiters and visitors.
+
+If a feature does not improve storytelling, usability, technical demonstration, or user engagement, it probably does not belong here.
+
+---
 
 ## Contact
 
-**Hà Văn Ri**  
-📧 Email: ri.havan@hotmail.com 
+**Hà Văn Ri**
 
-Thanks for stopping by my little corner of the web.  
-I’m excited to share more of my journey with you!
+Email: [ri.havan@hotmail.com](mailto:ri.havan@hotmail.com)
 
-## Acknowledgements
-
-- Inspiration from modern developer portfolios and minimal web design  
-- Open-source community resources and documentation  
-- Continuous learning through building and experimenting
+Thank you for visiting this repository. This portfolio will continue evolving alongside my career as a software engineer.
