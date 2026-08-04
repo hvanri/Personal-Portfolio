@@ -1,4 +1,6 @@
 import { buildHeroStats, buildSearchSuggestions } from './blog-search-utils.mjs';
+import { trackEvent } from './analytics/analytics.js';
+import { EVENTS } from './analytics/events.js';
 
 const postsUrl = './blog/posts.json';
 const initialView = typeof window !== 'undefined' && window.localStorage
@@ -195,6 +197,9 @@ export function initBlogPage() {
             state.query = event.target.value.trim();
             renderPosts();
             updateSearchSuggestionsVisibility(searchInput, suggestionsContainer);
+            if (state.query) {
+                trackEvent(EVENTS.BLOG_SEARCH, { search_term: state.query });
+            }
         });
     }
 
@@ -205,6 +210,7 @@ export function initBlogPage() {
         state.activeCategory = button.dataset.category;
         renderCategories(state.posts);
         renderPosts();
+        trackEvent(EVENTS.BLOG_CATEGORY_CHANGE, { category: state.activeCategory });
     });
 
     if (btnGrid) {
@@ -214,6 +220,19 @@ export function initBlogPage() {
     if (btnList) {
         btnList.addEventListener('click', () => applyView('list'));
     }
+
+    document.addEventListener('click', (event) => {
+        const postLink = event.target.closest('#blog-posts a');
+        if (!postLink) {
+            return;
+        }
+
+        const title = postLink.closest('article')?.querySelector('h3')?.textContent?.trim() || '';
+        trackEvent(EVENTS.BLOG_OPEN, {
+            post_title: title,
+            category: state.activeCategory
+        });
+    });
 }
 
 function applyView(view) {

@@ -678,6 +678,30 @@
 </script>
 
 <script type="module" src="js/main.js"></script>
+<script type="module">
+  import { trackEvent } from './js/analytics/analytics.js';
+  import { EVENTS } from './js/analytics/events.js';
+
+  document.addEventListener('click', (event) => {
+    const filterButton = event.target.closest('.filter-btn');
+    if (filterButton) {
+      trackEvent(EVENTS.PROJECT_FILTER, { selected_filter: filterButton.dataset.category || 'all' });
+    }
+
+    const card = event.target.closest('.project-card');
+    if (card) {
+      const projectName = card.querySelector('h3')?.textContent?.trim() || 'unknown';
+      const category = card.dataset.category || 'unknown';
+      trackEvent(EVENTS.PROJECT_CARD_CLICK, { project_name: projectName, project_category: category });
+    }
+
+    const detailButton = event.target.closest('[data-modal-target]');
+    if (detailButton) {
+      const projectName = detailButton.closest('.project-card')?.querySelector('h3')?.textContent?.trim() || 'unknown';
+      trackEvent(EVENTS.PROJECT_DETAIL_OPEN, { project_name: projectName });
+    }
+  });
+</script>
 
 </body>
 </html>
