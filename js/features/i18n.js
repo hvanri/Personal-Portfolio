@@ -1,5 +1,7 @@
 import translations from '../translations.js';
 import { availabilityConfig } from '../config/availability.js';
+import { trackEvent } from '../analytics/analytics.js';
+import { EVENTS } from '../analytics/events.js';
 
 const hasExplicitLang = localStorage.getItem('langSetByUser') === 'true';
 const savedLang = localStorage.getItem('lang');
@@ -14,6 +16,7 @@ export function toggleLanguage() {
     localStorage.setItem('lang', currentLang);
     localStorage.setItem('langSetByUser', 'true');
     applyLang(currentLang);
+    trackEvent(EVENTS.LANGUAGE_CHANGE, { language: currentLang });
 }
 
 function applyLang(lang) {

@@ -1,0 +1,21 @@
+export const EVENTS = {
+  PAGE_VIEW: 'page_view',
+  GITHUB_CLICK: 'github_click',
+  LINKEDIN_CLICK: 'linkedin_click',
+  EMAIL_CLICK: 'email_click',
+  PROJECT_CARD_CLICK: 'project_card_click',
+  PROJECT_DETAIL_OPEN: 'project_detail_open',
+  PROJECT_FILTER: 'project_filter',
+  BLOG_OPEN: 'blog_open',
+  BLOG_SEARCH: 'blog_search',
+  BLOG_CATEGORY_CHANGE: 'blog_category_change',
+  BLOG_READ_COMPLETE: 'blog_read_complete',
+  MENU_CLICK: 'menu_click',
+  LANGUAGE_CHANGE: 'language_change',
+  THEME_CHANGE: 'theme_change',
+  DOWNLOAD_CV: 'download_cv',
+  CONTACT_SUBMIT: 'contact_submit',
+  EXTERNAL_LINK_CLICK: 'external_link_click',
+  SCROLL_DEPTH: 'scroll_depth',
+  JAVASCRIPT_ERROR: 'javascript_error'
+};

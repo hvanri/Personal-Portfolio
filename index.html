@@ -91,5 +91,16 @@
 </div>
 
 <script type="module" src="js/main.js"></script>
+<script type="module">
+  import { trackEvent } from './js/analytics/analytics.js';
+  import { EVENTS } from './js/analytics/events.js';
+
+  document.addEventListener('click', (event) => {
+    const cvLink = event.target.closest('a[href*=".pdf"], a[href*="cv"], a[href*="resume"]');
+    if (cvLink) {
+      trackEvent(EVENTS.DOWNLOAD_CV, { file_name: cvLink.getAttribute('href') || 'cv' });
+    }
+  });
+</script>
 </body>
 </html>
