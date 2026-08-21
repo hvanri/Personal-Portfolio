@@ -14,6 +14,7 @@ const translations = {
         'projects.market.saudiArabia': '🇸🇦 Saudi Arabia',
 
         'home.greeting': 'Xin chào!',
+        'home.title': 'Xây dựng hệ thống thương mại đáng tin cậy, từ đầu đến cuối.',
         'home.intro1': 'Tôi là <span class="highlight">Hà Văn Ri</span>, một lập trình viên full-stack Magento đam mê công nghệ. Hiện tại tôi đang làm việc tại <strong>Công Ty Magenest</strong>, tập trung vào phát triển ứng dụng web. Vai trò của tôi là tích hợp các module giúp việc quản trị cửa hàng trở nên thuận tiện và thông minh hơn, đồng thời tối ưu và xây dựng các gói tính năng nhằm cải thiện SEO, nâng cao tỷ lệ chuyển đổi và trải nghiệm khách hàng.',
         'home.intro2': 'Website này là không gian cá nhân nơi tôi chia sẻ những gì học được và ghi lại hành trình nghề nghiệp của mình.',
         'home.availability.fullTime': 'Full-time at@{company}',
@@ -57,7 +58,8 @@ const translations = {
         'projects.market.saudiArabia': '🇸🇦 Saudi Arabia',
 
         'home.greeting': 'Hi there!',
-        'home.intro1': 'I\'m <span class="highlight" style="color: #567B76;">Hà Văn Ri</span>, a <strong>Full Stack Developer</strong> with 2+ years of experience building eCommerce and B2C applications. I specialize in backend development with <strong>PHP</strong> and <strong>Python</strong>, and frontend development with <strong>React</strong> and <strong>Vue.js</strong>. Experienced in CI/CD, deployment, and delivering scalable web applications from development to production, I enjoy building high-performance solutions that improve business efficiency and user experience.',
+        'home.title': 'Building reliable commerce systems, end to end.',
+        'home.intro1': 'I\'m <span class="highlight">Hà Văn Ri</span>, a <strong>Full Stack Developer</strong> with 2+ years of experience building eCommerce and B2C applications. I specialize in backend development with <strong>PHP</strong> and <strong>Python</strong>, and frontend development with <strong>React</strong> and <strong>Vue.js</strong>. Experienced in CI/CD, deployment, and delivering scalable web applications from development to production, I enjoy building high-performance solutions that improve business efficiency and user experience.',
         'home.intro2': 'This website is a space where I share what I\'ve learned and document my professional journey.',
         'home.availability.fullTime': 'Full-time at @{company}',
         'home.availability.location': 'Hanoi, Vietnam',
