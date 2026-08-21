@@ -9,6 +9,10 @@ export function initTransitions() {
         if (link.origin !== location.origin) return;
 
         link.addEventListener('click', e => {
+            const url = new URL(link.href);
+            if (url.pathname === location.pathname && url.hash) {
+                return;
+            }
             e.preventDefault();
             document.body.classList.add('page-transitioning');
             setTimeout(() => location.href = getNavigationHref(link), 300);

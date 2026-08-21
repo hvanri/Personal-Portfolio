@@ -52,18 +52,18 @@ function renderAvailability(lang) {
         : companyName;
     const items = [
         {
-            icon: '🟢',
+            icon: '●',
             text: t['home.availability.fullTime'].replace('{company}', company)
         },
         {
-            icon: '📍',
+            icon: '·',
             text: t['home.availability.location']
         }
     ];
 
     if (availabilityConfig.showInterestingOpportunities) {
         items.push({
-            icon: '💬',
+            icon: '·',
             text: t['home.availability.opportunities']
         });
     }

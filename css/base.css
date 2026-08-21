@@ -1,12 +1,16 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Hallmark · genre: editorial · macrostructure: Marquee Hero · design-system: Build Ledger
+ * contrast: pass (40–41) · responsive: pass (49–52)
+ */
+:root {
+    --color-paper: oklch(97% 0.010 85); --color-paper-raised: oklch(93% 0.014 85); --color-rule: oklch(78% 0.014 85); --color-muted: oklch(45% 0.018 250); --color-ink: oklch(19% 0.022 250); --color-ink-raised: oklch(28% 0.025 250); --color-signal: oklch(50% 0.145 48); --color-signal-ink: oklch(97% 0.010 85); --color-focus: oklch(50% 0.145 48);
+    --font-display: "Newsreader", Georgia, serif; --font-body: "IBM Plex Sans", "Segoe UI", sans-serif; --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+    --space-3xs: .25rem; --space-2xs: .5rem; --space-xs: .75rem; --space-sm: 1rem; --space-md: 1.5rem; --space-lg: 2rem; --space-xl: 3rem; --space-2xl: 4.5rem; --space-3xl: 7rem; --ease-out: cubic-bezier(.16, 1, .3, 1); --dur-short: 180ms;
 }
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.7;
-    color: #333;
-    min-height: 100vh;
-}
+* { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 0; min-height: 100vh; font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--color-ink); background: var(--color-paper); }
+a { color: inherit; } img, svg { display: block; max-width: 100%; } button, input { font: inherit; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; z-index: 100; top: var(--space-sm); left: var(--space-sm); padding: var(--space-xs) var(--space-sm); color: var(--color-signal-ink); background: var(--color-signal); transform: translateY(-180%); transition: transform var(--dur-short) var(--ease-out); }.skip-link:focus { transform: translateY(0); }
