@@ -34,28 +34,18 @@ export function buildSearchSuggestions(posts, limit = 6) {
 
 export function buildHeroStats(posts) {
     const categories = new Set();
-    const performanceCount = posts.filter((post) => {
-        const category = (post.category || '').toLowerCase();
-        const tags = (post.tags || []).map((tag) => tag.toLowerCase());
-        return category === 'performance' || tags.includes('performance');
-    }).length;
-
-    const tripCount = posts.filter((post) => {
-        const category = (post.category || '').toLowerCase();
-        const tags = (post.tags || []).map((tag) => tag.toLowerCase());
-        return category === 'trips' || tags.includes('travel') || tags.includes('trip');
-    }).length;
+    const tags = new Set();
 
     posts.forEach((post) => {
         if (post.category) {
             categories.add(post.category);
         }
+        (post.tags || []).forEach((tag) => tags.add(tag));
     });
 
     return [
-        { label: 'Stories', value: posts.length },
-        { label: 'Performances', value: performanceCount },
-        { label: 'Trips', value: tripCount },
-        { label: 'Categories', value: categories.size }
+        { label: 'Notes', value: posts.length },
+        { label: 'Topics', value: categories.size },
+        { label: 'Subjects', value: tags.size }
     ];
 }

@@ -1,79 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Blog | Hà Văn Ri</title>
     <meta name="description" content="A personal blog space for unforgettable moments, hobbies, and life stories." />
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/layout/header.css">
-    <link rel="stylesheet" href="css/layout/footer.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/pages/blog.css">
-</head>
-<body>
-<div class="container">
-    <main class="page-shell">
-        <section class="hero-card">
-            <div class="hero-content">
-                <div class="hero-copy-block">
-                    <p class="eyebrow">Personal stories & memories</p>
-                    <h1>Stories Behind the Code</h1>
-                    <p class="hero-copy">
-                        A collection of projects, music, travels, company events, and life lessons that shaped who I am beyond software development.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#blog-posts" class="btn btn-primary">Explore stories</a>
-                        <a href="/" class="btn btn-secondary">Back home</a>
-                    </div>
-                    <div id="hero-stats" class="hero-stats" aria-label="Blog highlights"></div>
-                </div>
-                <div class="hero-media" aria-hidden="true">
-                    <div class="hero-media__orb hero-media__orb--one"></div>
-                    <div class="hero-media__orb hero-media__orb--two"></div>
-                    <div class="hero-media__card">
-                        <span>✦</span>
-                        <strong>Beyond the screen</strong>
-                        <p>Moments that shaped the journey.</p>
-                    </div>
-                </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/layout/header.css" />
+    <link rel="stylesheet" href="css/layout/footer.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/pages/blog.css" />
+  </head>
+  <body class="blog-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="container">
+      <main id="main-content" class="journal-shell">
+        <header class="journal-masthead" aria-labelledby="journal-title">
+          <div class="journal-kicker">
+            <span>Engineering journal</span>
+            <span aria-hidden="true">/</span>
+            <span>Field notes</span>
+          </div>
+          <div class="journal-title-block">
+            <p class="journal-issue">Issue: ongoing</p>
+            <h1 id="journal-title">Notes from the work.</h1>
+          </div>
+          <div class="journal-intro">
+            <p>This is where I think through what I build, what I am learning, and the experiences that keep the work human.</p>
+            <div id="hero-stats" class="journal-stats" aria-label="Journal summary"></div>
+          </div>
+        </header>
+
+        <section class="journal-controls" aria-label="Browse journal notes">
+          <div class="search-field">
+            <label class="search-box" for="blog-search">
+              <span aria-hidden="true">Search</span>
+              <input id="blog-search" type="search" placeholder="Search notes, topics, and experiments" />
+            </label>
+            <div id="blog-search-suggestions" class="search-suggestions" aria-live="polite">
+              <span class="search-suggestions__label">Suggested subjects</span>
+              <div class="search-suggestions__chips"></div>
             </div>
+          </div>
+          <div id="blog-categories" class="filter-group" aria-label="Blog categories"></div>
+          <div class="view-toggle" role="group" aria-label="Article display density">
+            <button type="button" id="view-grid" aria-label="Expanded entries" title="Expanded entries">Expanded</button>
+            <button type="button" id="view-list" class="is-active" aria-label="Compact entries" title="Compact entries">Compact</button>
+          </div>
         </section>
 
-        <section class="toolbar-card">
-            <div class="search-field">
-                <label class="search-box" for="blog-search">
-                    <span aria-hidden="true">🔎</span>
-                    <input id="blog-search" type="search" placeholder="Search stories, hobbies, trips..." />
-                </label>
-                <div id="blog-search-suggestions" class="search-suggestions" aria-live="polite">
-                    <span class="search-suggestions__label">Popular Searches</span>
-                    <div class="search-suggestions__chips"></div>
-                </div>
-            </div>
-            <div id="blog-categories" class="filter-group" aria-label="Blog categories"></div>
-
-            <div class="view-toggle" role="group" aria-label="Chọn kiểu hiển thị">
-                <button type="button" id="view-grid" aria-label="Dạng dọc" title="Dạng dọc">▦</button>
-                <button type="button" id="view-list" class="is-active" aria-label="Dạng ngang" title="Dạng ngang">☰</button>
-            </div>
+        <section class="featured-section" aria-labelledby="featured-note-title">
+          <div class="section-label-row">
+            <p>Featured note</p>
+            <span>Latest entry</span>
+          </div>
+          <div id="blog-featured" aria-live="polite"></div>
         </section>
+
         <section class="posts-section" aria-labelledby="latest-stories">
-            <div class="section-heading">
-                <h2 id="latest-stories">Latest stories</h2>
-                <p>Share memorable experiences, creative hobbies, and the moments worth keeping.</p>
+          <div class="section-label-row section-label-row--archive">
+            <div>
+              <p>All notes</p>
+              <h2 id="latest-stories">The archive</h2>
             </div>
-            <div id="blog-posts" class="post-grid layout-list"></div>
-            <div id="blog-empty-state" class="empty-state" hidden>No posts match your current search yet.</div>
+            <span><strong id="blog-count">0</strong> entries shown</span>
+          </div>
+          <div id="blog-posts" class="post-grid layout-list"></div>
+          <div id="blog-empty-state" class="empty-state" hidden>No notes match your current search yet.</div>
         </section>
-    </main>
-</div>
+      </main>
+    </div>
 
-<script type="module" src="js/main.js"></script>
-</body>
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>
