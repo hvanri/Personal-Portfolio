@@ -35,7 +35,7 @@ function getFilteredPosts() {
         const haystack = `${post.title} ${post.excerpt} ${post.tags.join(' ')}`.toLowerCase();
         const matchesQuery = !state.query || haystack.includes(state.query.toLowerCase());
         return matchesCategory && matchesQuery;
-    });
+    }).sort((left, right) => new Date(right.date) - new Date(left.date));
 }
 
 function renderCategories(posts) {
@@ -46,7 +46,7 @@ function renderCategories(posts) {
     container.innerHTML = categories
         .map((category) => {
             const activeClass = category === state.activeCategory ? 'is-active' : '';
-            return `<button class="filter-pill ${activeClass}" type="button" data-category="${category}">${category}</button>`;
+            return `<button class="filter-pill ${activeClass}" type="button" data-category="${category}" aria-pressed="${category === state.activeCategory}">${category}</button>`;
         })
         .join('');
 
@@ -73,10 +73,11 @@ function renderHeroStats(posts = state.posts) {
 
 function renderPosts() {
     const grid = document.querySelector('#blog-posts');
+    const featured = document.querySelector('#blog-featured');
     const emptyState = document.querySelector('#blog-empty-state');
     const countEl = document.querySelector('#blog-count');
 
-    if (!grid) return;
+    if (!grid || !featured) return;
 
     const filteredPosts = getFilteredPosts();
 
@@ -86,14 +87,33 @@ function renderPosts() {
 
     if (!filteredPosts.length) {
         grid.innerHTML = '';
+        featured.innerHTML = '';
         emptyState.hidden = false;
         return;
     }
 
     emptyState.hidden = true;
-    grid.innerHTML = filteredPosts.map((post) => `
+    const [featuredPost, ...archivePosts] = filteredPosts;
+
+    featured.innerHTML = `
+        <article class="featured-note">
+            ${featuredPost.image ? `<div class="featured-note__image"><img src="${featuredPost.image}" alt="${featuredPost.title}" /></div>` : ''}
+            <div class="featured-note__body">
+                <div class="post-card__top">
+                    <span class="post-badge">${featuredPost.category}</span>
+                    <span class="post-date">${formatDate(featuredPost.date)}</span>
+                </div>
+                <h2 id="featured-note-title">${featuredPost.title}</h2>
+                <p>${featuredPost.excerpt}</p>
+                <div class="post-tags">${featuredPost.tags.map((tag) => `<span class="tag-pill">${tag}</span>`).join('')}</div>
+                ${featuredPost.blog_link ? `<a class="post-read-link" href="${featuredPost.blog_link}" target="_blank" rel="noopener">Read note <span aria-hidden="true">→</span></a>` : ''}
+            </div>
+        </article>
+    `;
+
+    grid.innerHTML = archivePosts.map((post, index) => `
         <article class="post-card">
-            ${post.image ? `<img class="post-image" src="${post.image}" alt="${post.title}" />` : ''}
+            <span class="post-number" aria-hidden="true">${String(index + 2).padStart(2, '0')}</span>
             <div class="post-card__body">
                 <div class="post-card__top">
                     <span class="post-badge">${post.category}</span>
@@ -111,7 +131,7 @@ function renderPosts() {
                                 href="${post.blog_link}"
                                 target="_blank"
                                 rel="noopener">
-                                    Read Story
+                                    Read note
                                     <span aria-hidden="true">→</span>
                             </a>`
                             : ""
@@ -161,6 +181,7 @@ function renderSearchSuggestions(posts = state.posts) {
 
 export function initBlogPage() {
     const grid = document.querySelector('#blog-posts');
+    const featured = document.querySelector('#blog-featured');
     const searchInput = document.querySelector('#blog-search');
     const categoryFilter = document.querySelector('#blog-categories');
     const btnGrid = document.querySelector('#view-grid');
@@ -172,6 +193,10 @@ export function initBlogPage() {
     }
 
     applyView(state.view);
+    if (featured) {
+        featured.innerHTML = '<p class="journal-loading" role="status">Loading latest note…</p>';
+    }
+    grid.innerHTML = '<p class="journal-loading" role="status">Loading archive…</p>';
 
     fetch(postsUrl)
         .then((response) => {
@@ -189,6 +214,9 @@ export function initBlogPage() {
         })
         .catch((error) => {
             console.error(error);
+            if (featured) {
+                featured.innerHTML = '';
+            }
             grid.innerHTML = '<div class="empty-state">Unable to load stories right now. Please try again later.</div>';
         });
 
@@ -222,12 +250,12 @@ export function initBlogPage() {
     }
 
     document.addEventListener('click', (event) => {
-        const postLink = event.target.closest('#blog-posts a');
+        const postLink = event.target.closest('#blog-posts a, #blog-featured a');
         if (!postLink) {
             return;
         }
 
-        const title = postLink.closest('article')?.querySelector('h3')?.textContent?.trim() || '';
+        const title = postLink.closest('article')?.querySelector('h2, h3')?.textContent?.trim() || '';
         trackEvent(EVENTS.BLOG_OPEN, {
             post_title: title,
             category: state.activeCategory
