@@ -10,6 +10,13 @@
       content="Các dự án tiêu biểu và kinh nghiệm triển khai hệ thống Ecommerce của Hà Văn Ri."
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/layout.css" />
@@ -19,13 +26,22 @@
     <link rel="stylesheet" href="css/pages/project-modal.css" />
     <link rel="stylesheet" href="css/responsive.css" />
   </head>
-  <body>
+  <body class="projects-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="container">
       <!-- Header injected here -->
 
-      <main class="projects">
-        <div class="projects-header">
-          <h1 data-vi="Dự Án" data-en="Projects">Dự Án</h1>
+      <main id="main-content" class="projects">
+        <header class="projects-header" aria-labelledby="projects-title">
+          <div class="archive-kicker">
+            <span>Projects</span>
+            <span aria-hidden="true">/</span>
+            <span>Engineering archive</span>
+          </div>
+          <div class="projects-heading">
+            <p class="projects-index" aria-hidden="true">Index / 01-08</p>
+            <h1 id="projects-title" data-vi="Dự Án" data-en="Projects">Dự Án</h1>
+          </div>
           <p
             class="projects-intro"
             data-vi="Dưới đây là một số dự án và công việc tiêu biểu mà tôi đã tham gia, tập trung vào Ecommerce, hệ thống quản trị và trải nghiệm người dùng."
@@ -35,22 +51,28 @@
             tập trung vào Ecommerce, hệ thống quản trị và trải nghiệm người
             dùng.
           </p>
-        </div>
+          <div class="archive-summary" aria-label="Archive summary">
+            <span>Production systems</span>
+            <span>Personal experiments</span>
+            <span>8 documented entries</span>
+          </div>
+        </header>
 
-        <!-- Optional: Filter buttons -->
-        <div class="project-filters">
-          <button class="filter-btn active" data-category="all">Tất cả</button>
-          <button class="filter-btn" data-category="ecommerce">
+        <section class="archive-controls" aria-label="Project archive controls">
+          <p class="archive-controls-label">Browse by system type</p>
+          <div class="project-filters" role="group" aria-label="Project categories">
+          <button type="button" class="filter-btn active" data-category="all" aria-pressed="true">Tất cả</button>
+          <button type="button" class="filter-btn" data-category="ecommerce" aria-pressed="false">
             Ecommerce
           </button>
-          <button class="filter-btn" data-category="website">Website</button>
-          <button class="filter-btn" data-category="backend">Backend</button>
-        </div>
+          <button type="button" class="filter-btn" data-category="website" aria-pressed="false">Website</button>
+          <button type="button" class="filter-btn" data-category="backend" aria-pressed="false">Backend</button>
+          </div>
+        </section>
 
-        <!-- Projects Grid -->
+        <!-- Archive entries -->
         <div class="projects-grid">
-          <!-- Project Card 1 -->
-          <article class="project-card" data-category="ecommerce website">
+          <article class="project-card project-card--featured" data-category="ecommerce website">
             <div class="project-image">
               <span class="status-badge ongoing">Ongoing</span>
               <img
@@ -117,6 +139,10 @@
               </div>
             </div>
           </article>
+
+          <div class="archive-divider" aria-hidden="true">
+            <span>Selected production systems</span>
+          </div>
 
           <article class="project-card" data-category="ecommerce website">
             <div class="project-image">
@@ -483,7 +509,11 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="website">
+          <div class="archive-divider archive-divider--experiments" aria-hidden="true">
+            <span>Independent systems &amp; experiments</span>
+          </div>
+
+          <article class="project-card project-card--experiment" data-category="website">
             <div class="project-image">
               <span class="status-badge ongoing">Ongoing</span>
               <img
@@ -535,10 +565,10 @@
           </article>
 
           <!-- Project Card 2 - Example -->
-          <article class="project-card" data-category="website">
+          <article class="project-card project-card--experiment" data-category="website">
             <div class="project-image">
               <span class="status-badge completed">Completed</span>
-              <div class="project-icon">🧾</div>
+              <div class="project-icon" aria-label="Order management dashboard preview">OM</div>
             </div>
 
             <div class="project-content">
@@ -585,9 +615,9 @@
           </article>
 
           <!-- Upcoming Projects Card -->
-          <article class="project-card upcoming">
+          <article class="project-card upcoming project-card--future">
             <div class="project-content">
-              <div class="upcoming-icon">🚀</div>
+              <div class="upcoming-icon" aria-hidden="true">+</div>
               <h3 data-vi="Dự án tiếp theo" data-en="Upcoming Projects">
                 Dự án tiếp theo
               </h3>
@@ -1213,8 +1243,11 @@
 
       filterButtons.forEach((button) => {
         button.addEventListener("click", function () {
-          filterButtons.forEach((btn) => btn.classList.remove("active"));
-          this.classList.add("active");
+          filterButtons.forEach((btn) => {
+            const isActive = btn === this;
+            btn.classList.toggle("active", isActive);
+            btn.setAttribute("aria-pressed", String(isActive));
+          });
 
           const category = this.dataset.category;
           const cards = document.querySelectorAll(".project-card");
@@ -1242,11 +1275,14 @@
       // ---------- View Details modal ----------
       (function () {
         let activeModal = null;
+        let lastFocusedTrigger = null;
 
-        function openModal(id) {
+        function openModal(id, trigger) {
           const modal = document.getElementById(id);
           if (!modal) return;
+          lastFocusedTrigger = trigger || document.activeElement;
           modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
           document.body.classList.add("modal-open");
           activeModal = modal;
           const closeBtn = modal.querySelector(".project-modal-close");
@@ -1256,15 +1292,20 @@
         function closeModal() {
           if (!activeModal) return;
           activeModal.classList.remove("is-open");
+          activeModal.setAttribute("aria-hidden", "true");
           document.body.classList.remove("modal-open");
           activeModal = null;
+          if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === "function") {
+            lastFocusedTrigger.focus();
+          }
+          lastFocusedTrigger = null;
         }
 
         document
           .querySelectorAll("[data-modal-target]")
           .forEach(function (btn) {
             btn.addEventListener("click", function () {
-              openModal(btn.dataset.modalTarget);
+              openModal(btn.dataset.modalTarget, btn);
             });
           });
 
