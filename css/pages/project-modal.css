@@ -1,101 +1,23 @@
-/* ==========================================================================
-   Project "View Details" modal — additive, scoped to .project-modal-*
-   Link this AFTER css/pages/projects.css. Does not touch existing rules.
-   ========================================================================== */
+/* Hallmark · archive case-note modal */
 
-.project-modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 10, 12, 0.6);
-  backdrop-filter: blur(2px);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  z-index: 1000;
-}
-.project-modal-overlay.is-open {
-  display: flex;
-}
+.project-modal-overlay { display: none; position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; padding: var(--space-md); background: color-mix(in oklch, var(--color-ink) 74%, transparent); }
+.project-modal-overlay.is-open { display: flex; }
+.project-modal { position: relative; width: min(100%, 46rem); max-height: min(85vh, 52rem); overflow-y: auto; padding: clamp(var(--space-lg), 5vw, var(--space-2xl)); border: 1px solid var(--color-ink); color: var(--color-ink); background: var(--color-paper); box-shadow: 10px 10px 0 color-mix(in oklch, var(--color-ink) 18%, transparent); }
+.project-modal-close { position: absolute; top: var(--space-sm); right: var(--space-sm); display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border: 1px solid var(--color-rule); color: var(--color-ink); background: transparent; cursor: pointer; font-family: var(--font-mono); font-size: 1.25rem; line-height: 1; transition: color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out); }
+.project-modal-close:hover { border-color: var(--color-signal); color: var(--color-signal); }
+.project-modal-close:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.project-modal h3 { max-width: 12ch; margin: 0 var(--space-2xl) var(--space-xs) 0; color: var(--color-ink); font-family: var(--font-display); font-size: clamp(2.25rem, 6vw, 4.5rem); font-style: normal; font-weight: 500; letter-spacing: -.055em; line-height: .9; overflow-wrap: anywhere; }
+.project-modal .project-modal-role { display: block; margin-bottom: var(--space-lg); color: var(--color-signal); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; }
+.project-modal .project-modal-label { display: block; margin-bottom: var(--space-xs); color: var(--color-muted); font-family: var(--font-mono); font-size: .68rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+.project-modal .project-modal-contribution { margin-bottom: var(--space-lg); padding: var(--space-md); border-left: 2px solid var(--color-signal); color: var(--color-ink-raised); background: var(--color-paper-raised); font-size: .98rem; line-height: 1.65; }
+.project-modal .project-modal-contribution ul { padding-left: 1.15rem; }
+.project-modal .project-modal-contribution li + li { margin-top: var(--space-xs); }
+.project-modal .project-modal-info { display: flex; flex-direction: column; gap: var(--space-xs); margin: var(--space-md) 0 var(--space-lg); }
+.project-modal .project-modal-info-row { display: flex; flex-wrap: wrap; gap: var(--space-xs); align-items: baseline; }
+.project-modal .project-modal-value { color: var(--color-ink-raised); font-weight: 500; }
+.project-modal .project-tech { margin: 0 0 var(--space-lg); }
+.project-modal .project-links { margin-top: 0; }
+body.modal-open { overflow: hidden; }
 
-.project-modal {
-  background: var(--bg-color, #fff);
-  color: inherit;
-  width: 100%;
-  max-width: 560px;
-  max-height: 85vh;
-  overflow-y: auto;
-  border-radius: 14px;
-  padding: 28px;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-}
-
-.project-modal-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(127, 127, 127, 0.3);
-  background: transparent;
-  color: inherit;
-  font-size: 1.1rem;
-  line-height: 1;
-  cursor: pointer;
-}
-.project-modal-close:hover {
-  background: rgba(127, 127, 127, 0.12);
-}
-
-.project-modal h3 {
-  margin: 0 0 4px;
-  font-size: 1.35rem;
-  padding-right: 30px;
-}
-.project-modal .project-modal-role {
-  display: block;
-  font-size: 0.85rem;
-  opacity: 0.7;
-  margin-bottom: 18px;
-}
-
-.project-modal .project-modal-label {
-  font-family: 'JetBrains Mono', Consolas, monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  opacity: 0.6;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.project-modal .project-modal-contribution {
-  padding: 14px 16px;
-  border-radius: 10px;
-  background: rgba(127, 127, 127, 0.08);
-  border: 1px solid rgba(127, 127, 127, 0.15);
-  margin-bottom: 18px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-.project-modal .project-modal-contribution ul {
-  margin: 0;
-  padding-left: 18px;
-}
-.project-modal .project-modal-contribution li + li {
-  margin-top: 8px;
-}
-
-.project-modal .project-tech {
-  margin: 0 0 20px;
-}
-
-.project-modal .project-links {
-  margin-top: 4px;
-}
-
-body.modal-open {
-  overflow: hidden;
-}
+@media (max-width: 30rem) { .project-modal { max-height: 88vh; padding: var(--space-lg); } }
+@media (prefers-reduced-motion: reduce) { .project-modal-close { transition: none; } }
