@@ -313,168 +313,254 @@
         </section>
 
         <!-- ===================================================== -->
+        <!-- ===================================================== -->
         <!-- CURRENT FOCUS -->
         <!-- ===================================================== -->
 
-        <section class="current-focus">
+        <section class="current-focus" aria-labelledby="current-focus-title">
 
             <div class="focus-header">
-
-                <h2
+                <div>
+                    <p class="focus-kicker" data-en="Current state" data-vi="Hiện tại">Current state</p>
+                    <h2 id="current-focus-title"
                         data-en="What I'm Building"
                         data-vi="Những gì tôi đang xây dựng">
-
-                    What I'm Building
-
-                </h2>
+                        What I'm Building
+                    </h2>
+                </div>
 
                 <p class="focus-subtitle"
-                   data-en="Building tomorrow's skills through continuous learning and real-world practice."
-                   data-vi="Xây dựng kỹ năng của ngày mai thông qua học tập liên tục và thực hành thực tế.">
-
-                    Building tomorrow's skills through continuous learning and real-world practice.
-
+                   data-en="Four directions I'm actively investing in — from building production systems to becoming a better engineer and communicator."
+                   data-vi="Bốn hướng tôi đang đầu tư nghiêm túc — từ xây dựng hệ thống thực tế đến trở thành một kỹ sư và người giao tiếp tốt hơn.">
+                    Four directions I'm actively investing in — from building production systems to becoming a better engineer and communicator.
                 </p>
-
             </div>
 
-            <div class="focus-grid">
+            <div class="focus-workbench">
 
-                <article class="focus-card">
+                <div class="focus-index" role="tablist" aria-label="Current focus areas">
 
-                    <img class="focus-card-image" src="assets/images/about/part1.png" alt="Enterprise software engineering illustration">
+                    <button class="focus-item is-active"
+                            type="button"
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="focus-panel-enterprise"
+                            data-focus="enterprise">
 
-                    <div class="focus-card-body">
+                        <span class="focus-number">01</span>
+                        <span class="focus-item-main">
+                            <span class="focus-item-title"
+                                  data-en="Enterprise Solutions"
+                                  data-vi="Giải pháp doanh nghiệp">Enterprise Solutions</span>
+                            <span class="focus-item-status"
+                                  data-en="Active"
+                                  data-vi="Đang theo đuổi">Active</span>
+                        </span>
+                        <span class="focus-arrow" aria-hidden="true">↗</span>
+                    </button>
 
-                        <h3 data-en="Enterprise Solutions" data-vi="Giải pháp doanh nghiệp">Enterprise Solutions</h3>
+                    <button class="focus-item"
+                            type="button"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="focus-panel-ai"
+                            data-focus="ai">
 
-                        <p data-en="Building scalable enterprise e-commerce applications with a focus on maintainability, performance, and clean architecture."
-                           data-vi="Xây dựng các ứng dụng thương mại điện tử doanh nghiệp có khả năng mở rộng, chú trọng khả năng bảo trì, hiệu năng và kiến trúc rõ ràng.">
+                        <span class="focus-number">02</span>
+                        <span class="focus-item-main">
+                            <span class="focus-item-title"
+                                  data-en="AI Workflow"
+                                  data-vi="Luồng công việc AI">AI Workflow</span>
+                            <span class="focus-item-status"
+                                  data-en="Exploring"
+                                  data-vi="Đang khám phá">Exploring</span>
+                        </span>
+                        <span class="focus-arrow" aria-hidden="true">↗</span>
+                    </button>
 
-                            Building scalable enterprise e-commerce applications with a focus on maintainability, performance, and clean architecture.
+                    <button class="focus-item"
+                            type="button"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="focus-panel-chinese"
+                            data-focus="chinese">
 
-                        </p>
+                        <span class="focus-number">03</span>
+                        <span class="focus-item-main">
+                            <span class="focus-item-title"
+                                  data-en="Chinese"
+                                  data-vi="Tiếng Trung">Chinese</span>
+                            <span class="focus-item-status"
+                                  data-en="Steady"
+                                  data-vi="Kiên trì">Steady</span>
+                        </span>
+                        <span class="focus-arrow" aria-hidden="true">↗</span>
+                    </button>
 
-                        <div class="focus-card-meta">
+                    <button class="focus-item"
+                            type="button"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="focus-panel-devops"
+                            data-focus="devops">
 
-                            <span class="focus-card-status" data-en="Active" data-vi="Đang theo đuổi">Active</span>
+                        <span class="focus-number">04</span>
+                        <span class="focus-item-main">
+                            <span class="focus-item-title"
+                                  data-en="DevOps"
+                                  data-vi="DevOps">DevOps</span>
+                            <span class="focus-item-status"
+                                  data-en="Learning"
+                                  data-vi="Đang học">Learning</span>
+                        </span>
+                        <span class="focus-arrow" aria-hidden="true">↗</span>
+                    </button>
 
-                            <span class="focus-card-label" data-en="Current focus" data-vi="Đang tập trung">Current focus</span>
+                </div>
 
+                <div class="focus-panels">
+
+                    <article class="focus-panel is-active"
+                             id="focus-panel-enterprise"
+                             role="tabpanel"
+                             data-panel="enterprise">
+
+                        <div class="focus-panel-visual">
+                            <img src="assets/images/about/part1.png"
+                                 alt="Enterprise software engineering illustration">
+                            <span class="focus-panel-index">01 / 04</span>
                         </div>
 
-                        <div class="focus-tags">
-                            <span class="focus-tag" data-en="Magento 2" data-vi="Magento 2">Magento 2</span>
-                            <span class="focus-tag" data-en="React" data-vi="React">React</span>
-                            <span class="focus-tag" data-en="Performance Optimization" data-vi="Tối ưu hiệu năng">Performance Optimization</span>
-                            <span class="focus-tag" data-en="Scalable Development" data-vi="Phát triển mở rộng">Scalable Development</span>
+                        <div class="focus-panel-content">
+                            <div class="focus-panel-meta">
+                                <span data-en="Engineering" data-vi="Kỹ thuật">Engineering</span>
+                                <span data-en="Active focus" data-vi="Đang tập trung">Active focus</span>
+                            </div>
+
+                            <h3 data-en="Enterprise Solutions"
+                                data-vi="Giải pháp doanh nghiệp">Enterprise Solutions</h3>
+
+                            <p data-en="Building scalable enterprise e-commerce applications with a focus on maintainability, performance, and clean architecture."
+                               data-vi="Xây dựng các ứng dụng thương mại điện tử doanh nghiệp có khả năng mở rộng, chú trọng khả năng bảo trì, hiệu năng và kiến trúc rõ ràng.">
+                                Building scalable enterprise e-commerce applications with a focus on maintainability, performance, and clean architecture.
+                            </p>
+
+                            <div class="focus-technologies">
+                                <span>Magento 2</span>
+                                <span>React</span>
+                                <span>Performance Optimization</span>
+                                <span>Scalable Development</span>
+                            </div>
                         </div>
 
-                    </div>
+                    </article>
 
-                </article>
+                    <article class="focus-panel"
+                             id="focus-panel-ai"
+                             role="tabpanel"
+                             data-panel="ai"
+                             hidden>
 
-                <article class="focus-card">
-
-                    <img class="focus-card-image" src="assets/images/about/part2.png" alt="AI-assisted software development illustration">
-
-                    <div class="focus-card-body">
-
-                        <h3 data-en="AI Workflow" data-vi="Luồng công việc AI">AI Workflow</h3>
-
-                        <p data-en="Exploring AI-assisted software development to improve engineering productivity and automate repetitive workflows."
-                           data-vi="Khám phá phát triển phần mềm hỗ trợ bởi AI để nâng cao năng suất và tự động hóa các quy trình lặp lại.">
-
-                            Exploring AI-assisted software development to improve engineering productivity and automate repetitive workflows.
-
-                        </p>
-
-                        <div class="focus-card-meta">
-
-                            <span class="focus-card-status" data-en="Exploring" data-vi="Đang khám phá">Exploring</span>
-
-                            <span class="focus-card-label" data-en="Current focus" data-vi="Đang tập trung">Current focus</span>
-
+                        <div class="focus-panel-visual">
+                            <img src="assets/images/about/part2.png"
+                                 alt="AI-assisted software development illustration">
+                            <span class="focus-panel-index">02 / 04</span>
                         </div>
 
-                        <div class="focus-tags">
-                            <span class="focus-tag" data-en="AI Agents" data-vi="AI Agents">AI Agents</span>
-                            <span class="focus-tag" data-en="Prompt Engineering" data-vi="Kỹ thuật Prompt">Prompt Engineering</span>
-                            <span class="focus-tag" data-en="Development Automation" data-vi="Tự động hóa phát triển">Development Automation</span>
-                            <span class="focus-tag" data-en="AI-assisted Coding" data-vi="Lập trình hỗ trợ AI">AI-assisted Coding</span>
+                        <div class="focus-panel-content">
+                            <div class="focus-panel-meta">
+                                <span data-en="Experimentation" data-vi="Thử nghiệm">Experimentation</span>
+                                <span data-en="Exploring" data-vi="Đang khám phá">Exploring</span>
+                            </div>
+
+                            <h3 data-en="AI Workflow" data-vi="Luồng công việc AI">AI Workflow</h3>
+
+                            <p data-en="Exploring AI-assisted software development to improve engineering productivity and automate repetitive workflows."
+                               data-vi="Khám phá phát triển phần mềm hỗ trợ bởi AI để nâng cao năng suất và tự động hóa các quy trình lặp lại.">
+                                Exploring AI-assisted software development to improve engineering productivity and automate repetitive workflows.
+                            </p>
+
+                            <div class="focus-technologies">
+                                <span>AI Agents</span>
+                                <span>Prompt Engineering</span>
+                                <span>Development Automation</span>
+                                <span>AI-assisted Coding</span>
+                            </div>
                         </div>
 
-                    </div>
+                    </article>
 
-                </article>
+                    <article class="focus-panel"
+                             id="focus-panel-chinese"
+                             role="tabpanel"
+                             data-panel="chinese"
+                             hidden>
 
-                <article class="focus-card">
-
-                    <img class="focus-card-image" src="assets/images/about/part3.png" alt="Language learning and international communication illustration">
-
-                    <div class="focus-card-body">
-
-                        <h3 data-en="Chinese" data-vi="Tiếng Trung">Chinese</h3>
-
-                        <p data-en="Learning Mandarin through consistent daily practice to improve communication and collaborate more effectively in international environments."
-                           data-vi="Học tiếng Trung thông qua thực hành hàng ngày để cải thiện giao tiếp và hợp tác hiệu quả hơn trong môi trường quốc tế.">
-
-                            Learning Mandarin through consistent daily practice to improve communication and collaborate more effectively in international environments.
-
-                        </p>
-
-                        <div class="focus-card-meta">
-
-                            <span class="focus-card-status" data-en="Steady" data-vi="Kiên trì">Steady</span>
-
-                            <span class="focus-card-label" data-en="Current focus" data-vi="Đang tập trung">Current focus</span>
-
+                        <div class="focus-panel-visual">
+                            <img src="assets/images/about/part3.png"
+                                 alt="Language learning and international communication illustration">
+                            <span class="focus-panel-index">03 / 04</span>
                         </div>
 
-                        <div class="focus-tags">
-                            <span class="focus-tag" data-en="Daily Practice" data-vi="Luyện tập hàng ngày">Daily Practice</span>
-                            <span class="focus-tag" data-en="Speaking" data-vi="Nói">Speaking</span>
-                            <span class="focus-tag" data-en="Vocabulary" data-vi="Từ vựng">Vocabulary</span>
-                            <span class="focus-tag" data-en="HSK Preparation" data-vi="Chuẩn bị HSK">HSK Preparation</span>
+                        <div class="focus-panel-content">
+                            <div class="focus-panel-meta">
+                                <span data-en="Personal growth" data-vi="Phát triển cá nhân">Personal growth</span>
+                                <span data-en="Steady" data-vi="Kiên trì">Steady</span>
+                            </div>
+
+                            <h3 data-en="Chinese" data-vi="Tiếng Trung">Chinese</h3>
+
+                            <p data-en="Learning Mandarin through consistent daily practice to improve communication and collaborate more effectively in international environments."
+                               data-vi="Học tiếng Trung thông qua thực hành hàng ngày để cải thiện giao tiếp và hợp tác hiệu quả hơn trong môi trường quốc tế.">
+                                Learning Mandarin through consistent daily practice to improve communication and collaborate more effectively in international environments.
+                            </p>
+
+                            <div class="focus-technologies">
+                                <span>Daily Practice</span>
+                                <span>Speaking</span>
+                                <span>Vocabulary</span>
+                                <span>HSK Preparation</span>
+                            </div>
                         </div>
 
-                    </div>
+                    </article>
 
-                </article>
+                    <article class="focus-panel"
+                             id="focus-panel-devops"
+                             role="tabpanel"
+                             data-panel="devops"
+                             hidden>
 
-                <article class="focus-card">
-
-                    <img class="focus-card-image" src="assets/images/about/part4.png" alt="Modern DevOps and deployment engineering illustration">
-
-                    <div class="focus-card-body">
-
-                        <h3 data-en="DevOps" data-vi="DevOps">DevOps</h3>
-
-                        <p data-en="Expanding DevOps knowledge to better understand modern software delivery pipelines and cloud-native deployment practices."
-                           data-vi="Mở rộng kiến thức DevOps để hiểu rõ hơn về quy trình triển khai phần mềm hiện đại và các thực hành triển khai cloud-native.">
-
-                            Expanding DevOps knowledge to better understand modern software delivery pipelines and cloud-native deployment practices.
-
-                        </p>
-
-                        <div class="focus-card-meta">
-
-                            <span class="focus-card-status" data-en="Learning" data-vi="Đang học">Learning</span>
-
-                            <span class="focus-card-label" data-en="Current focus" data-vi="Đang tập trung">Current focus</span>
-
+                        <div class="focus-panel-visual">
+                            <img src="assets/images/about/part4.png"
+                                 alt="Modern DevOps and deployment engineering illustration">
+                            <span class="focus-panel-index">04 / 04</span>
                         </div>
 
-                        <div class="focus-tags">
-                            <span class="focus-tag" data-en="Docker" data-vi="Docker">Docker</span>
-                            <span class="focus-tag" data-en="Kubernetes" data-vi="Kubernetes">Kubernetes</span>
-                            <span class="focus-tag" data-en="CI/CD" data-vi="CI/CD">CI/CD</span>
-                            <span class="focus-tag" data-en="Deployment Automation" data-vi="Tự động hóa triển khai">Deployment Automation</span>
+                        <div class="focus-panel-content">
+                            <div class="focus-panel-meta">
+                                <span data-en="Infrastructure" data-vi="Hạ tầng">Infrastructure</span>
+                                <span data-en="Learning" data-vi="Đang học">Learning</span>
+                            </div>
+
+                            <h3 data-en="DevOps" data-vi="DevOps">DevOps</h3>
+
+                            <p data-en="Expanding DevOps knowledge to better understand modern software delivery pipelines and cloud-native deployment practices."
+                               data-vi="Mở rộng kiến thức DevOps để hiểu rõ hơn về quy trình triển khai phần mềm hiện đại và các thực hành triển khai cloud-native.">
+                                Expanding DevOps knowledge to better understand modern software delivery pipelines and cloud-native deployment practices.
+                            </p>
+
+                            <div class="focus-technologies">
+                                <span>Docker</span>
+                                <span>Kubernetes</span>
+                                <span>CI/CD</span>
+                                <span>Deployment Automation</span>
+                            </div>
                         </div>
 
-                    </div>
+                    </article>
 
-                </article>
+                </div>
 
             </div>
 
