@@ -144,27 +144,66 @@ function initCurrentSection() {
 // }
 function initFocusDashboard() {
 
-    const cards = document.querySelectorAll('.focus-card');
+    const items = Array.from(document.querySelectorAll(".focus-item"));
+    const panels = Array.from(document.querySelectorAll(".focus-panel"));
 
-    if (!cards.length) return;
+    if (!items.length || !panels.length) return;
 
-    const observer = new IntersectionObserver((entries) => {
+    function activateFocus(name, moveFocus = false) {
 
-        entries.forEach(entry => {
+        items.forEach(item => {
+            const active = item.dataset.focus === name;
 
-            if (!entry.isIntersecting) return;
+            item.classList.toggle("is-active", active);
+            item.setAttribute("aria-selected", active ? "true" : "false");
 
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-
+            if (active && moveFocus) {
+                item.focus();
+            }
         });
 
-    }, {
-        threshold: 0.2
+        panels.forEach(panel => {
+            const active = panel.dataset.panel === name;
+
+            panel.classList.toggle("is-active", active);
+            panel.hidden = !active;
+        });
+    }
+
+    items.forEach((item, index) => {
+
+        item.addEventListener("click", () => {
+            activateFocus(item.dataset.focus);
+        });
+
+        item.addEventListener("keydown", event => {
+
+            let nextIndex = index;
+
+            if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+                nextIndex = (index + 1) % items.length;
+            }
+
+            if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+                nextIndex = (index - 1 + items.length) % items.length;
+            }
+
+            if (nextIndex === index) return;
+
+            event.preventDefault();
+
+            const next = items[nextIndex];
+
+            activateFocus(next.dataset.focus, true);
+        });
     });
 
-    cards.forEach(card => observer.observe(card));
+    // Respect the current visual state after language/theme changes.
+    const active = items.find(item => item.classList.contains("is-active"));
 
+    if (active) {
+        activateFocus(active.dataset.focus);
+    }
 }
 
 function initParallax() {
