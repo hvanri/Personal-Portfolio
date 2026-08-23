@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><title>verify</title>
+<style>body{margin:0;font:12px/1.55 monospace;background:#fff;color:#000}pre{margin:0;padding:10px;white-space:pre-wrap}iframe{position:absolute;left:-9999px;top:0;border:0}</style>
+</head><body><pre id="out">verifying…</pre>
+<script>
+var lines=[];
+function load(w,h){return new Promise(function(res){var f=document.createElement('iframe');
+f.style.width=w+'px';f.style.height=h+'px';f.src='/index.html';document.body.appendChild(f);
+f.addEventListener('load',function(){setTimeout(function(){res(f);},2000);});});}
+
+async function overflow(w){
+  var f=await load(w,900),doc=f.contentDocument,win=f.contentWindow,de=doc.documentElement;
+  var fig=doc.querySelector('.signature-figure'),cs=win.getComputedStyle(fig),r=fig.getBoundingClientRect();
+  var over=[].slice.call(doc.querySelectorAll('.signature, .signature *')).filter(function(n){
+    var b=n.getBoundingClientRect();return b.width>0&&(b.right>de.clientWidth+1||b.left<-1);}).length;
+  lines.push('=== '+w+'px ===\n  pageOverflow='+(de.scrollWidth>de.clientWidth?'YES':'no')+
+  '\n  figure='+Math.round(r.width)+'x'+Math.round(r.height)+'  opacity='+cs.opacity+
+  '\n  mask='+((cs.maskImage&&cs.maskImage!=='none')||(cs.webkitMaskImage&&cs.webkitMaskImage!=='none')?'applied':'NONE')+
+  '\n  waves='+doc.querySelectorAll('.signature-wave').length+' anims='+[].slice.call(doc.querySelectorAll('.signature-wave')).map(function(n){return win.getComputedStyle(n).animationName;}).join(',')+
+  '\n  signature overflow offenders='+over);
+  f.remove();
+}
+async function behaviour(){
+  var f=await load(1280,900),doc=f.contentDocument,win=f.contentWindow;
+  var t=doc.querySelector('.signature-trigger'),note=doc.querySelector('.signature-note'),lab=doc.querySelector('.signature-label');
+  var o=['=== BEHAVIOUR / A11Y ==='];
+  o.push('  trigger='+t.tagName+' type='+t.type+'  name="'+t.textContent.trim()+'"');
+  o.push('  aria-controls matches note id: '+(t.getAttribute('aria-controls')===note.id));
+  o.push('  figure aria-hidden='+doc.querySelector('.signature-figure').getAttribute('aria-hidden'));
+  o.push('  tap target='+Math.round(t.getBoundingClientRect().width)+'x'+Math.round(t.getBoundingClientRect().height));
+  o.push('  before: expanded='+t.getAttribute('aria-expanded')+' hidden='+note.hidden+' labelOpacity='+win.getComputedStyle(lab).opacity);
+  t.click(); await new Promise(function(r){setTimeout(r,300);});
+  o.push('  click1: expanded='+t.getAttribute('aria-expanded')+' hidden='+note.hidden+' labelOpacity='+win.getComputedStyle(lab).opacity);
+  o.push('  note="'+note.textContent.trim().slice(0,64)+'…"');
+  t.click(); await new Promise(function(r){setTimeout(r,300);});
+  o.push('  click2: expanded='+t.getAttribute('aria-expanded')+' hidden='+note.hidden);
+  t.focus(); await new Promise(function(r){setTimeout(r,300);});
+  o.push('  focus:  labelOpacity='+win.getComputedStyle(lab).opacity+' figureOpacity='+win.getComputedStyle(doc.querySelector('.signature-figure')).opacity);
+  lines.push(o.join('\n')); f.remove();
+}
+(async function(){var ws=[320,375,768,1024,1440];
+for(var i=0;i<ws.length;i++)await overflow(ws[i]);
+await behaviour();
+document.getElementById('out').textContent=lines.join('\n\n');})();
+</script></body></html>

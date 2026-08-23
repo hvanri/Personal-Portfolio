@@ -98,3 +98,69 @@ body.dark-mode .belt:hover .belt-item img, body.dark-mode .belt:focus-within .be
     .belt.is-running .belt-track { animation: none; }
     .belt-item img { transition: none; }
 }
+
+/* Hallmark · component: Signature · genre: editorial · design-system: Build Ledger
+ * "Engineer by profession, musician by passion." — a masked silhouette carrying
+ * a slow spectral drift. Motion is transform-only (compositor), 3 primitives:
+ * spin · sweep · trail.
+ */
+.signature {
+    --sig-size: clamp(120px, 12vw, 168px);
+    --sig-a: oklch(64% 0.145 42);
+    --sig-b: oklch(58% 0.115 318);
+    --sig-c: oklch(60% 0.105 238);
+    --sig-d: oklch(66% 0.100 168);
+    --sig-sheen: oklch(100% 0 0 / .5);
+    --sig-sheen-soft: oklch(100% 0 0 / .28);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-rule);
+}
+
+.signature-trigger { display: grid; gap: var(--space-2xs); justify-items: start; width: 100%; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; text-align: left; }
+.signature-trigger:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; }
+
+.signature-figure {
+    position: relative;
+    display: block;
+    width: var(--sig-size);
+    max-width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    opacity: .58;
+    transition: opacity var(--dur-short) var(--ease-out);
+    -webkit-mask: url("../../assets/images/signature-flute.svg") center / contain no-repeat;
+    mask: url("../../assets/images/signature-flute.svg") center / contain no-repeat;
+}
+
+.signature-wave { position: absolute; inset: -55%; will-change: transform; }
+.signature-wave--spin { background: conic-gradient(from 0deg, var(--sig-a), var(--sig-b), var(--sig-c), var(--sig-d), var(--sig-a)); animation: sig-spin 22s linear infinite; }
+.signature-wave--sweep { background: linear-gradient(105deg, transparent 34%, var(--sig-sheen) 50%, transparent 66%); animation: sig-sweep 7s ease-in-out infinite alternate; }
+.signature-wave--trail { background: linear-gradient(255deg, transparent 40%, var(--sig-sheen-soft) 52%, transparent 64%); animation: sig-trail 11s ease-in-out infinite alternate; }
+
+@keyframes sig-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes sig-sweep { from { transform: translate3d(-28%, 0, 0); } to { transform: translate3d(28%, 0, 0); } }
+@keyframes sig-trail { from { transform: translate3d(18%, 12%, 0); } to { transform: translate3d(-18%, -12%, 0); } }
+
+.signature-label { color: var(--color-muted); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .07em; text-transform: uppercase; opacity: 0; transform: translateY(-2px); transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); }
+.signature-trigger:hover .signature-figure, .signature-trigger:focus-visible .signature-figure { opacity: .88; }
+.signature-trigger:hover .signature-label, .signature-trigger:focus-visible .signature-label, .signature.is-open .signature-label { opacity: 1; transform: none; }
+
+.signature-note { max-width: 32ch; margin: var(--space-2xs) 0 0; color: var(--color-muted); font-size: .82rem; line-height: 1.62; }
+.signature-note[hidden] { display: none; }
+
+body.dark-mode .signature-figure { opacity: .68; }
+body.dark-mode .signature-trigger:hover .signature-figure, body.dark-mode .signature-trigger:focus-visible .signature-figure { opacity: .95; }
+
+/* Without mask support the gradients would paint as a bare square. */
+@supports not ((-webkit-mask-image: url("#s")) or (mask-image: url("#s"))) {
+    .signature-figure { display: none; }
+}
+
+@media (max-width: 60rem) { .signature { --sig-size: clamp(110px, 24vw, 150px); } }
+@media (max-width: 48rem) { .signature { --sig-size: 120px; margin-top: var(--space-md); } }
+
+@media (prefers-reduced-motion: reduce) {
+    .signature-wave--spin, .signature-wave--sweep, .signature-wave--trail { animation: none; }
+    .signature-figure, .signature-label { transition: none; }
+}
