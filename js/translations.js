@@ -21,6 +21,8 @@ const translations = {
         'home.availability.location': 'Hanoi, Vietnam',
         'home.availability.opportunities': 'Open to interesting opportunities',
         'home.contactLabel': '<strong>Liên hệ tôi trên:</strong>',
+        'home.signature.label': 'Sáo trúc',
+        'home.signature.note': 'Khi không xây dựng hệ thống thương mại điện tử, tôi dành thời gian luyện sáo trúc.',
 
         'home.work.title': 'Kinh nghiệm làm việc',
         'home.work.projectsLabel': 'Dự án liên quan',
@@ -69,6 +71,8 @@ const translations = {
         'home.availability.location': 'Hanoi, Vietnam',
         'home.availability.opportunities': 'Open to interesting opportunities',
         'home.contactLabel': '<strong>Find me on:</strong>',
+        'home.signature.label': 'Bamboo Flute',
+        'home.signature.note': 'When I\'m not building commerce systems, I spend time practicing bamboo flute.',
 
         'home.work.title': 'Work',
         'home.work.projectsLabel': 'Related projects',
