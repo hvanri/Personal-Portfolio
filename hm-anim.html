@@ -1,0 +1,40 @@
+<!doctype html><html><head><meta charset="utf-8"><title>IO probe</title>
+<style>body{margin:0;font:12px/1.6 monospace}pre{padding:10px;white-space:pre-wrap}iframe{position:absolute;left:-9999px;border:0}</style>
+</head><body><pre id="out">…</pre><script>
+function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
+(function(){
+  var f=document.createElement('iframe');
+  f.style.width='1180px';f.style.height='800px';f.src='/about.html';
+  document.body.appendChild(f);
+  f.addEventListener('load',async function(){
+    await sleep(1200);
+    var doc=f.contentDocument,win=f.contentWindow;
+    var journey=doc.querySelector('.journey');
+    var log={old:false,fixed:false,plain:false};
+    // OLD options (ratio threshold that can never be met)
+    var oOld=new win.IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)log.old=true;});},{threshold:.25});
+    // FIXED options
+    var oFix=new win.IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)log.fixed=true;});},{threshold:0,rootMargin:'0px 0px -10% 0px'});
+    // plain, no options
+    var oPlain=new win.IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)log.plain=true;});});
+    oOld.observe(journey);oFix.observe(journey);oPlain.observe(journey);
+    await sleep(600);
+    var out=['IntersectionObserver probe on .journey (1180x800 iframe)'];
+    out.push('  journey height='+Math.round(journey.getBoundingClientRect().height));
+    out.push('  BEFORE scroll -> old(.25)='+log.old+'  fixed(0,-10%)='+log.fixed+'  plain='+log.plain);
+    win.scrollTo(0, journey.getBoundingClientRect().top+win.scrollY-300);
+    await sleep(1200);
+    out.push('  AFTER scroll  -> old(.25)='+log.old+'  fixed(0,-10%)='+log.fixed+'  plain='+log.plain);
+    // does the page's own road handler run?
+    var path=doc.querySelector('.journey-road path');
+    out.push('  road dashoffset='+(path.style.strokeDashoffset||'(unset)'));
+    await sleep(2600); // let the 3s failsafe land
+    out.push('  after failsafe window -> road dashoffset='+(path.style.strokeDashoffset||'(unset)')+
+             '  transition='+(path.style.transition||'(none)'));
+    out.push('');
+    out.push('  VERDICT: if plain/fixed are false too, IO simply does not fire');
+    out.push('           under headless virtual-time; the fix cannot be judged here.');
+    document.getElementById('out').textContent=out.join('\n');
+  });
+})();
+</script></body></html>

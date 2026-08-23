@@ -10,6 +10,10 @@
         name="description"
         content="The journey of Hà Văn Ri - Fullstack Developer."/>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/theme.css">
@@ -114,7 +118,7 @@
 
             <svg
                     class="journey-road"
-                    viewBox="0 0 500 2200"
+                    viewBox="0 0 500 2700"
                     preserveAspectRatio="none">
 
                 <path
@@ -137,6 +141,10 @@
                         C420 1900,
                         80 2050,
                         250 2200
+
+                        C420 2400,
+                        80 2550,
+                        250 2700
 
                         " />
 
@@ -282,27 +290,83 @@
 
             <!-- ==================================== -->
 
-            <article class="milestone left">
+            <article class="milestone left milestone--personal">
 
-                <div class="dot active"></div>
+                <div class="dot"></div>
 
-                <div class="card current">
+                <div class="card card--personal">
 
-                    <span class="year">Today</span>
+                    <span class="year year--personal">
+                        <svg class="year-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M3.4 17.6 20 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                            <circle cx="9.2" cy="13.5" r="1.05"/>
+                            <circle cx="12.2" cy="11.4" r="1.05"/>
+                            <circle cx="15.2" cy="9.3" r="1.05"/>
+                        </svg>
+                        2026
+                    </span>
 
                     <h3
-                            data-en="Keep Growing"
-                            data-vi="Tiếp tục phát triển">
+                            data-en="First Public Bamboo Flute Performance"
+                            data-vi="Lần đầu biểu diễn sáo trúc  trên sân khấu.">
 
-                        Keep Growing
+                        First Public Bamboo Flute Performance
 
                     </h3>
 
                     <p
 
-                            data-en="Building scalable e-commerce systems, strengthening my communication skills, and exploring AI."
+                            data-en="During a Gala Dinner in Hạ Long, I performed bamboo flute in front of colleagues and friends. What started as a personal hobby became a memorable milestone of confidence, self-expression, and growth beyond software engineering."
 
-                            data-vi="Tiếp tục xây dựng các hệ thống thương mại điện tử, cải thiện kỹ năng ngôn ngữ và khám phá AI.">
+                            data-vi="Trong chương trình Gala Dinner tại Hạ Long, tôi lần đầu biểu diễn sáo trúc trước đồng nghiệp và bạn bè. Từ một sở thích cá nhân, đây trở thành một dấu mốc đáng nhớ về sự tự tin, khả năng biểu đạt bản thân và hành trình phát triển ngoài công việc kỹ thuật.">
+
+                        During a Gala Dinner in Hạ Long, I performed bamboo flute in front of colleagues and friends.
+
+                    </p>
+
+                    <img
+                            class="card-image card-image--feature"
+                            src="/assets/images/about/flute-gala.jpg"
+                            srcset="/assets/images/about/flute-gala-sm.jpg 700w, /assets/images/about/flute-gala.jpg 1400w"
+                            sizes="(max-width: 900px) 92vw, 420px"
+                            width="1400"
+                            height="1050"
+                            loading="lazy"
+                            decoding="async"
+                            alt="Ha Van Ri performing bamboo flute at a Gala Dinner in Ha Long, 2026.">
+
+                </div>
+
+            </article>
+
+            <!-- ==================================== -->
+
+            <article class="milestone right milestone--open">
+
+                <div class="dot active"></div>
+
+                <div class="card current card--open">
+
+                    <span class="year year--open">
+                        2026+
+                        <span class="year-pulse" aria-hidden="true"></span>
+                    </span>
+
+                    <h3
+                            data-en="Still Composing"
+                            data-vi="Vẫn đang tiếp tục sáng tạo">
+
+                        Still Composing
+
+                    </h3>
+
+                    <p
+
+                            data-en="Continuing to build software, learn languages, explore AI, and deepen my bamboo flute practice. Every discipline teaches a different way of thinking."
+
+                            data-vi="Tiếp tục xây dựng phần mềm, học ngoại ngữ, khám phá AI và rèn luyện sáo trúc. Mỗi lĩnh vực đều mang lại một góc nhìn khác nhau về cách học hỏi và phát triển.">
+
+                        Continuing to build software, learn languages, explore AI, and deepen my bamboo flute practice.
 
                     </p>
 
@@ -330,9 +394,9 @@
                 </div>
 
                 <p class="focus-subtitle"
-                   data-en="Four directions I'm actively investing in — from building production systems to becoming a better engineer and communicator."
-                   data-vi="Bốn hướng tôi đang đầu tư nghiêm túc — từ xây dựng hệ thống thực tế đến trở thành một kỹ sư và người giao tiếp tốt hơn.">
-                    Four directions I'm actively investing in — from building production systems to becoming a better engineer and communicator.
+                   data-en="Four areas that shape who I am today — technology, music, language, and continuous learning."
+                   data-vi="Bốn lĩnh vực đang định hình con người tôi hôm nay — công nghệ, âm nhạc, ngôn ngữ và tinh thần học hỏi không ngừng.">
+                    Four areas that shape who I am today — technology, music, language, and continuous learning.
                 </p>
             </div>
 
@@ -344,36 +408,18 @@
                             type="button"
                             role="tab"
                             aria-selected="true"
-                            aria-controls="focus-panel-enterprise"
-                            data-focus="enterprise">
+                            aria-controls="focus-panel-flute"
+                            data-focus="flute"
+                            data-tone="warm">
 
                         <span class="focus-number">01</span>
                         <span class="focus-item-main">
                             <span class="focus-item-title"
-                                  data-en="Enterprise Solutions"
-                                  data-vi="Giải pháp doanh nghiệp">Enterprise Solutions</span>
+                                  data-en="Bamboo Flute"
+                                  data-vi="Sáo Trúc">Bamboo Flute</span>
                             <span class="focus-item-status"
-                                  data-en="Active"
-                                  data-vi="Đang theo đuổi">Active</span>
-                        </span>
-                        <span class="focus-arrow" aria-hidden="true">↗</span>
-                    </button>
-
-                    <button class="focus-item"
-                            type="button"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="focus-panel-ai"
-                            data-focus="ai">
-
-                        <span class="focus-number">02</span>
-                        <span class="focus-item-main">
-                            <span class="focus-item-title"
-                                  data-en="AI Workflow"
-                                  data-vi="Luồng công việc AI">AI Workflow</span>
-                            <span class="focus-item-status"
-                                  data-en="Exploring"
-                                  data-vi="Đang khám phá">Exploring</span>
+                                  data-en="Daily Practice"
+                                  data-vi="Luyện tập hằng ngày">Daily Practice</span>
                         </span>
                         <span class="focus-arrow" aria-hidden="true">↗</span>
                     </button>
@@ -383,9 +429,10 @@
                             role="tab"
                             aria-selected="false"
                             aria-controls="focus-panel-chinese"
-                            data-focus="chinese">
+                            data-focus="chinese"
+                            data-tone="warm">
 
-                        <span class="focus-number">03</span>
+                        <span class="focus-number">02</span>
                         <span class="focus-item-main">
                             <span class="focus-item-title"
                                   data-en="Chinese"
@@ -401,8 +448,29 @@
                             type="button"
                             role="tab"
                             aria-selected="false"
+                            aria-controls="focus-panel-ai"
+                            data-focus="ai"
+                            data-tone="cool">
+
+                        <span class="focus-number">03</span>
+                        <span class="focus-item-main">
+                            <span class="focus-item-title"
+                                  data-en="AI Workflow"
+                                  data-vi="Luồng công việc AI">AI Workflow</span>
+                            <span class="focus-item-status"
+                                  data-en="Exploring"
+                                  data-vi="Đang khám phá">Exploring</span>
+                        </span>
+                        <span class="focus-arrow" aria-hidden="true">↗</span>
+                    </button>
+
+                    <button class="focus-item"
+                            type="button"
+                            role="tab"
+                            aria-selected="false"
                             aria-controls="focus-panel-devops"
-                            data-focus="devops">
+                            data-focus="devops"
+                            data-tone="cool">
 
                         <span class="focus-number">04</span>
                         <span class="focus-item-main">
@@ -421,35 +489,74 @@
                 <div class="focus-panels">
 
                     <article class="focus-panel is-active"
-                             id="focus-panel-enterprise"
+                             id="focus-panel-flute"
                              role="tabpanel"
-                             data-panel="enterprise">
+                             data-panel="flute"
+                             data-tone="warm">
 
-                        <div class="focus-panel-visual">
-                            <img src="assets/images/about/part1.png"
-                                 alt="Enterprise software engineering illustration">
+                        <div class="focus-panel-visual focus-panel-visual--flute">
+                            <span class="flute-mark" aria-hidden="true">
+                                <span class="flute-wave flute-wave--spin"></span>
+                                <span class="flute-wave flute-wave--sweep"></span>
+                            </span>
                             <span class="focus-panel-index">01 / 04</span>
                         </div>
 
                         <div class="focus-panel-content">
                             <div class="focus-panel-meta">
-                                <span data-en="Engineering" data-vi="Kỹ thuật">Engineering</span>
-                                <span data-en="Active focus" data-vi="Đang tập trung">Active focus</span>
+                                <span data-en="Personal growth" data-vi="Phát triển cá nhân">Personal growth</span>
+                                <span data-en="Daily practice" data-vi="Luyện tập hằng ngày">Daily practice</span>
                             </div>
 
-                            <h3 data-en="Enterprise Solutions"
-                                data-vi="Giải pháp doanh nghiệp">Enterprise Solutions</h3>
+                            <h3 data-en="Bamboo Flute"
+                                data-vi="Sáo Trúc">Bamboo Flute</h3>
 
-                            <p data-en="Building scalable enterprise e-commerce applications with a focus on maintainability, performance, and clean architecture."
-                               data-vi="Xây dựng các ứng dụng thương mại điện tử doanh nghiệp có khả năng mở rộng, chú trọng khả năng bảo trì, hiệu năng và kiến trúc rõ ràng.">
-                                Building scalable enterprise e-commerce applications with a focus on maintainability, performance, and clean architecture.
+                            <p data-en="Beyond software engineering, I dedicate time every day to practicing bamboo flute. It teaches patience, breath control, discipline, and artistic expression — qualities that also improve my work as an engineer."
+                               data-vi="Bên cạnh lập trình, tôi dành thời gian mỗi ngày để luyện tập sáo trúc. Bộ môn này giúp tôi rèn luyện sự kiên nhẫn, kiểm soát hơi thở, tính kỷ luật và khả năng biểu đạt cảm xúc — những phẩm chất cũng hỗ trợ rất nhiều trong công việc kỹ thuật.">
+                                Beyond software engineering, I dedicate time every day to practicing bamboo flute.
                             </p>
 
                             <div class="focus-technologies">
-                                <span>Magento 2</span>
-                                <span>React</span>
-                                <span>Performance Optimization</span>
-                                <span>Scalable Development</span>
+                                <span data-en="Bamboo Flute" data-vi="Sáo trúc">Bamboo Flute</span>
+                                <span data-en="Traditional Music" data-vi="Nhạc truyền thống">Traditional Music</span>
+                                <span data-en="Performance" data-vi="Biểu diễn">Performance</span>
+                                <span data-en="Daily Practice" data-vi="Luyện tập hằng ngày">Daily Practice</span>
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <article class="focus-panel"
+                             id="focus-panel-chinese"
+                             role="tabpanel"
+                             data-panel="chinese"
+                             data-tone="warm"
+                             hidden>
+
+                        <div class="focus-panel-visual">
+                            <img src="assets/images/about/part3.png"
+                                 alt="Language learning and international communication illustration">
+                            <span class="focus-panel-index">02 / 04</span>
+                        </div>
+
+                        <div class="focus-panel-content">
+                            <div class="focus-panel-meta">
+                                <span data-en="Personal growth" data-vi="Phát triển cá nhân">Personal growth</span>
+                                <span data-en="Steady" data-vi="Kiên trì">Steady</span>
+                            </div>
+
+                            <h3 data-en="Chinese" data-vi="Tiếng Trung">Chinese</h3>
+
+                            <p data-en="Learning Mandarin through consistent daily practice to open more opportunities for communication, cultural understanding, and international collaboration."
+                               data-vi="Học tiếng Trung mỗi ngày để mở rộng cơ hội giao tiếp, tiếp cận văn hóa và hợp tác trong môi trường quốc tế.">
+                                Learning Mandarin through consistent daily practice to open more opportunities for communication, cultural understanding, and international collaboration.
+                            </p>
+
+                            <div class="focus-technologies">
+                                <span>Mandarin</span>
+                                <span data-en="Speaking" data-vi="Giao tiếp">Speaking</span>
+                                <span data-en="Vocabulary" data-vi="Từ vựng">Vocabulary</span>
+                                <span data-en="HSK Preparation" data-vi="Luyện thi HSK">HSK Preparation</span>
                             </div>
                         </div>
 
@@ -459,12 +566,13 @@
                              id="focus-panel-ai"
                              role="tabpanel"
                              data-panel="ai"
+                             data-tone="cool"
                              hidden>
 
                         <div class="focus-panel-visual">
                             <img src="assets/images/about/part2.png"
                                  alt="AI-assisted software development illustration">
-                            <span class="focus-panel-index">02 / 04</span>
+                            <span class="focus-panel-index">03 / 04</span>
                         </div>
 
                         <div class="focus-panel-content">
@@ -491,44 +599,10 @@
                     </article>
 
                     <article class="focus-panel"
-                             id="focus-panel-chinese"
-                             role="tabpanel"
-                             data-panel="chinese"
-                             hidden>
-
-                        <div class="focus-panel-visual">
-                            <img src="assets/images/about/part3.png"
-                                 alt="Language learning and international communication illustration">
-                            <span class="focus-panel-index">03 / 04</span>
-                        </div>
-
-                        <div class="focus-panel-content">
-                            <div class="focus-panel-meta">
-                                <span data-en="Personal growth" data-vi="Phát triển cá nhân">Personal growth</span>
-                                <span data-en="Steady" data-vi="Kiên trì">Steady</span>
-                            </div>
-
-                            <h3 data-en="Chinese" data-vi="Tiếng Trung">Chinese</h3>
-
-                            <p data-en="Learning Mandarin through consistent daily practice to improve communication and collaborate more effectively in international environments."
-                               data-vi="Học tiếng Trung thông qua thực hành hàng ngày để cải thiện giao tiếp và hợp tác hiệu quả hơn trong môi trường quốc tế.">
-                                Learning Mandarin through consistent daily practice to improve communication and collaborate more effectively in international environments.
-                            </p>
-
-                            <div class="focus-technologies">
-                                <span>Daily Practice</span>
-                                <span>Speaking</span>
-                                <span>Vocabulary</span>
-                                <span>HSK Preparation</span>
-                            </div>
-                        </div>
-
-                    </article>
-
-                    <article class="focus-panel"
                              id="focus-panel-devops"
                              role="tabpanel"
                              data-panel="devops"
+                             data-tone="cool"
                              hidden>
 
                         <div class="focus-panel-visual">

@@ -1048,3 +1048,116 @@ body.dark-mode .focus-technologies span:not(:last-child)::after {
 .card img { 
     height: auto
 }
+/* =========================================================
+   Hallmark · About refresh — personal vs professional growth
+   Token-based, dark-mode aware. Appended so it wins over the
+   legacy hard-coded rules above without rewriting them.
+   ========================================================= */
+
+.about-page {
+    --tone-warm: oklch(58% 0.130 45);
+    --tone-warm-soft: oklch(58% 0.130 45 / .09);
+    --tone-cool: oklch(56% 0.095 235);
+    --tone-cool-soft: oklch(56% 0.095 235 / .09);
+}
+
+/* ---------- Timeline: the personal milestone ---------- */
+
+.milestone--personal .card {
+    background: linear-gradient(180deg, var(--tone-warm-soft), transparent 42%), #fff;
+    border: 1px solid oklch(58% 0.130 45 / .22);
+    box-shadow: 0 25px 70px oklch(35% 0.08 45 / .10);
+    transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out);
+}
+.milestone--personal .card:hover { transform: translateY(-10px); box-shadow: 0 34px 84px oklch(35% 0.08 45 / .17); }
+
+.year--personal { gap: .5rem; background: var(--tone-warm); }
+.year-icon { width: 14px; height: 14px; fill: currentColor; overflow: visible; }
+
+/* Slightly larger, more editorial than the other timeline images. */
+.card-image--feature {
+    aspect-ratio: 4 / 3;
+    height: auto;
+    margin-top: 6px;
+    object-fit: cover;
+    /* Settle the stage lighting into the page's warm editorial range. */
+    filter: saturate(.72) contrast(1.03) sepia(.10);
+    transition: transform .9s var(--ease-out), filter .5s var(--ease-out);
+}
+.milestone--personal .card:hover .card-image--feature { transform: scale(1.045); filter: saturate(1) contrast(1) sepia(0); }
+.milestone--personal .card { overflow: hidden; }
+
+.milestone--personal .dot { background: var(--tone-warm); }
+
+/* ---------- Timeline: the open chapter ---------- */
+
+.milestone--open .card {
+    background: transparent;
+    border: 1px dashed var(--color-rule);
+    box-shadow: none;
+}
+.year--open { position: relative; gap: .55rem; color: var(--color-signal-ink); background: var(--color-signal); }
+.year-pulse { width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: about-pulse 2.6s var(--ease-out) infinite; }
+@keyframes about-pulse { 0%, 100% { opacity: .35; transform: scale(.82); } 50% { opacity: 1; transform: scale(1); } }
+.milestone--open .dot { background: var(--color-signal); }
+
+/* ---------- Focus: warm vs cool ---------- */
+
+.focus-item[data-tone="warm"]::before { background: var(--tone-warm); }
+.focus-item[data-tone="cool"]::before { background: var(--tone-cool); }
+.focus-item[data-tone="warm"]:hover, .focus-item[data-tone="warm"].is-active { background: var(--tone-warm-soft); }
+.focus-item[data-tone="cool"]:hover, .focus-item[data-tone="cool"].is-active { background: var(--tone-cool-soft); }
+.focus-item:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -3px; }
+
+.focus-panel[data-tone="warm"] .focus-panel-meta span:last-child { color: var(--tone-warm); }
+.focus-panel[data-tone="cool"] .focus-panel-meta span:last-child { color: var(--tone-cool); }
+.focus-panel[data-tone="warm"] .focus-panel-visual { background: oklch(24% 0.045 45); }
+.focus-panel[data-tone="cool"] .focus-panel-visual { background: oklch(22% 0.040 240); }
+
+/* ---------- Focus 01 visual — the flute mark, not a photo ---------- */
+
+.focus-panel-visual--flute { display: grid; place-items: center; }
+.flute-mark {
+    position: relative;
+    display: block;
+    width: min(62%, 250px);
+    aspect-ratio: 1;
+    overflow: hidden;
+    opacity: .92;
+    -webkit-mask: url("../../assets/images/signature-flute.svg") center / contain no-repeat;
+    mask: url("../../assets/images/signature-flute.svg") center / contain no-repeat;
+}
+.flute-wave { position: absolute; inset: -55%; will-change: transform; }
+.flute-wave--spin { background: conic-gradient(from 0deg, oklch(70% .145 48), oklch(74% .120 92), oklch(66% .130 28), oklch(72% .110 62), oklch(70% .145 48)); animation: flute-spin 26s linear infinite; }
+.flute-wave--sweep { background: linear-gradient(105deg, transparent 34%, oklch(100% 0 0 / .42) 50%, transparent 66%); animation: flute-sweep 8s ease-in-out infinite alternate; }
+@keyframes flute-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes flute-sweep { from { transform: translate3d(-26%, 0, 0); } to { transform: translate3d(26%, 0, 0); } }
+.focus-panel-visual--flute::after { content: none; }
+
+/* ---------- Smoother tab transition ---------- */
+
+.focus-panel { animation: focus-panel-in .5s var(--ease-out) both; }
+
+/* ---------- Dark mode ---------- */
+
+body.dark-mode .milestone--personal .card {
+    background: linear-gradient(180deg, var(--tone-warm-soft), transparent 42%), #1f2426;
+    border-color: oklch(64% 0.120 45 / .30);
+    box-shadow: 0 25px 70px oklch(0% 0 0 / .45);
+}
+body.dark-mode .milestone--open .card { border-color: var(--color-rule); }
+body.dark-mode .about-page { --tone-warm: oklch(72% 0.120 48); --tone-cool: oklch(70% 0.085 235); }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .flute-mark { width: min(58%, 190px); }
+    .card-image--feature { aspect-ratio: 3 / 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flute-wave--spin, .flute-wave--sweep, .year-pulse { animation: none; }
+    .milestone--personal .card, .card-image--feature { transition: none; }
+    .milestone--personal .card:hover { transform: none; }
+    .milestone--personal .card:hover .card-image--feature { transform: none; }
+}

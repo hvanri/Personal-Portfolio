@@ -27,15 +27,25 @@ function initJourneyRoad() {
     path.style.strokeDasharray = length;
     path.style.strokeDashoffset = length;
 
+    const journey = document.querySelector(".journey");
+
+    if (!journey) return;
+
+    const draw = () => {
+
+        path.style.transition = "stroke-dashoffset 2.5s ease";
+
+        path.style.strokeDashoffset = 0;
+
+    };
+
     const observer = new IntersectionObserver(entries => {
 
         entries.forEach(entry => {
 
             if (!entry.isIntersecting) return;
 
-            path.style.transition = "stroke-dashoffset 2.5s ease";
-
-            path.style.strokeDashoffset = 0;
+            draw();
 
             observer.disconnect();
 
@@ -43,11 +53,37 @@ function initJourneyRoad() {
 
     }, {
 
-        threshold: .25
+        // The journey is far taller than any viewport, so a ratio threshold
+        // (e.g. .25) can never be satisfied and the road would never draw.
+        // Fire on entry instead — height-independent.
+
+        threshold: 0,
+
+        rootMargin: "0px 0px -10% 0px"
 
     });
 
-    observer.observe(document.querySelector(".journey"));
+    observer.observe(journey);
+
+    // Failsafe: never let a missed observer leave the road undrawn.
+
+    setTimeout(() => {
+
+        if (path.style.strokeDashoffset !== "0px" && path.style.strokeDashoffset !== "0") {
+
+            const box = journey.getBoundingClientRect();
+
+            if (box.top < window.innerHeight && box.bottom > 0) {
+
+                draw();
+
+                observer.disconnect();
+
+            }
+
+        }
+
+    }, 3000);
 
 }
 
@@ -57,7 +93,23 @@ function initJourneyRoad() {
 
 function initMilestones() {
 
-    const milestones = document.querySelectorAll(".milestone");
+    const milestones = Array.from(document.querySelectorAll(".milestone"));
+
+    if (!milestones.length) return;
+
+    const reveal = target => {
+
+        target.classList.add("show");
+
+        const dot = target.querySelector(".dot");
+
+        if (dot) {
+
+            dot.classList.add("active");
+
+        }
+
+    };
 
     const observer = new IntersectionObserver(entries => {
 
@@ -65,25 +117,46 @@ function initMilestones() {
 
             if (!entry.isIntersecting) return;
 
-            entry.target.classList.add("show");
+            reveal(entry.target);
 
-            const dot = entry.target.querySelector(".dot");
-
-            if (dot) {
-
-                dot.classList.add("active");
-
-            }
+            observer.unobserve(entry.target);
 
         });
 
     }, {
 
-        threshold: .35
+        // Height-independent: a tall milestone (the 2026 card carries a large
+        // image) can't reliably reach a ratio threshold on short viewports.
+
+        threshold: 0,
+
+        rootMargin: "0px 0px -18% 0px"
 
     });
 
-    milestones.forEach(item => observer.observe(item));
+    milestones.forEach(item => {
+
+        if (item.getBoundingClientRect().top < window.innerHeight) {
+
+            reveal(item);
+
+            return;
+
+        }
+
+        observer.observe(item);
+
+    });
+
+    // Failsafe: a reveal must never be the reason content stays invisible.
+
+    setTimeout(() => {
+
+        milestones.forEach(reveal);
+
+        observer.disconnect();
+
+    }, 4000);
 
 }
 
