@@ -7,3 +7,94 @@
 @media (max-width:48rem) { .home-hero { grid-template-columns:1fr; gap:var(--space-lg); padding-bottom:var(--space-2xl); }.hero-context { flex-direction:column; }.hero-statement h1 { max-width:12ch; font-size:clamp(2.8rem,14vw,4.4rem); }.hero-record { max-width:22rem; }.contact-record { align-items:flex-start; flex-direction:column; }.work-ledger,.notes-ledger { padding-top:var(--space-2xl); }.work-item,.post-item { grid-template-columns:1fr; gap:var(--space-2xs); }.post-item { padding-block:var(--space-lg); } }
 
 .hero-availability span { color: var(--color-signal); }
+
+/* Hallmark · section: Work chapters · genre: editorial · design-system: Build Ledger
+ * macrostructure: Long Document (chaptered) · designed-as-app
+ * motion: page-turn reveal (single primitive) · sticky per-chapter year rail
+ */
+.work-chapters { padding-top: var(--space-3xl); }
+
+.chapter { display: grid; grid-template-columns: minmax(6rem, 9rem) minmax(0, 1fr); align-content: start; column-gap: clamp(var(--space-md), 4vw, var(--space-2xl)); min-height: 42vh; padding-block: clamp(var(--space-2xl), 5vw, var(--space-3xl)); border-top: 1px solid var(--color-ink); }
+
+.chapter-rail { position: sticky; top: var(--space-lg); align-self: start; min-width: 0; }
+.chapter-years { display: grid; gap: var(--space-3xs); margin: 0; }
+.chapter-year { color: var(--color-ink); font-family: var(--font-display); font-size: clamp(1.5rem, 2.1vw, 2.05rem); font-weight: 600; letter-spacing: -.025em; line-height: 1; }
+.chapter-year-end { color: var(--color-muted); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .07em; text-transform: uppercase; }
+
+.chapter-body { min-width: 0; }
+.chapter-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-md); align-items: start; }
+.chapter-identity { min-width: 0; }
+.chapter-company { max-width: 14ch; min-width: 0; margin: 0; overflow-wrap: anywhere; color: var(--color-ink); font-family: var(--font-display); font-size: clamp(2rem, 3.8vw, 3.3rem); font-style: normal; font-weight: 600; letter-spacing: -.04em; line-height: 1.02; }
+.chapter-company a { color: var(--color-ink); text-decoration: none; }
+.chapter-company a::after { content: " ↗"; color: var(--color-signal); font-size: .42em; vertical-align: super; }
+.chapter-company a:hover { color: var(--color-signal); }
+.chapter-role { margin: var(--space-xs) 0 0; color: var(--color-signal); font-family: var(--font-mono); font-size: .74rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+
+/* Archival stamp — a struck mark, not an avatar. */
+.chapter-stamp { display: grid; place-items: center; width: 5.5rem; height: 5.5rem; margin: 0; padding: var(--space-2xs); overflow: hidden; border: 1px solid var(--color-rule); box-shadow: inset 0 0 0 3px var(--color-paper), inset 0 0 0 4px var(--color-rule); transform: rotate(-2.5deg); }
+.chapter:nth-of-type(even) .chapter-stamp { transform: rotate(1.75deg); }
+.chapter-stamp img { width: 100%; height: 100%; object-fit: contain;  } 
+/* filter: grayscale(1); opacity: .78; */
+.chapter-monogram { color: var(--color-muted); font-family: var(--font-mono); font-size: 1.05rem; font-weight: 600; letter-spacing: .12em; }
+body.dark-mode .chapter-stamp img[data-logo-tone="dark"] { filter: grayscale(1) invert(1); }
+
+.chapter-mission { max-width: 54ch; margin: var(--space-lg) 0 0; color: var(--color-ink-raised); font-size: 1.02rem; line-height: 1.78; }
+
+.chapter-projects { margin-top: var(--space-xl); padding-top: var(--space-md); border-top: 1px solid var(--color-rule); }
+.chapter-projects__label { margin: 0 0 var(--space-sm); color: var(--color-muted); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .07em; text-transform: uppercase; }
+
+/* Project belt — a conveyor of archival marks. */
+.belt { position: relative; overflow: hidden; }
+.belt::before, .belt::after { content: ""; position: absolute; z-index: 2; top: 0; bottom: 0; width: clamp(1.25rem, 6%, 3.5rem); pointer-events: none; }
+.belt::before { left: 0; background: linear-gradient(to right, var(--color-paper), transparent); }
+.belt::after { right: 0; background: linear-gradient(to left, var(--color-paper), transparent); }
+.belt-track { display: flex; gap: var(--space-sm); width: max-content; margin: 0; padding: 0; list-style: none; }
+.belt.is-running .belt-track { animation: belt-scroll var(--belt-duration, 34s) linear infinite; }
+.belt.is-running:hover .belt-track, .belt.is-running:focus-within .belt-track { animation-play-state: paused; }
+.belt.is-static { overflow-x: auto; }
+.belt.is-static::before, .belt.is-static::after { content: none; }
+@keyframes belt-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.belt-item { flex: 0 0 auto; display: grid; place-items: center; width: 6rem; aspect-ratio: 1; padding: var(--space-3xs); overflow: hidden; border: 1px solid var(--color-rule); background: var(--color-paper-raised); }
+.belt-item img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(1); opacity: .68; transition: filter var(--dur-short) var(--ease-out), opacity var(--dur-short) var(--ease-out); }
+.belt:hover .belt-item img, .belt:focus-within .belt-item img { filter: grayscale(0); opacity: 1; }
+/* Most logo assets carry a white plate, which shouts on dark paper. */
+body.dark-mode .belt-item img { opacity: .52; }
+body.dark-mode .belt:hover .belt-item img, body.dark-mode .belt:focus-within .belt-item img { opacity: 1; }
+
+.chapters-outro { display: flex; flex-wrap: wrap; gap: var(--space-md); padding-top: var(--space-lg); border-top: 1px solid var(--color-ink); }
+.chapters-outro .text-action::after { content: "↗"; margin-left: var(--space-2xs); color: var(--color-signal); }
+
+.chapter-year[data-slot="pending"] { color: var(--color-rule); }
+.chapter-year-end[data-slot="pending"] { color: var(--color-rule); }
+
+/* Page-turn reveal — enabled only once JS confirms support. */
+.js-chapters .chapter { opacity: 0; transform: translateY(14px); transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out); }
+.js-chapters .chapter.is-turned { opacity: 1; transform: none; }
+
+@media (max-width: 60rem) {
+    .chapter { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-md); min-height: 0; padding-block: var(--space-2xl); }
+    .chapter-rail { position: static; }
+    .chapter-years { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2xs) var(--space-sm); }
+}
+
+@media (max-width: 48rem) {
+    .work-chapters { padding-top: var(--space-2xl); }
+    .chapter-stamp { width: 4rem; height: 4rem; }
+    .chapter-monogram { font-size: .85rem; }
+    .chapter-mission { margin-top: var(--space-md); }
+    .chapter-projects { margin-top: var(--space-lg); }
+    .belt-item { width: 4.75rem; }
+}
+
+@media (max-width: 23rem) {
+    .chapter-stamp { width: 3.25rem; height: 3.25rem; padding: var(--space-3xs); }
+    .chapter-monogram { font-size: .72rem; letter-spacing: .08em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js-chapters .chapter { opacity: 1; transform: none; transition: none; }
+    .chapter-company a { transition: none; }
+    .belt.is-running .belt-track { animation: none; }
+    .belt-item img { transition: none; }
+}

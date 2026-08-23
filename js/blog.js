@@ -1,18 +1,20 @@
-import { buildHeroStats, buildSearchSuggestions } from './blog-search-utils.mjs';
 import { trackEvent } from './analytics/analytics.js';
 import { EVENTS } from './analytics/events.js';
 
 const postsUrl = './blog/posts.json';
-const initialView = typeof window !== 'undefined' && window.localStorage
-    ? window.localStorage.getItem('blogView') || 'list'
-    : 'list';
 
 const state = {
-    posts: [],
-    activeCategory: 'All',
-    query: '',
-    view: initialView
+    posts: []
 };
+
+function escapeHtml(value) {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
 
 function formatDate(value) {
     if (!value) return '';
@@ -29,174 +31,89 @@ function formatDate(value) {
     });
 }
 
-function getFilteredPosts() {
-    return state.posts.filter((post) => {
-        const matchesCategory = state.activeCategory === 'All' || post.category === state.activeCategory;
-        const haystack = `${post.title} ${post.excerpt} ${post.tags.join(' ')}`.toLowerCase();
-        const matchesQuery = !state.query || haystack.includes(state.query.toLowerCase());
-        return matchesCategory && matchesQuery;
-    }).sort((left, right) => new Date(right.date) - new Date(left.date));
+function sortByNewest(posts) {
+    return [...posts].sort((left, right) => new Date(right.date) - new Date(left.date));
 }
 
-function renderCategories(posts) {
-    const container = document.querySelector('#blog-categories');
-    if (!container) return;
-
-    const categories = ['All', ...new Set(posts.map((post) => post.category).filter(Boolean))];
-    container.innerHTML = categories
-        .map((category) => {
-            const activeClass = category === state.activeCategory ? 'is-active' : '';
-            return `<button class="filter-pill ${activeClass}" type="button" data-category="${category}" aria-pressed="${category === state.activeCategory}">${category}</button>`;
-        })
-        .join('');
-
-    const countEl = document.querySelector('#blog-categories-count');
-    if (countEl) {
-        countEl.textContent = String(categories.length - 1);
+function titleMarkup(post) {
+    const title = escapeHtml(post.title);
+    if (!post.blog_link) {
+        return title;
     }
+
+    return `<a href="${escapeHtml(post.blog_link)}"
+        target="_blank"
+        rel="noopener"
+        data-post-title="${title}"
+        data-category="${escapeHtml(post.category || '')}">${title}<span class="entry-arrow" aria-hidden="true">↗</span></a>`;
 }
 
-function renderHeroStats(posts = state.posts) {
-    const container = document.querySelector('#hero-stats');
-    if (!container) return;
+function dateMarkup(post) {
+    if (!post.date) return '';
+    return `<time datetime="${escapeHtml(post.date)}">${escapeHtml(formatDate(post.date))}</time>`;
+}
 
-    const stats = buildHeroStats(posts);
-    container.innerHTML = stats
-        .map((stat) => `
-            <div class="hero-stat">
-                <strong>${stat.value}</strong>
-                <span>${stat.label}</span>
-            </div>
-        `)
-        .join('');
+function leadMarkup(post) {
+    return `
+        <article class="lead-note">
+            <p class="lead-note__date">${dateMarkup(post)}</p>
+            <h2 class="lead-note__title">${titleMarkup(post)}</h2>
+            ${post.image ? `<figure class="lead-note__figure"><img src="${escapeHtml(post.image)}" alt="${escapeHtml(post.title)}" loading="lazy" /></figure>` : ''}
+            <p class="lead-note__excerpt">${escapeHtml(post.excerpt)}</p>
+        </article>
+    `;
+}
+
+function entryMarkup(post, index) {
+    return `
+        <li class="entry">
+            <span class="entry-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
+            <h3 class="entry-title">${titleMarkup(post)}</h3>
+            <p class="entry-date">${dateMarkup(post)}</p>
+            <p class="entry-excerpt">${escapeHtml(post.excerpt)}</p>
+        </li>
+    `;
 }
 
 function renderPosts() {
-    const grid = document.querySelector('#blog-posts');
+    const list = document.querySelector('#blog-posts');
     const featured = document.querySelector('#blog-featured');
+    const indexSection = document.querySelector('.journal-index');
     const emptyState = document.querySelector('#blog-empty-state');
-    const countEl = document.querySelector('#blog-count');
 
-    if (!grid || !featured) return;
+    if (!list || !featured) return;
 
-    const filteredPosts = getFilteredPosts();
+    const posts = sortByNewest(state.posts);
 
-    if (countEl) {
-        countEl.textContent = String(filteredPosts.length);
-    }
-
-    if (!filteredPosts.length) {
-        grid.innerHTML = '';
+    if (!posts.length) {
         featured.innerHTML = '';
-        emptyState.hidden = false;
+        list.innerHTML = '';
+        if (indexSection) indexSection.hidden = false;
+        if (emptyState) emptyState.hidden = false;
         return;
     }
 
-    emptyState.hidden = true;
-    const [featuredPost, ...archivePosts] = filteredPosts;
+    const [leadPost, ...earlierPosts] = posts;
 
-    featured.innerHTML = `
-        <article class="featured-note">
-            ${featuredPost.image ? `<div class="featured-note__image"><img src="${featuredPost.image}" alt="${featuredPost.title}" /></div>` : ''}
-            <div class="featured-note__body">
-                <div class="post-card__top">
-                    <span class="post-badge">${featuredPost.category}</span>
-                    <span class="post-date">${formatDate(featuredPost.date)}</span>
-                </div>
-                <h2 id="featured-note-title">${featuredPost.title}</h2>
-                <p>${featuredPost.excerpt}</p>
-                <div class="post-tags">${featuredPost.tags.map((tag) => `<span class="tag-pill">${tag}</span>`).join('')}</div>
-                ${featuredPost.blog_link ? `<a class="post-read-link" href="${featuredPost.blog_link}" target="_blank" rel="noopener">Read note <span aria-hidden="true">→</span></a>` : ''}
-            </div>
-        </article>
-    `;
+    featured.innerHTML = leadMarkup(leadPost);
+    list.innerHTML = earlierPosts.map(entryMarkup).join('');
 
-    grid.innerHTML = archivePosts.map((post, index) => `
-        <article class="post-card">
-            <span class="post-number" aria-hidden="true">${String(index + 2).padStart(2, '0')}</span>
-            <div class="post-card__body">
-                <div class="post-card__top">
-                    <span class="post-badge">${post.category}</span>
-                    <span class="post-date">${formatDate(post.date)}</span>
-                </div>
-                <h3>${post.title}</h3>
-                <p>${post.excerpt}</p>
-                <div class="post-tags">
-                    ${post.tags.map((tag) => `<span class="tag-pill">${tag}</span>`).join('')}
-                </div>
-                <div class="post-card__footer">
-                    ${
-                        post.blog_link
-                            ? `<a class="post-read-link"
-                                href="${post.blog_link}"
-                                target="_blank"
-                                rel="noopener">
-                                    Read note
-                                    <span aria-hidden="true">→</span>
-                            </a>`
-                            : ""
-                    }
-                </div>
-            </div>
-        </article>
-    `).join('');
-}
-
-function updateSearchSuggestionsVisibility(searchInput, suggestionsContainer) {
-    if (!searchInput || !suggestionsContainer) return;
-
-    const shouldShow = !searchInput.value.trim();
-    suggestionsContainer.hidden = !shouldShow;
-}
-
-function renderSearchSuggestions(posts = state.posts) {
-    const searchInput = document.querySelector('#blog-search');
-    const suggestionsContainer = document.querySelector('#blog-search-suggestions');
-    const chipsContainer = suggestionsContainer?.querySelector('.search-suggestions__chips');
-
-    if (!searchInput || !suggestionsContainer || !chipsContainer) return;
-
-    const suggestions = buildSearchSuggestions(posts, 6);
-
-    if (!suggestions.length) {
-        suggestionsContainer.hidden = true;
-        return;
-    }
-
-    chipsContainer.innerHTML = suggestions
-        .map((suggestion) => `<button class="search-suggestion-chip" type="button" data-query="${suggestion}">${suggestion}</button>`)
-        .join('');
-
-    chipsContainer.querySelectorAll('button[data-query]').forEach((button) => {
-        button.addEventListener('click', () => {
-            searchInput.value = button.dataset.query;
-            state.query = button.dataset.query.trim();
-            renderPosts();
-            updateSearchSuggestionsVisibility(searchInput, suggestionsContainer);
-        });
-    });
-
-    updateSearchSuggestionsVisibility(searchInput, suggestionsContainer);
+    if (emptyState) emptyState.hidden = true;
+    if (indexSection) indexSection.hidden = earlierPosts.length === 0;
 }
 
 export function initBlogPage() {
-    const grid = document.querySelector('#blog-posts');
+    const list = document.querySelector('#blog-posts');
     const featured = document.querySelector('#blog-featured');
-    const searchInput = document.querySelector('#blog-search');
-    const categoryFilter = document.querySelector('#blog-categories');
-    const btnGrid = document.querySelector('#view-grid');
-    const btnList = document.querySelector('#view-list');
-    const suggestionsContainer = document.querySelector('#blog-search-suggestions');
+    const indexSection = document.querySelector('.journal-index');
 
-    if (!grid || !categoryFilter) {
+    if (!list || !featured) {
         return;
     }
 
-    applyView(state.view);
-    if (featured) {
-        featured.innerHTML = '<p class="journal-loading" role="status">Loading latest note…</p>';
-    }
-    grid.innerHTML = '<p class="journal-loading" role="status">Loading archive…</p>';
+    featured.innerHTML = '<p class="journal-note" role="status">Loading the latest note…</p>';
+    list.innerHTML = '';
+    if (indexSection) indexSection.hidden = true;
 
     fetch(postsUrl)
         .then((response) => {
@@ -207,47 +124,14 @@ export function initBlogPage() {
         })
         .then((data) => {
             state.posts = Array.isArray(data.posts) ? data.posts : [];
-            renderCategories(state.posts);
-            renderHeroStats(state.posts);
             renderPosts();
-            renderSearchSuggestions(state.posts);
         })
         .catch((error) => {
             console.error(error);
-            if (featured) {
-                featured.innerHTML = '';
-            }
-            grid.innerHTML = '<div class="empty-state">Unable to load stories right now. Please try again later.</div>';
+            featured.innerHTML = '<p class="journal-note" role="status">Notes are unavailable right now. Please try again later.</p>';
+            list.innerHTML = '';
+            if (indexSection) indexSection.hidden = true;
         });
-
-    if (searchInput) {
-        searchInput.addEventListener('input', (event) => {
-            state.query = event.target.value.trim();
-            renderPosts();
-            updateSearchSuggestionsVisibility(searchInput, suggestionsContainer);
-            if (state.query) {
-                trackEvent(EVENTS.BLOG_SEARCH, { search_term: state.query });
-            }
-        });
-    }
-
-    categoryFilter.addEventListener('click', (event) => {
-        const button = event.target.closest('button[data-category]');
-        if (!button) return;
-
-        state.activeCategory = button.dataset.category;
-        renderCategories(state.posts);
-        renderPosts();
-        trackEvent(EVENTS.BLOG_CATEGORY_CHANGE, { category: state.activeCategory });
-    });
-
-    if (btnGrid) {
-        btnGrid.addEventListener('click', () => applyView('grid'));
-    }
-
-    if (btnList) {
-        btnList.addEventListener('click', () => applyView('list'));
-    }
 
     document.addEventListener('click', (event) => {
         const postLink = event.target.closest('#blog-posts a, #blog-featured a');
@@ -255,23 +139,9 @@ export function initBlogPage() {
             return;
         }
 
-        const title = postLink.closest('article')?.querySelector('h2, h3')?.textContent?.trim() || '';
         trackEvent(EVENTS.BLOG_OPEN, {
-            post_title: title,
-            category: state.activeCategory
+            post_title: postLink.dataset.postTitle || postLink.textContent.trim(),
+            category: postLink.dataset.category || ''
         });
     });
-}
-
-function applyView(view) {
-    const grid = document.querySelector('#blog-posts');
-    const btnGrid = document.querySelector('#view-grid');
-    const btnList = document.querySelector('#view-list');
-    if (!grid) return;
-
-    state.view = view;
-    grid.classList.toggle('layout-list', view === 'list');
-    if (btnGrid) btnGrid.classList.toggle('is-active', view === 'grid');
-    if (btnList) btnList.classList.toggle('is-active', view === 'list');
-    localStorage.setItem('blogView', view);
 }
