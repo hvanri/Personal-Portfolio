@@ -15,7 +15,7 @@ const translations = {
 
         'home.greeting': 'Xin chào!',
         'home.title': 'Xây dựng hệ thống thương mại đáng tin cậy, từ đầu đến cuối.',
-        'home.intro1': 'Tôi là <span class="highlight">Hà Văn Ri</span>, một lập trình viên full-stack Magento đam mê công nghệ. Hiện tại tôi đang làm việc tại <strong>Công Ty Magenest</strong>, tập trung vào phát triển ứng dụng web. Vai trò của tôi là tích hợp các module giúp việc quản trị cửa hàng trở nên thuận tiện và thông minh hơn, đồng thời tối ưu và xây dựng các gói tính năng nhằm cải thiện SEO, nâng cao tỷ lệ chuyển đổi và trải nghiệm khách hàng.',
+        'home.intro1': 'Tôi là <span class="highlight">Hà Văn Ri</span>, một lập trình viên full-stack đam mê công nghệ. Hiện tại tôi đang làm việc tại <strong>Công Ty Magenest</strong>, tập trung vào phát triển ứng dụng web. Vai trò của tôi là tích hợp các module giúp việc quản trị cửa hàng trở nên thuận tiện và thông minh hơn, đồng thời tối ưu và xây dựng các gói tính năng nhằm cải thiện SEO, nâng cao tỷ lệ chuyển đổi và trải nghiệm khách hàng.',
         'home.intro2': 'Website này là không gian cá nhân nơi tôi chia sẻ những gì học được và ghi lại hành trình nghề nghiệp của mình.',
         'home.availability.fullTime': 'Full-time at@{company}',
         'home.availability.location': 'Hanoi, Vietnam',
