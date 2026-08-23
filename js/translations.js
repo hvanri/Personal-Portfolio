@@ -65,7 +65,7 @@ const translations = {
 
         'home.greeting': 'Hi there!',
         'home.title': 'Building reliable commerce systems, end to end.',
-        'home.intro1': 'I\'m <span class="highlight">Hà Văn Ri</span>, a <strong>Full Stack Developer</strong> with 2+ years of experience building eCommerce and B2C applications. I specialize in backend development with <strong>PHP</strong> and <strong>Python</strong>, and frontend development with <strong>React</strong> and <strong>Vue.js</strong>. Experienced in CI/CD, deployment, and delivering scalable web applications from development to production, I enjoy building high-performance solutions that improve business efficiency and user experience.',
+        "home.intro1": "I'm <span class=\"highlight\">Hà Văn Ri</span>, a <strong>Full Stack Developer</strong> with 2+ years of experience delivering scalable <strong>B2B</strong> and <strong>B2C</strong> products, ranging from eCommerce platforms to business management systems. I specialize in backend development with <strong>PHP</strong>, <strong>Python</strong>, <strong>Go</strong>, and <strong>Node.js</strong>, alongside frontend development with <strong>React</strong> and <strong>Vue.js</strong>. Experienced in CI/CD, cloud deployment, and full product lifecycles, I focus on building reliable, high-performance applications that drive business growth and improve user experiences.",
         'home.intro2': 'This website is a space where I share what I\'ve learned and document my professional journey.',
         'home.availability.fullTime': 'Full-time at @{company}',
         'home.availability.location': 'Hanoi, Vietnam',
