@@ -23,59 +23,22 @@
   <body class="blog-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="container">
-      <main id="main-content" class="journal-shell">
+      <main id="main-content" class="journal">
         <header class="journal-masthead" aria-labelledby="journal-title">
-          <div class="journal-kicker">
-            <span>Engineering journal</span>
-            <span aria-hidden="true">/</span>
-            <span>Field notes</span>
-          </div>
-          <div class="journal-title-block">
-            <p class="journal-issue">Issue: ongoing</p>
-            <h1 id="journal-title">Notes from the work.</h1>
-          </div>
-          <div class="journal-intro">
-            <p>This is where I think through what I build, what I am learning, and the experiences that keep the work human.</p>
-            <div id="hero-stats" class="journal-stats" aria-label="Journal summary"></div>
-          </div>
+          <p class="journal-kicker">Field notes / 2026</p>
+          <h1 id="journal-title">Notes from the work.</h1>
+          <p class="journal-standfirst">Short entries on what I build, what I am learning, and the moments that keep the work human.</p>
         </header>
 
-        <section class="journal-controls" aria-label="Browse journal notes">
-          <div class="search-field">
-            <label class="search-box" for="blog-search">
-              <span aria-hidden="true">Search</span>
-              <input id="blog-search" type="search" placeholder="Search notes, topics, and experiments" />
-            </label>
-            <div id="blog-search-suggestions" class="search-suggestions" aria-live="polite">
-              <span class="search-suggestions__label">Suggested subjects</span>
-              <div class="search-suggestions__chips"></div>
-            </div>
-          </div>
-          <div id="blog-categories" class="filter-group" aria-label="Blog categories"></div>
-          <div class="view-toggle" role="group" aria-label="Article display density">
-            <button type="button" id="view-grid" aria-label="Expanded entries" title="Expanded entries">Expanded</button>
-            <button type="button" id="view-list" class="is-active" aria-label="Compact entries" title="Compact entries">Compact</button>
-          </div>
-        </section>
-
-        <section class="featured-section" aria-labelledby="featured-note-title">
-          <div class="section-label-row">
-            <p>Featured note</p>
-            <span>Latest entry</span>
-          </div>
+        <section class="journal-lead" aria-labelledby="journal-lead-label">
+          <p class="journal-marker" id="journal-lead-label">Latest note</p>
           <div id="blog-featured" aria-live="polite"></div>
         </section>
 
-        <section class="posts-section" aria-labelledby="latest-stories">
-          <div class="section-label-row section-label-row--archive">
-            <div>
-              <p>All notes</p>
-              <h2 id="latest-stories">The archive</h2>
-            </div>
-            <span><strong id="blog-count">0</strong> entries shown</span>
-          </div>
-          <div id="blog-posts" class="post-grid layout-list"></div>
-          <div id="blog-empty-state" class="empty-state" hidden>No notes match your current search yet.</div>
+        <section class="journal-index" aria-labelledby="journal-index-label">
+          <p class="journal-marker" id="journal-index-label">Earlier notes</p>
+          <ol id="blog-posts" class="entry-list"></ol>
+          <p id="blog-empty-state" class="journal-note" hidden>No notes published yet.</p>
         </section>
       </main>
     </div>
