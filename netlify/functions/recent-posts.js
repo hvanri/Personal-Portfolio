@@ -2,7 +2,9 @@ const NOTION_ENDPOINT = 'https://api.notion.com/v1/databases/3a90b2bb0186804d98e
 const NOTION_TOKEN = process.env.NOTION_API_TOKEN || process.env.NOTION_TOKEN;
 const NOTION_VERSION = '2022-06-28';
 
-exports.handler = async function (event) {
+// ESM, not CommonJS: package.json declares "type": "module", so Lambda loads
+// this file with the ESM loader. `exports.handler` throws at line 1 there.
+export const handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
