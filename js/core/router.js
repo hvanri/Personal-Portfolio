@@ -1,3 +1,5 @@
+import { localRouteMap } from '../config/routes.js';
+
 export function initTransitions() {
     const resetTransitionState = () => {
         document.body.classList.remove('page-transitioning');
@@ -36,16 +38,10 @@ function getNavigationHref(link) {
         return url.href;
     }
 
-    const localRoutes = {
-        '/': '/index.html',
-        '/about': '/about.html',
-        '/blog': '/blog.html',
-        '/projects': '/projects.html'
-    };
     const path = url.pathname.replace(/\/$/, '') || '/';
 
-    if (localRoutes[path]) {
-        url.pathname = localRoutes[path];
+    if (localRouteMap[path]) {
+        url.pathname = localRouteMap[path];
     }
 
     return url.href;

@@ -35,9 +35,17 @@ window.addEventListener('click', (event) => {
         return;
     }
 
-    const menuLink = target.closest('nav a');
+    const menuLink = target.closest('.primary-nav a');
     if (menuLink) {
         trackEvent(EVENTS.MENU_CLICK, { menu_item: menuLink.dataset.page || menuLink.textContent.trim() });
+    }
+
+    const footerLink = target.closest('.footer-nav a');
+    if (footerLink) {
+        trackEvent(EVENTS.MENU_CLICK, {
+            menu_item: footerLink.dataset.page || footerLink.textContent.trim(),
+            location: 'footer',
+        });
     }
 
     if (target.closest('.social-links a[href^="https://github.com"]')) {
