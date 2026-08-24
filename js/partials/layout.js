@@ -1,3 +1,16 @@
+import { primaryNavItems, footerNavItems } from '../config/routes.js';
+
+function renderNavLink(item) {
+    const href = item.path || item.href;
+    const external = Boolean(item.href);
+    const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a${attrs} href="${href}" data-page="${item.id}" data-i18n="${item.i18nKey}">${item.label}</a>`;
+}
+
+function renderNav(items, indent) {
+    return items.map(item => `${indent}${renderNavLink(item)}`).join('\n');
+}
+
 export const headerHTML = `
     <header class="site-header">
         <a class="logo" href="/" aria-label="Hà Văn Ri — home">
@@ -9,11 +22,7 @@ export const headerHTML = `
             <span class="sr-only">Open navigation</span>
         </button>
         <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
-            <a href="/" data-page="home" data-i18n="header.home">Trang chủ</a>
-            <a href="/about" data-page="about" data-i18n="header.about">Giới thiệu</a>
-            <a href="/blog" data-page="blog" data-i18n="header.blog">Blog</a>
-            <a href="/projects" data-page="projects" data-i18n="header.projects">Dự án</a>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" data-page="youtube" data-i18n="header.youtube">Youtube</a>
+${renderNav(primaryNavItems, '            ')}
         </nav>
         <div class="header-tools" aria-label="Display settings">
             <button class="lang-toggle" type="button" onclick="toggleLanguage()">EN</button>
@@ -25,6 +34,9 @@ export const headerHTML = `
 export const footerHTML = `
     <footer class="site-footer">
         <p class="footer-statement">Open to thoughtful engineering conversations.</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+${renderNav(footerNavItems, '            ')}
+        </nav>
         <div class="footer-meta">
             <a href="mailto:havanri.1707@gmail.com">havanri.1707@gmail.com</a>
             <span>Hanoi, Vietnam</span>

@@ -1,6 +1,17 @@
 [build]
   publish = "."
   functions = "netlify/functions"
+  # Regenerates sitemap.xml + robots.txt from js/config/routes.js on every deploy.
+  command = "npm run build"
+
+# Google Search Console HTML-file verification.
+# Served as-is, no redirect: the extensionless variant rewrites (200) back to the
+# real file so Netlify's pretty-URL stripping can't turn the check into a 301.
+[[redirects]]
+  from = "/google0d534718fc897d4a"
+  to = "/google0d534718fc897d4a.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/index.html"

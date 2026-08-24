@@ -1,3 +1,11 @@
+import { ROUTES } from '../config/routes.js';
+
+/** '/about.html' -> '/about', so active state also works off a local static server. */
+const fileToPath = ROUTES.reduce((map, route) => {
+    map[route.file] = route.path;
+    return map;
+}, {});
+
 export function injectLayout(headerHTML, footerHTML) {
     const container = document.querySelector('.container');
     container.insertAdjacentHTML('afterbegin', headerHTML);
@@ -6,17 +14,20 @@ export function injectLayout(headerHTML, footerHTML) {
     initNavigation();
 }
 
-function setActiveNav() {
-    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+function normalizePath(pathname) {
+    return fileToPath[pathname] || pathname.replace(/\/$/, '') || '/';
+}
 
-    document.querySelectorAll('nav a').forEach(link => {
+function setActiveNav() {
+    const currentPath = normalizePath(window.location.pathname);
+
+    document.querySelectorAll('.primary-nav a, .footer-nav a').forEach(link => {
         const linkUrl = new URL(link.getAttribute('href'), window.location.origin);
         if (linkUrl.origin !== window.location.origin) return;
 
-        const linkHref = linkUrl.pathname.replace(/\/$/, '') || '/';
-
-        if (linkHref === currentPath) {
+        if (normalizePath(linkUrl.pathname) === currentPath) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
         }
     });
 }
