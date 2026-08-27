@@ -315,7 +315,7 @@ const headerHTML = `
             <a href="/about" data-page="about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
             <a href="/blog" data-page="blog" data-vi="Blog" data-en="Blog">Blog</a>
             <a href="/projects" data-page="projects" data-vi="Dự án" data-en="Projects">Dự án</a>
-            <a href="https://www.youtube.com/" data-page="youtube" data-vi="Youtube" data-en="Youtube">Youtube</a>
+            <a href="https://www.youtube.com/watch?v=BO9Slf3ih-4" data-page="youtube" data-vi="Youtube" data-en="Youtube">Youtube</a>
         </nav>
         <div class="header-icons">
             <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
@@ -334,7 +334,7 @@ const footerHTML = `
 <!--                <a href="/about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>-->
 <!--                <a href="/blog" data-vi="Blog" data-en="Blog">Blog</a>-->
 <!--                <a href="/projects" data-vi="Dự án" data-en="Projects">Dự án</a>-->
-<!--                <a href="https://www.youtube.com/" data-vi="Youtube" data-en="Youtube">Youtube</a>-->
+<!--                <a href="https://www.youtube.com/watch?v=BO9Slf3ih-4" data-vi="Youtube" data-en="Youtube">Youtube</a>-->
 <!--            </div>-->
 <!--            <div class="footer-social">-->
 <!--                <a href="#" title="Twitter" aria-label="Twitter">🐦</a>-->
