@@ -74,7 +74,7 @@ export const ROUTES = [
 export const EXTERNAL_NAV = [
     {
         id: 'youtube',
-        href: 'https://www.youtube.com/',
+        href: 'https://www.youtube.com/watch?v=BO9Slf3ih-4',
         i18nKey: 'header.youtube',
         label: 'Youtube',
         inPrimaryNav: true,
