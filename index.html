@@ -11,63 +11,68 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@800&family=Newsreader:opsz,wght@6..72,400..700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/layout/header.css">
-    <link rel="stylesheet" href="css/layout/footer.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/layout/editorial.css">
     <link rel="stylesheet" href="css/pages/home.css">
 </head>
-<body class="home-page">
+<body class="ed-page home-page">
 <a class="skip-link" href="#main-content">Skip to content</a>
 <div class="container">
-    <!-- Header will be inserted here by JavaScript -->
+    <!-- Shared site header and footer: filled from js/partials/layout.js by js/core/layout.js. -->
+    <header class="ed-header" data-site-header></header>
 
     <main id="main-content" class="home-ledger">
-        <section class="home-hero" aria-labelledby="home-title">
-            <div class="hero-context">
-                <p class="hero-index">01 / BUILD LEDGER</p>
-                <p data-i18n="home.greeting">Xin chào!</p>
-            </div>
-            <div class="hero-statement">
-                <h1 id="home-title" data-i18n="home.title">Building reliable commerce systems, end to end.</h1>
-                <div class="hero-copy">
-                    <p data-i18n="home.intro1">
-                        Tôi là <span class="highlight">Hà Văn Ri</span>, một lập trình viên full-stack đam mê công nghệ.
-                    </p>
-                    <p data-i18n="home.intro2">Website này là không gian cá nhân nơi tôi chia sẻ những gì học được và ghi lại hành trình nghề nghiệp của mình.</p>
+        <section class="hp-hero" aria-labelledby="home-title">
+            <div class="hp-copy">
+                <p class="hp-role">Fullstack Developer</p>
+                <h1 id="home-title" class="hp-name">Hà Văn Ri</h1>
+                <p class="hp-headline">
+                    <span class="hp-line">I build products</span>
+                    <span class="hp-line">that <span class="hp-work">work.<svg class="hp-scribble" viewBox="-1 -1 242 24" aria-hidden="true" focusable="false"><path d="M239.5 3 238.3 1 236.3.3 221.2 0 156.7 1 103.8 3 53.8 6.2 14.8 10 1.8 12-.2 13.7-.5 15.5.7 17 3.2 17.5 46.3 13 73.7 11 146.7 7.2 149.8 7.5 144.8 9 141.2 9.2 106.8 16 104.7 17 103.5 18.5 103.5 20.2 105.3 21.8 112.2 21.8 132.7 20 191.3 16.8 205 16.8 206.7 15.5 207 13.5 206 12 204.3 11.2 174.3 12 165 13 158.5 13 157.7 12.5 166.8 10.8 191.5 8 208.5 6.8 237.3 5.8 238.8 4.7Z"/></svg></span></span>
+                </p>
+                <p class="hp-lede">Building eCommerce features. Deploying systems. Connecting with clients in English and Chinese.</p>
+                <div class="ed-langs hp-langs">
+                    <p class="ed-langs-label" id="hp-languages">Languages</p>
+                    <ul class="ed-lang-list" aria-labelledby="hp-languages">
+                        <li class="ed-badge"><span>English · Fluent</span></li>
+                        <li class="ed-badge"><span><span lang="zh-Hans">中文</span> · Fluent</span></li>
+                    </ul>
                 </div>
-                <div id="hero-availability" class="hero-availability" aria-label="Availability"></div>
-                <div class="hero-actions">
-                    <a class="text-action" href="/projects">Selected work <span aria-hidden="true">↗</span></a>
-                    <a class="text-action" href="mailto:havanri.1707@gmail.com">Write to me <span aria-hidden="true">↗</span></a>
-                </div>
+                <a class="hp-cta ed-button" href="/projects">Explore my work <svg class="ed-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M1 17 17 1M4.5 1H17v12.5"/></svg></a>
+                <p class="hp-location">
+                    <svg class="hp-pin" viewBox="0 0 19 25" aria-hidden="true" focusable="false"><path d="M9.5 0A9.5 9.5 0 0 0 0 9.5C0 16.6 9.5 25 9.5 25S19 16.6 19 9.5A9.5 9.5 0 0 0 9.5 0Zm0 13.4a3.9 3.9 0 1 1 0-7.8 3.9 3.9 0 0 1 0 7.8Z"/></svg>
+                    Hanoi, Vietnam
+                </p>
+                <ul class="ed-metrics hp-metrics">
+                    <li class="ed-metric"><strong class="ed-metric-value">3+</strong><span class="ed-metric-label">Years of<br>experience</span></li>
+                    <li class="ed-metric"><strong class="ed-metric-value">10+</strong><span class="ed-metric-label">Live<br>projects</span></li>
+                </ul>
             </div>
-            <aside class="hero-record" aria-label="Current record">
-                <span>NOW</span>
-                <strong>Full-stack developer</strong>
-                <p>Enterprise commerce · Hanoi</p>
 
-                <div class="signature" data-signature>
-                    <button class="signature-trigger" type="button" aria-expanded="false" aria-controls="signature-note">
-                        <span class="signature-figure" aria-hidden="true">
-                            <span class="signature-wave signature-wave--spin"></span>
-                            <span class="signature-wave signature-wave--sweep"></span>
-                            <span class="signature-wave signature-wave--trail"></span>
-                        </span>
-                        <span class="signature-label" data-i18n="home.signature.label">Bamboo Flute</span>
-                    </button>
-                    <p class="signature-note" id="signature-note" data-i18n="home.signature.note" hidden>When I'm not building commerce systems, I spend time practicing bamboo flute.</p>
-                </div>
-            </aside>
+            <figure class="hp-art">
+                <svg class="hp-art-shapes" viewBox="690 126 846 898" aria-hidden="true" focusable="false">
+                    <defs>
+                        <polygon id="hp-backdrop-shape" points="867,140 1383,188.5 1321,592.4 1432,569.4 1497,875 1240,929.4 722,998"/>
+                        <clipPath id="hp-backdrop-clip"><use href="#hp-backdrop-shape"/></clipPath>
+                    </defs>
+                    <path class="hp-crosshair" d="M1388 203.5h74M1425.5 166v74M774 401.5h75M811.5 363v74"/>
+                    <use class="hp-backdrop" href="#hp-backdrop-shape"/>
+                    <path class="hp-crosshair hp-crosshair--on-blue" d="M774 401.5h75" clip-path="url(#hp-backdrop-clip)"/>
+                    <path class="hp-asterisk" d="M1327.4 239.2 1328.4 298.2 1285.0 260.1 1266.2 282.4 1309.6 318.1 1256.0 329.6 1261.0 358.1 1314.1 344.8 1286.9 385.0 1310.6 401.5 1342.6 353.6 1379.5 402.8 1402.9 384.6 1368.1 343.1 1426.4 347.8 1428.2 318.9 1371.1 316.6 1415.8 280.1 1396.2 258.1 1355.1 293.8 1356.2 239.9Z"/>
+                </svg>
+                <img class="hp-portrait" src="assets/images/home/ha-van-ri-portrait.webp" width="729" height="843" fetchpriority="high"
+                     alt="Hà Văn Ri in glasses and a black jacket, making a peace sign">
+                <p class="hp-tag" aria-hidden="true"><span class="hp-tag-code">&lt;/&gt;</span>Built with<br>purpose.</p>
+            </figure>
         </section>
 
         <section class="contact-record" aria-labelledby="contact-title">
-            <p id="contact-title" class="section-index" data-i18n="home.contactLabel"><strong>Liên hệ tôi trên:</strong></p>
+            <p id="contact-title" class="section-index ed-label" data-i18n="home.contactLabel"><strong>Liên hệ tôi trên:</strong></p>
             <div class="social-links">
                 <!-- <a href="#" target="_blank" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M18.42,14.009L27.891,3h-2.244l-8.224,9.559L10.855,3H3.28l9.932,14.455L3.28,29h2.244l8.684-10.095,6.936,10.095h7.576l-10.301-14.991h0Zm-3.074,3.573l-1.006-1.439L6.333,4.69h3.447l6.462,9.243,1.006,1.439,8.4,12.015h-3.447l-6.854-9.804h0Z"></path></svg></a> -->
                 <a href="https://github.com/hvanri" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16,2.345c7.735,0,14,6.265,14,14-.002,6.015-3.839,11.359-9.537,13.282-.7,.14-.963-.298-.963-.665,0-.473,.018-1.978,.018-3.85,0-1.312-.437-2.152-.945-2.59,3.115-.35,6.388-1.54,6.388-6.912,0-1.54-.543-2.783-1.435-3.762,.14-.35,.63-1.785-.14-3.71,0,0-1.173-.385-3.85,1.435-1.12-.315-2.31-.472-3.5-.472s-2.38,.157-3.5,.472c-2.677-1.802-3.85-1.435-3.85-1.435-.77,1.925-.28,3.36-.14,3.71-.892,.98-1.435,2.24-1.435,3.762,0,5.355,3.255,6.563,6.37,6.913-.403,.35-.77,.963-.893,1.872-.805,.368-2.818,.963-4.077-1.155-.263-.42-1.05-1.452-2.152-1.435-1.173,.018-.472,.665,.017,.927,.595,.332,1.277,1.575,1.435,1.978,.28,.787,1.19,2.293,4.707,1.645,0,1.173,.018,2.275,.018,2.607,0,.368-.263,.787-.963,.665-5.719-1.904-9.576-7.255-9.573-13.283,0-7.735,6.265-14,14-14Z"></path></svg></a>
@@ -79,9 +84,9 @@
             </div>
         </section>
 
-        <section class="work-chapters" aria-labelledby="work-title">
+        <section class="work-chapters" id="experience" aria-labelledby="work-title">
             <div class="section-heading">
-                <p class="section-index">02 / WORK</p>
+                <p class="section-index ed-label">02 / WORK</p>
                 <h2 id="work-title" data-i18n="home.work.title">Kinh nghiệm làm việc</h2>
             </div>
 
@@ -159,14 +164,14 @@
             </article>
 
             <footer class="chapters-outro">
-                <a class="text-action" href="/projects" data-i18n="home.work.featured.title">Dự Án Nổi Bật</a>
-                <a class="text-action" href="/about" data-i18n="home.work.more.title">Xem thêm kinh nghiệm</a>
+                <a class="ed-link" href="/projects" data-i18n="home.work.featured.title">Dự Án Nổi Bật</a>
+                <a class="ed-link" href="/about" data-i18n="home.work.more.title">Xem thêm kinh nghiệm</a>
             </footer>
         </section>
 
         <section class="notes-ledger" aria-labelledby="notes-title">
             <div class="section-heading">
-                <p class="section-index">03 / FIELD NOTES</p>
+                <p class="section-index ed-label">03 / FIELD NOTES</p>
                 <h2 id="notes-title" data-i18n="home.posts.title">Bài viết gần đây</h2>
             </div>
             <ul id="recent-posts" class="post-list">
@@ -174,19 +179,10 @@
             </ul>
         </section>
     </main>
+
+    <footer class="ed-footer" data-site-footer></footer>
 </div>
 
 <script type="module" src="js/main.js"></script>
-<script type="module">
-  import { trackEvent } from './js/analytics/analytics.js';
-  import { EVENTS } from './js/analytics/events.js';
-
-  document.addEventListener('click', (event) => {
-    const cvLink = event.target.closest('a[href*=".pdf"], a[href*="cv"], a[href*="resume"]');
-    if (cvLink) {
-      trackEvent(EVENTS.DOWNLOAD_CV, { file_name: cvLink.getAttribute('href') || 'cv' });
-    }
-  });
-</script>
 </body>
 </html>

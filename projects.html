@@ -14,67 +14,52 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@800&family=Newsreader:opsz,wght@6..72,400..700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/layout/header.css" />
-    <link rel="stylesheet" href="css/layout/footer.css" />
+    <link rel="stylesheet" href="css/layout/editorial.css" />
     <link rel="stylesheet" href="css/pages/projects.css" />
     <link rel="stylesheet" href="css/pages/project-modal.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
   </head>
-  <body class="projects-page">
+  <body class="ed-page projects-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="container">
-      <!-- Header injected here -->
+      <!-- Shared site header and footer: filled from js/partials/layout.js by js/core/layout.js. -->
+      <header class="ed-header" data-site-header></header>
 
-      <main id="main-content" class="projects">
-        <header class="projects-header" aria-labelledby="projects-title">
-          <div class="archive-kicker">
-            <span>Projects</span>
-            <span aria-hidden="true">/</span>
-            <span>Engineering archive</span>
-          </div>
-          <div class="projects-heading">
-            <p class="projects-index" aria-hidden="true">Index / 01-08</p>
-            <h1 id="projects-title" data-vi="Dự Án" data-en="Projects">Dự Án</h1>
-          </div>
-          <p
-            class="projects-intro"
-            data-vi="Dưới đây là một số dự án và công việc tiêu biểu mà tôi đã tham gia, tập trung vào Ecommerce, hệ thống quản trị và trải nghiệm người dùng."
-            data-en="Below are some selected projects and professional work I've been involved in, focusing on e-commerce systems, administration, and user experience."
-          >
-            Dưới đây là một số dự án và công việc tiêu biểu mà tôi đã tham gia,
-            tập trung vào Ecommerce, hệ thống quản trị và trải nghiệm người
-            dùng.
-          </p>
-          <div class="archive-summary" aria-label="Archive summary">
-            <span>Production systems</span>
-            <span>Personal experiments</span>
-            <span>8 documented entries</span>
-          </div>
-        </header>
-
-        <section class="archive-controls" aria-label="Project archive controls">
-          <p class="archive-controls-label">Browse by system type</p>
-          <div class="project-filters" role="group" aria-label="Project categories">
-          <button type="button" class="filter-btn active" data-category="all" aria-pressed="true">Tất cả</button>
-          <button type="button" class="filter-btn" data-category="ecommerce" aria-pressed="false">
-            Ecommerce
-          </button>
-          <button type="button" class="filter-btn" data-category="website" aria-pressed="false">Website</button>
-          <button type="button" class="filter-btn" data-category="backend" aria-pressed="false">Backend</button>
+      <main id="main-content" class="projects pr">
+        <section class="pr-hero" aria-labelledby="projects-title">
+          <div class="pr-hero-inner">
+            <div class="pr-hero-title">
+              <p class="ed-eyebrow">02 / Selected work</p>
+              <h1 id="projects-title" class="pr-title">Built to <br><span class="pr-title-accent">work<span class="pr-title-dot" aria-hidden="true"></span><svg class="pr-title-scribble" viewBox="-1 -1 234 26" aria-hidden="true" focusable="false"><path d="M232 3.5 231.4 2.2 229.4.8 214.2 0 187.1-.1 130.4 1.8 72.9 6.9 32.2 12.1 3.6 17 .9 18.1-.5 20.9.9 23 4 23.6 70.6 14.1 127.8 8.1 128.8 8.4 125.2 9.8 111.8 11.9 98.8 15 95.6 17 95.5 19.2 97 21 99 21.5 119.9 18.9 142.9 16.9 162.8 15.9 193 15.8 195.4 14.1 195.8 12.9 194.5 10.9 192.6 10 177.9 9.8 160 10.8 155.4 10.4 162.9 8.9 192.4 6.6 228.9 6.2 230.8 5.5Z"/></svg></span></h1>
+            </div>
+            <div class="pr-hero-aside">
+              <p class="pr-statement">Real products.<br> Practical engineering.</p>
+              <p class="pr-hero-lede">A selection of personal products<br> and web applications.</p>
+            </div>
           </div>
         </section>
 
+        <section class="archive-controls pr-filters" aria-label="Project archive controls">
+          <div class="project-filters ed-chips" role="group" aria-label="Project categories">
+            <button type="button" class="filter-btn ed-chip active" data-category="all" aria-pressed="true">All</button>
+            <button type="button" class="filter-btn ed-chip" data-category="ecommerce" aria-pressed="false">eCommerce</button>
+            <button type="button" class="filter-btn ed-chip" data-category="website" aria-pressed="false">Web applications</button>
+            <button type="button" class="filter-btn ed-chip" data-category="backend" aria-pressed="false">Backend</button>
+          </div>
+        </section>
+
+        <section class="pr-work" aria-labelledby="pr-work-title">
+          <h2 id="pr-work-title" class="sr-only">Projects</h2>
         <!-- Archive entries -->
-        <div class="projects-grid">
+        <div class="projects-grid pr-list">
           <article class="project-card project-card--featured" data-category="ecommerce website">
-            <div class="project-image">
+            <div class="project-image project-image--logo">
               <span class="status-badge ongoing">Ongoing</span>
               <img
                 src="assets/images/projects/sm_brand.jpeg"
@@ -124,7 +109,7 @@
               <div class="project-links">
                 <button
                   type="button"
-                  class="project-link primary"
+                  class="project-link primary ed-button ed-button--arrow"
                   data-modal-target="modal-sm-markets"
                   data-vi="Xem chi tiết"
                   data-en="View details"
@@ -134,19 +119,15 @@
                 <a
                   target="_blank"
                   href="https://smmarkets.ph/"
-                  class="project-link secondary"
+                  class="project-link secondary ed-link"
                   >Live Site</a
                 >
               </div>
             </div>
           </article>
 
-          <div class="archive-divider" aria-hidden="true">
-            <span>Selected production systems</span>
-          </div>
-
           <article class="project-card" data-category="ecommerce website">
-            <div class="project-image">
+            <div class="project-image project-image--logo">
               <span class="status-badge ongoing">Ongoing</span>
               <img
                 src="assets/images/projects/oroca_brand.avif"
@@ -196,7 +177,7 @@
               <div class="project-links">
                 <button
                   type="button"
-                  class="project-link primary"
+                  class="project-link primary ed-button ed-button--arrow"
                   data-modal-target="modal-oroca"
                   data-vi="Xem chi tiết"
                   data-en="View details"
@@ -206,7 +187,7 @@
                 <a
                   target="_blank"
                   href="https://oroca.vn/"
-                  class="project-link secondary"
+                  class="project-link secondary ed-link"
                 >
                   Live site
                 </a>
@@ -260,7 +241,7 @@
               <div class="project-links">
                 <button
                   type="button"
-                  class="project-link primary"
+                  class="project-link primary ed-button ed-button--arrow"
                   data-modal-target="modal-travel-hue-mate"
                   data-vi="Xem chi tiết"
                   data-en="View details"
@@ -270,7 +251,7 @@
                 <a
                   target="_blank"
                   href="https://travelhuemate.netlify.app/"
-                  class="project-link secondary"
+                  class="project-link secondary ed-link"
                 >
                   Live Site
                 </a>
@@ -278,7 +259,7 @@
             </div>
           </article>
           <article class="project-card" data-category="ecommerce website">
-            <div class="project-image">
+            <div class="project-image project-image--logo">
               <span
                 class="status-badge completed"
                 data-vi="Hoàn thành"
@@ -335,7 +316,7 @@
               <div class="project-links">
                 <button
                   type="button"
-                  class="project-link primary"
+                  class="project-link primary ed-button ed-button--arrow"
                   data-modal-target="modal-the-beauty-secrets"
                   data-vi="Xem chi tiết"
                   data-en="View details"
@@ -345,7 +326,7 @@
                 <a
                   target="_blank"
                   href="https://thebeautysecrets.com/"
-                  class="project-link secondary"
+                  class="project-link secondary ed-link"
                   data-vi="Trang web"
                   data-en="Website"
                 >
@@ -356,7 +337,7 @@
           </article>
 
           <article class="project-card" data-category="ecommerce website">
-            <div class="project-image">
+            <div class="project-image project-image--logo">
               <span
                 class="status-badge completed"
                 data-vi="Hoàn thành"
@@ -412,7 +393,7 @@
               <div class="project-links">
                 <button
                   type="button"
-                  class="project-link primary"
+                  class="project-link primary ed-button ed-button--arrow"
                   data-modal-target="modal-the-body-shop"
                   data-vi="Xem chi tiết"
                   data-en="View details"
@@ -422,7 +403,7 @@
                 <a
                   target="_blank"
                   href="https://www.thebodyshop.com/"
-                  class="project-link secondary"
+                  class="project-link secondary ed-link"
                   data-vi="Trang web"
                   data-en="Website"
                 >
@@ -433,7 +414,7 @@
           </article>
 
           <article class="project-card" data-category="ecommerce website">
-            <div class="project-image">
+            <div class="project-image project-image--logo">
               <span
                 class="status-badge completed"
                 data-vi="Hoàn thành"
@@ -490,7 +471,7 @@
               <div class="project-links">
                 <button
                   type="button"
-                  class="project-link primary"
+                  class="project-link primary ed-button ed-button--arrow"
                   data-modal-target="modal-qasr-al-awani"
                   data-vi="Xem chi tiết"
                   data-en="View details"
@@ -500,7 +481,7 @@
                 <a
                   target="_blank"
                   href="https://www.qasralawani.com/"
-                  class="project-link secondary"
+                  class="project-link secondary ed-link"
                   data-vi="Trang web"
                   data-en="Website"
                 >
@@ -509,10 +490,6 @@
               </div>
             </div>
           </article>
-
-          <div class="archive-divider archive-divider--experiments" aria-hidden="true">
-            <span>Independent systems &amp; experiments</span>
-          </div>
 
           <article class="project-card project-card--experiment" data-category="website">
             <div class="project-image">
@@ -546,7 +523,7 @@
               <div class="project-links">
                 <button
                   type="button"
-                  class="project-link primary"
+                  class="project-link primary ed-button ed-button--arrow"
                   data-modal-target="modal-portfolio"
                   data-vi="Xem chi tiết"
                   data-en="View details"
@@ -557,7 +534,7 @@
                 <a
                   target="_blank"
                   href="https://github.com/hvanri/Personal-Portfolio"
-                  class="project-link secondary"
+                  class="project-link secondary ed-link"
                 >
                   GitHub
                 </a>
@@ -596,7 +573,7 @@
               <div class="project-links">
                 <button
                   type="button"
-                  class="project-link primary"
+                  class="project-link primary ed-button ed-button--arrow"
                   data-modal-target="modal-order-management"
                   data-vi="Xem chi tiết"
                   data-en="View details"
@@ -607,7 +584,7 @@
                 <a
                   target="_blank"
                   href="https://ordermanagementwithreact-hvanri.netlify.app/"
-                  class="project-link secondary"
+                  class="project-link secondary ed-link"
                 >
                   Live Site
                 </a>
@@ -632,7 +609,26 @@
             </div>
           </article>
         </div>
+          <p class="pr-empty" hidden>No projects in this category yet.</p>
+        </section>
+
+        <section class="pr-process" aria-labelledby="process-title">
+          <h2 id="process-title" class="pr-process-title">How I approach<br> a build<span class="ed-dot" aria-hidden="true"></span></h2>
+          <ol class="pr-steps">
+            <li><span class="pr-step-num">01</span><h3>Understand</h3><p>Clarify the problem, users and goals.</p></li>
+            <li><span class="pr-step-num">02</span><h3>Build</h3><p>Design and develop with clean, maintainable code.</p></li>
+            <li><span class="pr-step-num">03</span><h3>Deploy</h3><p>Ship to production and make it real.</p></li>
+            <li><span class="pr-step-num">04</span><h3>Improve</h3><p>Learn from real usage and iterate.</p></li>
+          </ol>
+        </section>
+
+        <section class="ed-contact pr-contact" aria-labelledby="pr-contact-title">
+          <h2 id="pr-contact-title" class="pr-contact-title">Have something<br> worth <span class="pr-contact-em">building<svg class="pr-contact-scribble" viewBox="-1 -1 106 11" aria-hidden="true" focusable="false"><path d="M104 1.1 102.5.1 73.4-.6 47.1.9 19.6 3.8.9 6.4-.2 6.9-.5 8.1.4 8.9 23.8 5.8 50 2.9 52 3.5 51.1 4.1 45.8 5.2 44.8 6.1 44.8 7.1 46.4 8 61.1 6.4 85 6.4 86.6 5.4 86.2 4 80.6 4.4 73.8 3.4 84 2 92.1 1.8 102.9 2.4 103.9 1.9Z"/></svg></span>?</h2>
+          <a class="ed-talk ed-talk--light" href="mailto:havanri.1707@gmail.com">Let’s talk <svg class="ed-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M1 17 17 1M4.5 1H17v12.5"/></svg></a>
+        </section>
       </main>
+
+      <footer class="ed-footer" data-site-footer></footer>
     </div>
 
     <!-- ============ VIEW DETAILS MODALS ============ -->
@@ -1259,6 +1255,14 @@
               category === "all" || cardCategories.includes(category);
             card.style.display = shouldShow ? "" : "none";
           });
+
+          const emptyState = document.querySelector(".pr-empty");
+          if (emptyState) {
+            const hasMatch = [...cards].some(
+              (card) => !card.classList.contains("project-card--future") && card.style.display !== "none"
+            );
+            emptyState.hidden = hasMatch;
+          }
         });
       });
 
