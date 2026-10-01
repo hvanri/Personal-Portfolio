@@ -1,0 +1,175 @@
+/* Portfolio design system — shared by Home, About, Projects and Blog.
+ *
+ * One scale unit: --ed-s is one pixel of the 1038px About/Projects/Blog comps. It grows with
+ * the viewport up to the 1536px container of the Home comp (1536 / 1038 = 1.4798), so every
+ * page scales the same way and the shared header/footer line up across pages. Below 56rem the
+ * pages switch to stacked layouts in rem with 1.25rem gutters.
+ *
+ * Contents: tokens · chrome (header, footer) · type (eyebrow, label) · controls (pill, button,
+ * chip, text link) · language badges and metrics.
+ */
+.ed-page {
+    --ed-paper: #fff;
+    --ed-ink: #0a0a0a;
+    --ed-text: #1c1c1c;
+    --ed-muted: #555;
+    --ed-rule: #dedede;
+    --ed-rule-mid: #bdbdbd;
+    --ed-rule-strong: #5a5a5a;
+    --ed-control: #5f5f5f;
+    --ed-blue: #0058fd;
+    --ed-blue-deep: #0046ca;
+    --ed-orange: #fd542b;
+    --ed-night: #121212;
+    --ed-font-display: "Anton", Impact, "Arial Narrow", sans-serif;
+    --ed-font-head: "Inter Tight", "Inter", "Helvetica Neue", Arial, sans-serif;
+    --ed-font-ui: "Inter", "Helvetica Neue", Arial, "PingFang SC", "Noto Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+    --ed-font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --ed-font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+    --ed-font-hand: "Caveat", "Segoe Print", cursive;
+    --ed-arrow-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none' stroke='%23000' stroke-width='1.7'%3E%3Cpath d='M1 17 17 1M4.5 1H17v12.5'/%3E%3C/svg%3E");
+    --color-focus: var(--ed-blue);
+}
+body.ed-page { padding: 0; color: var(--ed-ink); font-family: var(--ed-font-ui); }
+body.ed-page:not(.dark-mode) { --color-paper: var(--ed-paper); }
+body.dark-mode.ed-page { --ed-paper: var(--color-paper); --ed-ink: var(--color-ink); --ed-text: var(--color-ink-raised); --ed-muted: var(--color-muted); --ed-rule: var(--color-rule); }
+.ed-page .container { width: 100%; container-type: inline-size; --ed-s: min(100cqw / 1038, 1.4798px); }
+.ed-page :focus-visible { outline: 2px solid var(--ed-blue); outline-offset: 3px; }
+.ed-contact :focus-visible { outline-color: #fff; }
+
+.ed-dot { display: inline-block; width: .21em; height: .21em; margin-left: .07em; vertical-align: -.02em; border-radius: 50%; background: var(--ed-orange); -webkit-text-stroke: 0; }
+.ed-arrow { flex: none; width: .62em; height: .62em; fill: none; stroke: currentColor; stroke-width: 1.7; }
+
+/* ---- Chrome: header ------------------------------------------------------------------
+ * Markup comes from js/partials/layout.js into <header class="ed-header" data-site-header>.
+ * Nav is centred on the container, nudged right as in all four comps. */
+.ed-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: calc(1038 * var(--ed-s));
+    height: calc(76 * var(--ed-s));
+    margin-inline: auto;
+    padding: 0 calc(55 * var(--ed-s)) 0 calc(54 * var(--ed-s));
+    color: var(--ed-ink);
+}
+.ed-brand { display: flex; align-items: center; justify-self: start; gap: calc(31 * var(--ed-s)); color: inherit; text-decoration: none; }
+.ed-monogram { font-family: var(--ed-font-ui); font-size: calc(46 * var(--ed-s)); font-weight: 800; line-height: .8; letter-spacing: -.06em; }
+.ed-monogram-dot { display: inline-block; width: .28em; height: .28em; margin-left: .06em; border-radius: 50%; background: var(--ed-orange); }
+.ed-brand-name { position: relative; top: calc(2 * var(--ed-s)); font-size: calc(17.5 * var(--ed-s)); font-weight: 700; line-height: 1; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; }
+.ed-header .ed-nav { display: flex; gap: calc(34 * var(--ed-s)); margin-left: calc(24 * var(--ed-s)); }
+.ed-nav a { position: relative; top: calc(3 * var(--ed-s)); color: var(--ed-text); font-family: var(--ed-font-ui); font-size: calc(12.5 * var(--ed-s)); font-weight: 400; line-height: 1; letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }
+/* Reserve the bold width so the active (600) item never shifts its neighbours. */
+.ed-nav a { display: inline-flex; flex-direction: column; align-items: center; }
+.ed-nav a::before { content: attr(data-label); height: 0; overflow: hidden; visibility: hidden; font-weight: 600; }
+.ed-nav a:hover { color: var(--ed-blue); }
+.ed-nav a[aria-current="page"] { color: var(--ed-ink); font-weight: 600; }
+.ed-nav a[aria-current="page"]::after { content: ""; position: absolute; left: calc(-2.5 * var(--ed-s)); right: calc(-2.5 * var(--ed-s)); top: calc(100% + 7 * var(--ed-s)); height: max(2px, calc(2 * var(--ed-s))); background: var(--ed-orange); }
+.ed-header .ed-talk { justify-self: end; }
+
+/* ---- Chrome: footer ---------------------------------------------------------------- */
+.ed-footer { display: flex; align-items: center; width: calc(1038 * var(--ed-s)); height: calc(49 * var(--ed-s)); margin-inline: auto; padding: 0 calc(55 * var(--ed-s)) 0 calc(54 * var(--ed-s)); color: var(--ed-ink); }
+.ed-footer-brand { color: inherit; text-decoration: none; }
+.ed-footer .ed-monogram { font-size: calc(25 * var(--ed-s)); }
+.ed-footer-name { margin-left: calc(22 * var(--ed-s)); font-size: calc(13.5 * var(--ed-s)); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.ed-footer-links { display: flex; align-items: center; margin-left: auto; }
+.ed-footer-links a { display: inline-flex; align-items: center; gap: .45em; color: var(--ed-ink); font-size: calc(13 * var(--ed-s)); font-weight: 500; text-decoration: none; }
+.ed-footer-links a:hover { color: var(--ed-blue); }
+.ed-footer-links a + a { margin-left: calc(28 * var(--ed-s)); padding-left: calc(28 * var(--ed-s)); border-left: 1px solid var(--ed-rule); }
+
+/* ---- Type -------------------------------------------------------------------------- */
+/* Numbered hero eyebrow: "01 / ABOUT ME", "02 / SELECTED WORK", "03 / NOTES & IDEAS". */
+.ed-eyebrow { margin: 0; color: var(--ed-orange); font-family: var(--ed-font-ui); font-size: calc(17.5 * var(--ed-s)); font-weight: 600; line-height: 1; letter-spacing: .01em; text-transform: uppercase; }
+/* Small section label: "02 / JOURNEY", "04 / EXPERTISE", "LATEST NOTES". */
+.ed-label { margin: 0; color: var(--ed-orange); font-family: var(--ed-font-ui); font-size: calc(13 * var(--ed-s)); font-weight: 700; line-height: 1; letter-spacing: .12em; text-transform: uppercase; }
+
+/* ---- Controls ---------------------------------------------------------------------- */
+/* Outlined pill ("Let's talk"); --light is the white version used on blue bands. */
+.ed-talk { display: inline-flex; align-items: center; justify-content: center; gap: .5em; width: calc(151 * var(--ed-s)); height: calc(41 * var(--ed-s)); border: max(1px, calc(1.5 * var(--ed-s))) solid currentColor; border-radius: 999px; color: var(--ed-ink); font-family: var(--ed-font-ui); font-size: calc(17.5 * var(--ed-s)); font-weight: 700; line-height: 1; text-decoration: none; white-space: nowrap; transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.ed-talk:hover { background: var(--ed-ink); color: var(--ed-paper); }
+.ed-talk--light { border-color: #fff; background: #fff; color: var(--ed-ink); font-weight: 600; }
+.ed-talk--light:hover { background: var(--ed-ink); border-color: var(--ed-ink); color: #fff; }
+
+/* Filled primary button. Pages set size; colour, shape, weight and arrow are shared. */
+.ed-button { display: inline-flex; align-items: center; justify-content: center; gap: .55em; border: 0; border-radius: 999px; background: var(--ed-blue); color: #fff; cursor: pointer; font-family: var(--ed-font-ui); font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap; transition: background-color var(--dur-short) var(--ease-out); }
+.ed-button:hover { background: var(--ed-blue-deep); }
+
+/* Filter chip (Projects categories, Blog categories). */
+.ed-chips { display: flex; flex-wrap: wrap; gap: calc(10 * var(--ed-s)); }
+.ed-chip { display: inline-flex; align-items: center; justify-content: center; min-width: calc(60 * var(--ed-s)); height: calc(34 * var(--ed-s)); padding: 0 calc(18 * var(--ed-s)); border: max(1px, calc(1.5 * var(--ed-s))) solid var(--ed-control); border-radius: 999px; background: var(--ed-paper); color: var(--ed-ink); cursor: pointer; font-family: var(--ed-font-ui); font-size: calc(14 * var(--ed-s)); line-height: 1; transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.ed-chip:hover { border-color: var(--ed-blue); color: var(--ed-blue); }
+.ed-chip[aria-pressed="true"] { border-color: var(--ed-blue); background: var(--ed-blue); color: #fff; }
+
+/* Underlined text link with an arrow ("Read article", "Visit website"). */
+.ed-link { display: inline-flex; align-items: center; gap: .6em; padding: 0 .3em calc(8 * var(--ed-s)) .05em; border: 0; border-bottom: max(2px, calc(2 * var(--ed-s))) solid var(--ed-orange); background: none; color: var(--ed-ink); cursor: pointer; font-family: var(--ed-font-ui); font-weight: 500; line-height: 1; text-decoration: none; white-space: nowrap; }
+.ed-link:hover { color: var(--ed-blue); }
+.ed-link::after, .ed-button--arrow::after { content: ""; flex: none; width: .7em; height: .7em; background: currentColor; -webkit-mask: var(--ed-arrow-icon) center / contain no-repeat; mask: var(--ed-arrow-icon) center / contain no-repeat; }
+
+/* ---- Contact band (blue) -------------------------------------------------------------- */
+.ed-contact { position: relative; background: var(--ed-blue); color: #fff; }
+
+/* ---- Language badges and metrics (Home, About) ----------------------------------------
+ * Sizes are in --u, which each page maps to its own comp scale; spacing comes from the
+ * comps, and each page can tune spacing and text fit with the --ed-* properties. */
+.ed-langs { --u: var(--ed-s); display: flex; align-items: center; gap: calc(var(--ed-langs-gap, 27) * var(--u)); }
+.ed-langs-label { margin: 0; color: var(--ed-muted); font-size: max(11px, calc(16.5 * var(--u))); font-weight: 500; line-height: 1; letter-spacing: var(--ed-langs-ls, .06em); text-transform: uppercase; }
+.ed-lang-list { display: flex; flex-wrap: wrap; gap: calc(var(--ed-lang-gap, 17) * var(--u)); margin: 0; padding: 0; list-style: none; }
+.ed-badge { display: flex; align-items: center; gap: calc(15 * var(--u)); height: calc(44 * var(--u)); padding: 0 calc(18 * var(--u)) 0 calc(14.5 * var(--u)); border: max(1px, calc(1.75 * var(--u))) solid var(--ed-ink); border-radius: calc(13 * var(--u)); font-size: max(12px, calc(var(--ed-badge-fs, 19.2) * var(--u))); font-weight: 500; line-height: 1; letter-spacing: var(--ed-badge-ls, 0); white-space: nowrap; }
+.ed-badge::before { content: ""; flex: none; width: calc(15.5 * var(--u)); height: calc(15.5 * var(--u)); border-radius: 50%; background: var(--ed-blue); }
+
+.ed-metrics { --u: var(--ed-s); display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
+.ed-metric { position: relative; display: flex; align-items: center; gap: calc(var(--ed-metric-gap, 26) * var(--u)); }
+.ed-metric + .ed-metric { margin-left: calc(var(--ed-metric-sep-before, 56) * var(--u)); padding-left: calc(var(--ed-metric-sep-after, 44) * var(--u)); }
+.ed-metric + .ed-metric::before { content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: calc(58 * var(--u)); background: var(--ed-rule-mid); transform: translateY(-50%); }
+.ed-metric-value { color: var(--ed-blue); font-family: var(--ed-font-head); font-size: calc(var(--ed-metric-fs, 68.8) * var(--u)); font-weight: 800; line-height: 1; letter-spacing: -.08em; }
+.ed-metric-label { position: relative; top: calc(2 * var(--u)); color: var(--ed-muted); font-size: max(11px, calc(16.5 * var(--u))); font-weight: 400; line-height: calc(23 * var(--u)); letter-spacing: .075em; text-transform: uppercase; }
+
+/* ---- Stacked layouts (tablet portrait, phones) ---------------------------------------- */
+@media (max-width: 55.99rem) {
+    .ed-page .container { --ed-s: 1px; }
+
+    .ed-header { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; width: auto; height: auto; padding: 1rem 1.25rem .25rem; }
+    .ed-header:empty { min-height: 7.25rem; }
+    .ed-brand { gap: .75rem; }
+    .ed-monogram { font-size: 2.5rem; }
+    .ed-brand-name { top: .1rem; font-size: 1rem; }
+    .ed-header .ed-nav { order: 3; flex-wrap: wrap; gap: 0 1.5rem; width: 100%; margin: 0; }
+    .ed-nav a { top: 0; justify-content: center; min-height: 44px; font-size: 1rem; }
+    .ed-nav a[aria-current="page"]::after { top: auto; bottom: 8px; left: 0; right: 0; height: 2px; }
+    .ed-talk { width: auto; height: 2.75rem; padding: 0 1.1rem; font-size: 1rem; }
+
+    .ed-footer { flex-wrap: wrap; gap: .5rem 1.25rem; width: auto; height: auto; padding: 1.25rem; }
+    .ed-footer .ed-monogram { font-size: 1.6rem; }
+    .ed-footer-name { margin-left: 0; font-size: .9rem; }
+    .ed-footer-links { margin-left: 0; }
+    .ed-footer-links a { min-height: 44px; font-size: .95rem; }
+    .ed-footer-links a + a { margin-left: 1.25rem; padding-left: 1.25rem; }
+
+    .ed-eyebrow { font-size: 1rem; }
+    .ed-label { font-size: .8rem; }
+    .ed-chips { gap: .5rem; }
+    .ed-chip { min-width: 3.75rem; height: 2.75rem; padding: 0 1.1rem; border-width: 1.5px; font-size: .95rem; }
+    .ed-link { padding-bottom: .4rem; }
+
+    .ed-langs { flex-wrap: wrap; gap: .75rem 1rem; }
+    .ed-langs-label { font-size: .75rem; }
+    .ed-lang-list { gap: .625rem; }
+    .ed-badge { gap: .6rem; height: 2.5rem; padding: 0 .9rem 0 .75rem; border-width: 1.5px; border-radius: .6rem; font-size: .95rem; }
+    .ed-badge::before { width: .6rem; height: .6rem; }
+    .ed-metric { gap: min(2.5cqw, .9rem); }
+    .ed-metric + .ed-metric { margin-left: min(4.5cqw, 1.5rem); padding-left: min(4.5cqw, 1.5rem); }
+    .ed-metric + .ed-metric::before { height: 2.75rem; }
+    .ed-metric-value { font-size: min(11.5cqw, 3rem); }
+    .ed-metric-label { top: 0; font-size: max(11px, min(3.2cqw, .75rem)); line-height: 1.35; letter-spacing: .06em; }
+}
+@media (max-width: 23rem) {
+    .ed-header { gap: .5rem .75rem; }
+    .ed-brand { gap: .55rem; }
+    .ed-monogram { font-size: 2.2rem; }
+    .ed-brand-name { font-size: .88rem; }
+    .ed-talk { padding: 0 .9rem; font-size: .95rem; }
+    .ed-header .ed-nav { gap: 0 1.15rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ed-talk, .ed-button, .ed-chip { transition: none; }
+}

@@ -6,12 +6,11 @@ const fileToPath = ROUTES.reduce((map, route) => {
     return map;
 }, {});
 
+/** Fills the page's [data-site-header] / [data-site-footer] placeholders with the shared chrome. */
 export function injectLayout(headerHTML, footerHTML) {
-    const container = document.querySelector('.container');
-    container.insertAdjacentHTML('afterbegin', headerHTML);
-    container.insertAdjacentHTML('beforeend', footerHTML);
+    document.querySelectorAll('[data-site-header]').forEach(slot => { slot.innerHTML = headerHTML; });
+    document.querySelectorAll('[data-site-footer]').forEach(slot => { slot.innerHTML = footerHTML; });
     setActiveNav();
-    initNavigation();
 }
 
 function normalizePath(pathname) {
@@ -24,34 +23,11 @@ function setActiveNav() {
     document.querySelectorAll('.primary-nav a, .footer-nav a').forEach(link => {
         const linkUrl = new URL(link.getAttribute('href'), window.location.origin);
         if (linkUrl.origin !== window.location.origin) return;
+        if (linkUrl.hash) return;
 
         if (normalizePath(linkUrl.pathname) === currentPath) {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
         }
-    });
-}
-
-function initNavigation() {
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.primary-nav');
-    if (!toggle || !nav) return;
-
-    const closeNavigation = () => {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-    };
-
-    toggle.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    nav.addEventListener('click', (event) => {
-        if (event.target.closest('a')) closeNavigation();
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeNavigation();
     });
 }

@@ -10,38 +10,77 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@800&family=Newsreader:opsz,wght@6..72,400..700&family=Mona+Sans:wdth,wght@75,900&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/layout/header.css" />
-    <link rel="stylesheet" href="css/layout/footer.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/layout/editorial.css" />
     <link rel="stylesheet" href="css/pages/blog.css" />
   </head>
-  <body class="blog-page">
+  <body class="ed-page blog-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="container">
-      <main id="main-content" class="journal">
-        <header class="journal-masthead" aria-labelledby="journal-title">
-          <p class="journal-kicker">Field notes / 2026</p>
-          <h1 id="journal-title">Notes from the work.</h1>
-          <p class="journal-standfirst">Short entries on what I build, what I am learning, and the moments that keep the work human.</p>
-        </header>
+      <!-- Shared site header and footer: filled from js/partials/layout.js by js/core/layout.js. -->
+      <header class="ed-header" data-site-header></header>
 
-        <section class="journal-lead" aria-labelledby="journal-lead-label">
-          <p class="journal-marker" id="journal-lead-label">Latest note</p>
+      <main id="main-content" class="bl">
+        <section class="bl-hero" aria-labelledby="blog-title">
+          <div class="bl-hero-inner">
+            <div class="bl-hero-mark">
+              <p class="ed-eyebrow">03 / Notes &amp; ideas</p>
+              <h1 id="blog-title" class="bl-title">
+                <span class="bl-title-line">Build<span class="ed-dot" aria-hidden="true"></span></span>
+                <span class="bl-title-line bl-title-line--accent">Learn<span class="ed-dot" aria-hidden="true"></span></span>
+                <span class="bl-title-line">Share<span class="ed-dot" aria-hidden="true"></span></span>
+              </h1>
+              <svg class="bl-hero-art" viewBox="400 140 140 280" aria-hidden="true" focusable="false">
+                <path class="bl-asterisk" d="M484.6 150.5 462.1 151.4 464.4 192.8 433.6 165 419.1 183.2 450.8 208.2 412.6 216.1 417.4 238.4 453.9 227.6 433.9 256.2 451.4 269 473.6 234.8 497.4 269 515.1 255 493 226.2 531.4 229.4 533.8 207.8 495.4 206.5 525.9 181.2 512.4 164.4 483.9 189.5Z"/>
+                <path class="bl-crosshair" d="M410 381.5h54M435.5 353v60"/>
+              </svg>
+            </div>
+
+            <div class="bl-hero-intro">
+              <p class="bl-statement">Notes from<br> building things.</p>
+              <p class="bl-lede">Practical lessons from eCommerce<br class="bl-br"> development, fullstack projects,<br class="bl-br"> and product experiments.</p>
+              <form class="bl-search" id="blog-search-form" role="search">
+                <label class="sr-only" for="blog-search">Search articles</label>
+                <svg class="bl-search-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="6.75" cy="6.75" r="5.25"/><path d="m10.6 10.6 4.4 4.4"/></svg>
+                <input id="blog-search" type="search" name="q" placeholder="Search articles..." autocomplete="off" />
+              </form>
+              <div class="bl-filters ed-chips" id="blog-filters" role="group" aria-label="Filter notes by category">
+                <button type="button" class="bl-filter ed-chip" data-category="all" aria-pressed="true">All</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bl-featured" aria-labelledby="blog-featured-title">
+          <h2 id="blog-featured-title" class="sr-only">Featured note</h2>
           <div id="blog-featured" aria-live="polite"></div>
         </section>
 
-        <section class="journal-index" aria-labelledby="journal-index-label">
-          <p class="journal-marker" id="journal-index-label">Earlier notes</p>
-          <ol id="blog-posts" class="entry-list"></ol>
-          <p id="blog-empty-state" class="journal-note" hidden>No notes published yet.</p>
+        <section class="bl-latest" aria-labelledby="blog-latest-title">
+          <h2 id="blog-latest-title" class="bl-latest-title">Latest notes</h2>
+          <ol id="blog-posts" class="bl-list"></ol>
+          <div id="blog-empty-state" class="bl-empty" hidden>
+            <p id="blog-empty-message">No notes published yet.</p>
+            <button type="button" class="bl-reset ed-link" data-blog-reset hidden>Clear search and filters</button>
+          </div>
+        </section>
+        <p id="blog-status" class="sr-only" role="status" aria-live="polite"></p>
+
+        <section class="ed-contact bl-band" aria-label="Learning in public">
+          <p class="bl-band-title">Learning in public. One build at a time.</p>
+          <nav class="bl-band-links" aria-label="Profiles">
+            <a href="https://github.com/hvanri" target="_blank" rel="noopener noreferrer">GitHub <svg class="ed-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M1 17 17 1M4.5 1H17v12.5"/></svg></a>
+            <a href="https://www.linkedin.com/in/ri-ha-2114ba382/" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="ed-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M1 17 17 1M4.5 1H17v12.5"/></svg></a>
+          </nav>
         </section>
       </main>
+
+      <footer class="ed-footer" data-site-footer></footer>
     </div>
 
     <script type="module" src="js/main.js"></script>

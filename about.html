@@ -13,688 +13,131 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:opsz,wght@14..32,400..900&family=Inter+Tight:wght@800&family=Newsreader:opsz,wght@6..72,400..700&family=Caveat:wght@500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/layout/header.css">
-    <link rel="stylesheet" href="css/layout/footer.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/layout/editorial.css">
     <link rel="stylesheet" href="css/pages/about.css">
 </head>
 
-<body>
-
+<body class="ed-page about-page">
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div class="container">
+    <!-- Shared site header and footer: filled from js/partials/layout.js by js/core/layout.js. -->
+    <header class="ed-header" data-site-header></header>
 
-    <!-- Header -->
-
-    <main class="about-page">
-
-        <!-- ===================================================== -->
-        <!-- HERO -->
-        <!-- ===================================================== -->
-
-        <section class="about-hero">
-
-            <div class="profile-image">
-
-                <img
-                        src="/assets/images/about.jpeg"
-                        alt="Ha Van Ri">
-
+    <main id="main-content" class="ab">
+        <section class="ab-hero" aria-labelledby="about-title">
+          <div class="ab-hero-inner">
+            <div class="ab-hero-copy">
+                <p class="ed-eyebrow">01 / About me</p>
+                <h1 id="about-title" class="ab-title">More than <br>the code<span class="ed-dot" aria-hidden="true"></span></h1>
+                <p class="ab-statement">Rooted in Hue.<br> Building in Hanoi.</p>
+                <p class="ab-lede">I build eCommerce features, deploy systems,<br class="ab-br"> and connect with clients in English and Chinese.</p>
+                <div class="ed-langs ab-langs">
+                    <p class="ed-langs-label" id="ab-languages">Languages</p>
+                    <ul class="ed-lang-list" aria-labelledby="ab-languages">
+                        <li class="ed-badge"><span>English · Fluent</span></li>
+                        <li class="ed-badge"><span><span lang="zh-Hans">中文</span> · Fluent</span></li>
+                    </ul>
+                </div>
+                <ul class="ed-metrics ab-metrics">
+                    <li class="ed-metric"><strong class="ed-metric-value">3+</strong><span class="ed-metric-label">Years of<br>experience</span></li>
+                    <li class="ed-metric"><strong class="ed-metric-value">10+</strong><span class="ed-metric-label">Live<br>projects</span></li>
+                </ul>
             </div>
 
-            <div class="hero-content">
+            <figure class="ab-art">
+                <svg class="ab-art-layer" viewBox="470 64 568 661" aria-hidden="true" focusable="false">
+                    <polygon class="ab-bar" points="559,82 678,97 612,628 493,613"/>
+                    <polygon class="ab-bar" points="832.8,401.3 952,415 923,668 803.8,654.3"/>
+                    <path class="ab-crosshair" d="M960 100.5h38M979.5 81v38M493 306.5h47M516.5 283v47"/>
+                </svg>
+                <img class="ab-photo" src="assets/images/about/hue-portrait-from-mockup.jpg" width="364" height="622"
+                     alt="Hà Văn Ri making a peace sign by the lake in front of the dragon building at Thủy Tiên, Huế">
+                <svg class="ab-art-layer ab-art-layer--front" viewBox="470 64 568 661" aria-hidden="true" focusable="false">
+                    <path class="ab-asterisk" d="M919.5 123.2 920.5 152 899.2 134.1 890 144.9 910.9 162.6 884.9 168.1 887.1 182.4 912.9 176.2 900.9 197 914.8 205.6 928.2 181.4 945.9 204.4 957 195.2 940.9 175.4 968.4 177.2 969.9 163.6 941.9 161.5 963.4 143.4 953.9 133.2 934.2 150.1 934.2 123.6Z"/>
+                    <path class="ab-hand-arrow" d="M973.5 340c-.5 15-10.5 29-30 35.5M949.5 368.5l-6.5 7 8.5 2.5"/>
+                </svg>
+                <p class="ab-note" aria-hidden="true">Hue,<br>Vietnam</p>
+                <p class="ab-tag" aria-hidden="true"><span class="ab-tag-code">&lt;/&gt;</span>People<br>Ideas<br>Products</p>
+            </figure>
+          </div>
+        </section>
 
-                <p class="eyebrow">
-                    Fullstack Developer
-                </p>
+        <div class="ab-story">
+          <div class="ab-story-inner">
+            <section class="ab-journey" aria-labelledby="journey-title">
+                <p class="ed-label">02 / Journey</p>
+                <h2 id="journey-title" class="ab-section-title">The path so far<span class="ed-dot" aria-hidden="true"></span></h2>
+                <ol class="ab-timeline">
+                    <li class="ab-step">
+                        <p class="ab-step-years">2023 – 2024</p>
+                        <div class="ab-step-body">
+                            <h3 class="ab-step-company">Snaptec</h3>
+                            <p class="ab-step-role">Internship → Developer</p>
+                            <p class="ab-step-desc">Joined as an intern and grew into a developer, working on eCommerce features and real projects.</p>
+                        </div>
+                    </li>
+                    <li class="ab-step">
+                        <p class="ab-step-years">2025 – 2026</p>
+                        <div class="ab-step-body">
+                            <h3 class="ab-step-company">Magenest</h3>
+                            <p class="ab-step-role">Fullstack Magento Developer</p>
+                            <p class="ab-step-desc">Working on Magento eCommerce solutions, building features and deploying systems.</p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
 
-                <h1
-                        data-en="My Journey"
-                        data-vi="Hành trình của tôi">
-                    My Journey
-                </h1>
+            <section class="ab-mindset" aria-labelledby="mindset-title">
+                <p class="ed-label">03 / Mindset</p>
+                <h2 id="mindset-title" class="ab-serif-title">What drives me.</h2>
+                <p>I’m drawn to practical engineering and thoughtful interfaces. I enjoy turning real problems into simple, useful products — whether it’s eCommerce features, reliable systems, or tools that help people work better.</p>
+                <p>I’m also building <strong>HueMate</strong>, a product inspired by my hometown Hue, to bring its culture closer to more people.</p>
+            </section>
+          </div>
+        </div>
 
-                <p
-                        class="hero-description"
+        <section class="ab-expertise" aria-labelledby="expertise-title">
+            <h2 id="expertise-title" class="ed-label">04 / Expertise</h2>
+            <ol class="ab-expertise-list">
+                <li>
+                    <span class="ab-expertise-num" aria-hidden="true">01</span>
+                    <h3>Commerce</h3>
+                    <p>Building eCommerce features, customizing Magento, and solving real business needs.</p>
+                </li>
+                <li>
+                    <span class="ab-expertise-num" aria-hidden="true">02</span>
+                    <h3>Product interfaces</h3>
+                    <p>Creating clean, functional interfaces that help users get things done without friction.</p>
+                </li>
+                <li>
+                    <span class="ab-expertise-num" aria-hidden="true">03</span>
+                    <h3>Backend systems</h3>
+                    <p>Deploying systems, writing robust backend logic, and keeping things reliable and maintainable.</p>
+                </li>
+            </ol>
+        </section>
 
-                        data-en="From a curious student in Huế to building enterprise e-commerce systems. Every project, challenge and lesson has shaped who I am today."
-                        data-vi="Từ một sinh viên yêu công nghệ tại Huế đến hành trình xây dựng các hệ thống thương mại điện tử quy mô doanh nghiệp. Mỗi dự án, thử thách và bài học đều góp phần tạo nên con người tôi hôm nay.">
-
-                    From a curious student...
-
-                </p>
-
-                <div class="quick-info">
-
-                    <span>📍 Hanoi, Vietnam</span>
-
-                    <span>🟢 Full-time @ Magenest</span>
-
-                    <span>💻 Fullstack Developer</span>
-
-                </div>
-
+        <section class="ed-contact ab-contact" aria-labelledby="contact-title">
+            <p class="ed-label">05 / Let’s talk</p>
+            <h2 id="contact-title" class="ab-contact-title">Good work starts with<br> a <span class="ab-contact-em">conversation<svg class="ab-contact-scribble" viewBox="-4 -1 215 18" aria-hidden="true" focusable="false"><path d="M209.9 1.5 209.1.4 201-.2 171.4.2 157.4-.2 156.1.2 91 1.4 20.5 3.6-1.2 5-3.2 5.8-3.5 6.4 6.1 7.6 40.2 6.4 52.4 6.6 50.4 7.6 13.5 11.6 9.5 12.6 8.4 13.6 8.8 15.1 10.5 16.1 17.1 16.2 75.5 12.6 120.4 11 123 9.8 121.6 8.8 90.9 9 87.1 8.5 92.5 7.4 169.2 3.5 208.8 3.2 209.6 2.8Z"/></svg></span>.</h2>
+            <div class="ed-contact-aside">
+                <p>Have a project in mind, a question,<br> or just want to say hello?</p>
+                <p>I’m always open to new opportunities<br> and interesting ideas.</p>
+                <a class="ed-talk ed-talk--light" href="mailto:havanri.1707@gmail.com">Let’s talk <svg class="ed-arrow" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M1 17 17 1M4.5 1H17v12.5"/></svg></a>
             </div>
-
         </section>
-
-        <!-- ===================================================== -->
-        <!-- TIMELINE INTRO -->
-        <!-- ===================================================== -->
-
-        <section class="journey-intro">
-
-            <h2
-                    data-en="Timeline"
-                    data-vi="Dòng thời gian">
-
-                Timeline
-
-            </h2>
-
-            <p
-
-                    data-en="Instead of telling you who I am with paragraphs, I'd rather show you the journey."
-
-                    data-vi="Thay vì giới thiệu bằng nhiều đoạn văn, tôi muốn kể câu chuyện của mình qua những cột mốc quan trọng.">
-
-                Instead of telling you...
-
-            </p>
-
-        </section>
-
-        <!-- ===================================================== -->
-        <!-- JOURNEY -->
-        <!-- ===================================================== -->
-
-        <section class="journey">
-
-            <!-- SVG Road -->
-
-            <svg
-                    class="journey-road"
-                    viewBox="0 0 500 2700"
-                    preserveAspectRatio="none">
-
-                <path
-
-                        d="
-                        M250 0
-
-                        C420 150,
-                        80 300,
-                        250 500
-
-                        C420 700,
-                        80 900,
-                        250 1100
-
-                        C420 1300,
-                        80 1500,
-                        250 1700
-
-                        C420 1900,
-                        80 2050,
-                        250 2200
-
-                        C420 2400,
-                        80 2550,
-                        250 2700
-
-                        " />
-
-            </svg>
-
-            <!-- ==================================== -->
-
-            <article class="milestone left">
-
-                <div class="dot"></div>
-
-                <div class="card">
-
-                    <span class="year">2002</span>
-
-                    <h3
-                            data-en="Born in Huế"
-                            data-vi="Sinh ra tại Huế">
-
-                        Born in Huế
-
-                    </h3>
-
-                    <p
-
-                            data-en="A peaceful city rich in culture became the place where my journey began."
-
-                            data-vi="Huế là nơi tôi sinh ra và lớn lên, một thành phố mang đậm bản sắc văn hóa Việt Nam.">
-
-                        ...
-
-                    </p>
-
-                    <img
-                            src="/assets/images/about/hue.jpg"
-                            alt="Hue">
-
-                </div>
-
-            </article>
-
-            <!-- ==================================== -->
-
-            <article class="milestone right">
-
-                <div class="dot"></div>
-
-                <div class="card">
-
-                    <span class="year">2020</span>
-
-                    <h3
-                            data-en="University"
-                            data-vi="Đại học">
-
-                        University
-
-                    </h3>
-
-                    <p
-
-                            data-en="Discovered software engineering and developed a passion for programming."
-
-                            data-vi="Bắt đầu hành trình học lập trình và khám phá thế giới phát triển phần mềm.">
-
-                    </p>
-
-                    <img
-                            src="/assets/images/about/phuxuan.jpg"
-                            alt="University">
-
-                </div>
-
-            </article>
-
-            <!-- ==================================== -->
-
-            <article class="milestone left">
-
-                <div class="dot"></div>
-
-                <div class="card">
-
-                    <span class="year">2023</span>
-
-                    <h3
-                            data-en="First Magento Project - at Snaptec"
-                            data-vi="Dự án Magento đầu tiên">
-
-                        First Magento Project
-
-                    </h3>
-
-                    <p
-
-                            data-en="Built custom modules and started solving real business problems."
-
-                            data-vi="Tham gia dự án Magento đầu tiên và bắt đầu giải quyết các bài toán thực tế cho doanh nghiệp.">
-
-                    </p>
-
-                    <img
-                            src="/assets/images/about/snaptec.png"
-                            alt="Magento">
-
-                </div>
-
-            </article>
-
-            <!-- ==================================== -->
-
-            <article class="milestone right">
-
-                <div class="dot"></div>
-
-                <div class="card">
-
-                    <span class="year">2025</span>
-
-                    <h3
-                            data-en="Joined Magenest"
-                            data-vi="Gia nhập Magenest">
-
-                        Joined Magenest
-
-                    </h3>
-
-                    <p
-
-                            data-en="Working on enterprise Magento projects for B2B & B2C businesses."
-
-                            data-vi="Tham gia Magenest với vai trò Fullstack Developer.">
-
-                    </p>
-
-                    <img
-                            src="/assets/images/about/magenest.jpeg"
-                            alt="Magenest">
-
-                </div>
-
-            </article>
-
-            <!-- ==================================== -->
-
-            <article class="milestone left milestone--personal">
-
-                <div class="dot"></div>
-
-                <div class="card card--personal">
-
-                    <span class="year year--personal">
-                        <svg class="year-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path d="M3.4 17.6 20 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                            <circle cx="9.2" cy="13.5" r="1.05"/>
-                            <circle cx="12.2" cy="11.4" r="1.05"/>
-                            <circle cx="15.2" cy="9.3" r="1.05"/>
-                        </svg>
-                        2026
-                    </span>
-
-                    <h3
-                            data-en="First Public Bamboo Flute Performance"
-                            data-vi="Lần đầu biểu diễn sáo trúc  trên sân khấu.">
-
-                        First Public Bamboo Flute Performance
-
-                    </h3>
-
-                    <p
-
-                            data-en="During a Gala Dinner in Hạ Long, I performed bamboo flute in front of colleagues and friends. What started as a personal hobby became a memorable milestone of confidence, self-expression, and growth beyond software engineering."
-
-                            data-vi="Trong chương trình Gala Dinner tại Hạ Long, tôi lần đầu biểu diễn sáo trúc trước đồng nghiệp và bạn bè. Từ một sở thích cá nhân, đây trở thành một dấu mốc đáng nhớ về sự tự tin, khả năng biểu đạt bản thân và hành trình phát triển ngoài công việc kỹ thuật.">
-
-                        During a Gala Dinner in Hạ Long, I performed bamboo flute in front of colleagues and friends.
-
-                    </p>
-
-                    <img
-                            class="card-image card-image--feature"
-                            src="/assets/images/about/flute-gala.jpg"
-                            srcset="/assets/images/about/flute-gala-sm.jpg 700w, /assets/images/about/flute-gala.jpg 1400w"
-                            sizes="(max-width: 900px) 92vw, 420px"
-                            width="1400"
-                            height="1050"
-                            loading="lazy"
-                            decoding="async"
-                            alt="Ha Van Ri performing bamboo flute at a Gala Dinner in Ha Long, 2026.">
-
-                </div>
-
-            </article>
-
-            <!-- ==================================== -->
-
-            <article class="milestone right milestone--open">
-
-                <div class="dot active"></div>
-
-                <div class="card current card--open">
-
-                    <span class="year year--open">
-                        2026+
-                        <span class="year-pulse" aria-hidden="true"></span>
-                    </span>
-
-                    <h3
-                            data-en="Still Composing"
-                            data-vi="Vẫn đang tiếp tục sáng tạo">
-
-                        Still Composing
-
-                    </h3>
-
-                    <p
-
-                            data-en="Continuing to build software, learn languages, explore AI, and deepen my bamboo flute practice. Every discipline teaches a different way of thinking."
-
-                            data-vi="Tiếp tục xây dựng phần mềm, học ngoại ngữ, khám phá AI và rèn luyện sáo trúc. Mỗi lĩnh vực đều mang lại một góc nhìn khác nhau về cách học hỏi và phát triển.">
-
-                        Continuing to build software, learn languages, explore AI, and deepen my bamboo flute practice.
-
-                    </p>
-
-                </div>
-
-            </article>
-
-        </section>
-
-        <!-- ===================================================== -->
-        <!-- ===================================================== -->
-        <!-- CURRENT FOCUS -->
-        <!-- ===================================================== -->
-
-        <section class="current-focus" aria-labelledby="current-focus-title">
-
-            <div class="focus-header">
-                <div>
-                    <p class="focus-kicker" data-en="Current state" data-vi="Hiện tại">Current state</p>
-                    <h2 id="current-focus-title"
-                        data-en="What I'm Building"
-                        data-vi="Những gì tôi đang xây dựng">
-                        What I'm Building
-                    </h2>
-                </div>
-
-                <p class="focus-subtitle"
-                   data-en="Four areas that shape who I am today — technology, music, language, and continuous learning."
-                   data-vi="Bốn lĩnh vực đang định hình con người tôi hôm nay — công nghệ, âm nhạc, ngôn ngữ và tinh thần học hỏi không ngừng.">
-                    Four areas that shape who I am today — technology, music, language, and continuous learning.
-                </p>
-            </div>
-
-            <div class="focus-workbench">
-
-                <div class="focus-index" role="tablist" aria-label="Current focus areas">
-
-                    <button class="focus-item is-active"
-                            type="button"
-                            role="tab"
-                            aria-selected="true"
-                            aria-controls="focus-panel-flute"
-                            data-focus="flute"
-                            data-tone="warm">
-
-                        <span class="focus-number">01</span>
-                        <span class="focus-item-main">
-                            <span class="focus-item-title"
-                                  data-en="Bamboo Flute"
-                                  data-vi="Sáo Trúc">Bamboo Flute</span>
-                            <span class="focus-item-status"
-                                  data-en="Daily Practice"
-                                  data-vi="Luyện tập hằng ngày">Daily Practice</span>
-                        </span>
-                        <span class="focus-arrow" aria-hidden="true">↗</span>
-                    </button>
-
-                    <button class="focus-item"
-                            type="button"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="focus-panel-chinese"
-                            data-focus="chinese"
-                            data-tone="warm">
-
-                        <span class="focus-number">02</span>
-                        <span class="focus-item-main">
-                            <span class="focus-item-title"
-                                  data-en="Chinese"
-                                  data-vi="Tiếng Trung">Chinese</span>
-                            <span class="focus-item-status"
-                                  data-en="Steady"
-                                  data-vi="Kiên trì">Steady</span>
-                        </span>
-                        <span class="focus-arrow" aria-hidden="true">↗</span>
-                    </button>
-
-                    <button class="focus-item"
-                            type="button"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="focus-panel-ai"
-                            data-focus="ai"
-                            data-tone="cool">
-
-                        <span class="focus-number">03</span>
-                        <span class="focus-item-main">
-                            <span class="focus-item-title"
-                                  data-en="AI Workflow"
-                                  data-vi="Luồng công việc AI">AI Workflow</span>
-                            <span class="focus-item-status"
-                                  data-en="Exploring"
-                                  data-vi="Đang khám phá">Exploring</span>
-                        </span>
-                        <span class="focus-arrow" aria-hidden="true">↗</span>
-                    </button>
-
-                    <button class="focus-item"
-                            type="button"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="focus-panel-devops"
-                            data-focus="devops"
-                            data-tone="cool">
-
-                        <span class="focus-number">04</span>
-                        <span class="focus-item-main">
-                            <span class="focus-item-title"
-                                  data-en="DevOps"
-                                  data-vi="DevOps">DevOps</span>
-                            <span class="focus-item-status"
-                                  data-en="Learning"
-                                  data-vi="Đang học">Learning</span>
-                        </span>
-                        <span class="focus-arrow" aria-hidden="true">↗</span>
-                    </button>
-
-                </div>
-
-                <div class="focus-panels">
-
-                    <article class="focus-panel is-active"
-                             id="focus-panel-flute"
-                             role="tabpanel"
-                             data-panel="flute"
-                             data-tone="warm">
-
-                        <div class="focus-panel-visual focus-panel-visual--flute">
-                            <span class="flute-mark" aria-hidden="true">
-                                <span class="flute-wave flute-wave--spin"></span>
-                                <span class="flute-wave flute-wave--sweep"></span>
-                            </span>
-                            <span class="focus-panel-index">01 / 04</span>
-                        </div>
-
-                        <div class="focus-panel-content">
-                            <div class="focus-panel-meta">
-                                <span data-en="Personal growth" data-vi="Phát triển cá nhân">Personal growth</span>
-                                <span data-en="Daily practice" data-vi="Luyện tập hằng ngày">Daily practice</span>
-                            </div>
-
-                            <h3 data-en="Bamboo Flute"
-                                data-vi="Sáo Trúc">Bamboo Flute</h3>
-
-                            <p data-en="Beyond software engineering, I dedicate time every day to practicing bamboo flute. It teaches patience, breath control, discipline, and artistic expression — qualities that also improve my work as an engineer."
-                               data-vi="Bên cạnh lập trình, tôi dành thời gian mỗi ngày để luyện tập sáo trúc. Bộ môn này giúp tôi rèn luyện sự kiên nhẫn, kiểm soát hơi thở, tính kỷ luật và khả năng biểu đạt cảm xúc — những phẩm chất cũng hỗ trợ rất nhiều trong công việc kỹ thuật.">
-                                Beyond software engineering, I dedicate time every day to practicing bamboo flute.
-                            </p>
-
-                            <div class="focus-technologies">
-                                <span data-en="Bamboo Flute" data-vi="Sáo trúc">Bamboo Flute</span>
-                                <span data-en="Traditional Music" data-vi="Nhạc truyền thống">Traditional Music</span>
-                                <span data-en="Performance" data-vi="Biểu diễn">Performance</span>
-                                <span data-en="Daily Practice" data-vi="Luyện tập hằng ngày">Daily Practice</span>
-                            </div>
-                        </div>
-
-                    </article>
-
-                    <article class="focus-panel"
-                             id="focus-panel-chinese"
-                             role="tabpanel"
-                             data-panel="chinese"
-                             data-tone="warm"
-                             hidden>
-
-                        <div class="focus-panel-visual">
-                            <img src="assets/images/about/part3.png"
-                                 alt="Language learning and international communication illustration">
-                            <span class="focus-panel-index">02 / 04</span>
-                        </div>
-
-                        <div class="focus-panel-content">
-                            <div class="focus-panel-meta">
-                                <span data-en="Personal growth" data-vi="Phát triển cá nhân">Personal growth</span>
-                                <span data-en="Steady" data-vi="Kiên trì">Steady</span>
-                            </div>
-
-                            <h3 data-en="Chinese" data-vi="Tiếng Trung">Chinese</h3>
-
-                            <p data-en="Learning Mandarin through consistent daily practice to open more opportunities for communication, cultural understanding, and international collaboration."
-                               data-vi="Học tiếng Trung mỗi ngày để mở rộng cơ hội giao tiếp, tiếp cận văn hóa và hợp tác trong môi trường quốc tế.">
-                                Learning Mandarin through consistent daily practice to open more opportunities for communication, cultural understanding, and international collaboration.
-                            </p>
-
-                            <div class="focus-technologies">
-                                <span>Mandarin</span>
-                                <span data-en="Speaking" data-vi="Giao tiếp">Speaking</span>
-                                <span data-en="Vocabulary" data-vi="Từ vựng">Vocabulary</span>
-                                <span data-en="HSK Preparation" data-vi="Luyện thi HSK">HSK Preparation</span>
-                            </div>
-                        </div>
-
-                    </article>
-
-                    <article class="focus-panel"
-                             id="focus-panel-ai"
-                             role="tabpanel"
-                             data-panel="ai"
-                             data-tone="cool"
-                             hidden>
-
-                        <div class="focus-panel-visual">
-                            <img src="assets/images/about/part2.png"
-                                 alt="AI-assisted software development illustration">
-                            <span class="focus-panel-index">03 / 04</span>
-                        </div>
-
-                        <div class="focus-panel-content">
-                            <div class="focus-panel-meta">
-                                <span data-en="Experimentation" data-vi="Thử nghiệm">Experimentation</span>
-                                <span data-en="Exploring" data-vi="Đang khám phá">Exploring</span>
-                            </div>
-
-                            <h3 data-en="AI Workflow" data-vi="Luồng công việc AI">AI Workflow</h3>
-
-                            <p data-en="Exploring AI-assisted software development to improve engineering productivity and automate repetitive workflows."
-                               data-vi="Khám phá phát triển phần mềm hỗ trợ bởi AI để nâng cao năng suất và tự động hóa các quy trình lặp lại.">
-                                Exploring AI-assisted software development to improve engineering productivity and automate repetitive workflows.
-                            </p>
-
-                            <div class="focus-technologies">
-                                <span>AI Agents</span>
-                                <span>Prompt Engineering</span>
-                                <span>Development Automation</span>
-                                <span>AI-assisted Coding</span>
-                            </div>
-                        </div>
-
-                    </article>
-
-                    <article class="focus-panel"
-                             id="focus-panel-devops"
-                             role="tabpanel"
-                             data-panel="devops"
-                             data-tone="cool"
-                             hidden>
-
-                        <div class="focus-panel-visual">
-                            <img src="assets/images/about/part4.png"
-                                 alt="Modern DevOps and deployment engineering illustration">
-                            <span class="focus-panel-index">04 / 04</span>
-                        </div>
-
-                        <div class="focus-panel-content">
-                            <div class="focus-panel-meta">
-                                <span data-en="Infrastructure" data-vi="Hạ tầng">Infrastructure</span>
-                                <span data-en="Learning" data-vi="Đang học">Learning</span>
-                            </div>
-
-                            <h3 data-en="DevOps" data-vi="DevOps">DevOps</h3>
-
-                            <p data-en="Expanding DevOps knowledge to better understand modern software delivery pipelines and cloud-native deployment practices."
-                               data-vi="Mở rộng kiến thức DevOps để hiểu rõ hơn về quy trình triển khai phần mềm hiện đại và các thực hành triển khai cloud-native.">
-                                Expanding DevOps knowledge to better understand modern software delivery pipelines and cloud-native deployment practices.
-                            </p>
-
-                            <div class="focus-technologies">
-                                <span>Docker</span>
-                                <span>Kubernetes</span>
-                                <span>CI/CD</span>
-                                <span>Deployment Automation</span>
-                            </div>
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ===================================================== -->
-        <!-- QUOTE -->
-        <!-- ===================================================== -->
-
-        <section class="quote-section">
-
-            <blockquote>
-
-                "Every project is another step forward."
-
-            </blockquote>
-
-        </section>
-
-        <!-- ===================================================== -->
-        <!-- CTA -->
-        <!-- ===================================================== -->
-
-        <section class="about-cta">
-
-            <h2
-                    data-en="The journey continues..."
-                    data-vi="Hành trình vẫn đang tiếp tục...">
-
-                The journey continues...
-
-            </h2>
-
-            <p
-
-                    data-en="Want to see what I've built?"
-
-                    data-vi="Khám phá những dự án tôi đã thực hiện.">
-
-                Want to see what I've built?
-
-            </p>
-
-            <a
-                    href="/projects"
-                    class="btn-primary">
-
-                Explore Projects →
-
-            </a>
-
-        </section>
-
     </main>
 
+    <footer class="ed-footer" data-site-footer></footer>
 </div>
 
 <script type="module" src="js/main.js"></script>
-<script type="module" src="js/about.js"></script>
 
 </body>
 </html>

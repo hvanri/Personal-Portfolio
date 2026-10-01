@@ -12,6 +12,7 @@
  *   path      the canonical, extensionless URL. Netlify 301s /x.html -> /x, so
  *             this is the only form that should ever be linked or indexed.
  *   file      the real file on disk, used for local dev and for sitemap lastmod.
+ *   navLabel  label in the shared site header (js/partials/layout.js).
  *   i18nKey   key in js/translations.js. Header and footer share keys on purpose.
  *   sitemap   omit entirely to keep a route out of sitemap.xml.
  */
@@ -24,6 +25,7 @@ export const SITE = {
 export const ROUTES = [
     {
         id: 'home',
+        navLabel: 'Home',
         path: '/',
         file: '/index.html',
         i18nKey: 'header.home',
@@ -34,6 +36,7 @@ export const ROUTES = [
     },
     {
         id: 'about',
+        navLabel: 'About',
         path: '/about',
         file: '/about.html',
         i18nKey: 'header.about',
@@ -44,6 +47,7 @@ export const ROUTES = [
     },
     {
         id: 'blog',
+        navLabel: 'Blog',
         path: '/blog',
         file: '/blog.html',
         i18nKey: 'header.blog',
@@ -54,6 +58,7 @@ export const ROUTES = [
     },
     {
         id: 'projects',
+        navLabel: 'Projects',
         path: '/projects',
         file: '/projects.html',
         i18nKey: 'header.projects',
@@ -87,6 +92,18 @@ export const DISALLOWED_PATHS = [
     '/hm-anim.html',
     '/index.html_back',
 ];
+
+/** Site header navigation, in the order shown on every page. */
+export const SITE_NAV_ORDER = ['home', 'about', 'projects', 'blog'];
+
+export const siteNavItems = SITE_NAV_ORDER.map(id => ROUTES.find(route => route.id === id));
+
+/** Contact destinations used by the shared header and footer. */
+export const CONTACT = {
+    email: 'havanri.1707@gmail.com',
+    github: 'https://github.com/hvanri',
+    linkedin: 'https://www.linkedin.com/in/ri-ha-2114ba382/',
+};
 
 export const primaryNavItems = [...ROUTES, ...EXTERNAL_NAV].filter(item => item.inPrimaryNav);
 
